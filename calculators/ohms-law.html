@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ohm's Law Calculator - Calculator Tools</title>
+    <meta name="description" content="Free Ohm's Law calculator. Calculate voltage, current, resistance, and power. Enter any 2 values to find the other 2.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Ohm's Law Calculator</h1>
+            <p class="tagline">Calculate Voltage, Current, Resistance, and Power</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Ohm's Law Calculator
+        </div>
+
+        <div class="calculator-container">
+            <h2>Ohm's Law Calculator</h2>
+            <p style="margin-bottom: 20px; color: #6b7280;">Enter any two values to calculate the remaining values</p>
+
+            <div style="text-align: center; margin: 30px 0; padding: 20px; background: #f3f4f6; border-radius: 10px;">
+                <div style="font-size: 1.5rem; font-weight: 700; color: #2563eb; margin-bottom: 10px;">
+                    V = I × R
+                </div>
+                <div style="font-size: 1.5rem; font-weight: 700; color: #2563eb;">
+                    P = V × I
+                </div>
+            </div>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="voltage">Voltage (V) - Volts:</label>
+                    <input type="number" id="voltage" step="any" placeholder="e.g., 12" oninput="calculate('voltage')">
+                </div>
+
+                <div class="form-group">
+                    <label for="current">Current (I) - Amperes:</label>
+                    <input type="number" id="current" step="any" placeholder="e.g., 2" oninput="calculate('current')">
+                </div>
+
+                <div class="form-group">
+                    <label for="resistance">Resistance (R) - Ohms (Ω):</label>
+                    <input type="number" id="resistance" step="any" placeholder="e.g., 6" oninput="calculate('resistance')">
+                </div>
+
+                <div class="form-group">
+                    <label for="power">Power (P) - Watts:</label>
+                    <input type="number" id="power" step="any" placeholder="e.g., 24" oninput="calculate('power')">
+                </div>
+
+                <button class="btn" onclick="clearAll()">Clear All</button>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                <h3 style="color: #2563eb; margin-bottom: 15px;">Ohm's Law Formulas</h3>
+                <ul style="list-style: none; padding: 0; color: #374151;">
+                    <li style="padding: 8px 0;"><strong>V = I × R</strong> (Voltage = Current × Resistance)</li>
+                    <li style="padding: 8px 0;"><strong>I = V / R</strong> (Current = Voltage / Resistance)</li>
+                    <li style="padding: 8px 0;"><strong>R = V / I</strong> (Resistance = Voltage / Current)</li>
+                    <li style="padding: 8px 0;"><strong>P = V × I</strong> (Power = Voltage × Current)</li>
+                    <li style="padding: 8px 0;"><strong>P = I² × R</strong> (Power = Current² × Resistance)</li>
+                    <li style="padding: 8px 0;"><strong>P = V² / R</strong> (Power = Voltage² / Resistance)</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        let lastChanged = null;
+
+        function calculate(changedField) {
+            lastChanged = changedField;
+            const voltage = parseFloat(document.getElementById('voltage').value);
+            const current = parseFloat(document.getElementById('current').value);
+            const resistance = parseFloat(document.getElementById('resistance').value);
+            const power = parseFloat(document.getElementById('power').value);
+
+            let values = {
+                voltage: isNaN(voltage) ? null : voltage,
+                current: isNaN(current) ? null : current,
+                resistance: isNaN(resistance) ? null : resistance,
+                power: isNaN(power) ? null : power
+            };
+
+            // Count how many values are provided
+            const filledCount = Object.values(values).filter(v => v !== null).length;
+
+            if (filledCount < 2) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            // Calculate missing values
+            if (values.voltage !== null && values.current !== null) {
+                // V and I known
+                if (values.resistance === null) values.resistance = values.voltage / values.current;
+                if (values.power === null) values.power = values.voltage * values.current;
+            } else if (values.voltage !== null && values.resistance !== null) {
+                // V and R known
+                if (values.current === null) values.current = values.voltage / values.resistance;
+                if (values.power === null) values.power = (values.voltage * values.voltage) / values.resistance;
+            } else if (values.current !== null && values.resistance !== null) {
+                // I and R known
+                if (values.voltage === null) values.voltage = values.current * values.resistance;
+                if (values.power === null) values.power = values.current * values.current * values.resistance;
+            } else if (values.voltage !== null && values.power !== null) {
+                // V and P known
+                if (values.current === null) values.current = values.power / values.voltage;
+                if (values.resistance === null) values.resistance = (values.voltage * values.voltage) / values.power;
+            } else if (values.current !== null && values.power !== null) {
+                // I and P known
+                if (values.voltage === null) values.voltage = values.power / values.current;
+                if (values.resistance === null) values.resistance = values.power / (values.current * values.current);
+            } else if (values.resistance !== null && values.power !== null) {
+                // R and P known
+                if (values.current === null) values.current = Math.sqrt(values.power / values.resistance);
+                if (values.voltage === null) values.voltage = Math.sqrt(values.power * values.resistance);
+            }
+
+            // Update empty fields
+            if (document.getElementById('voltage').value === '') document.getElementById('voltage').value = roundTo(values.voltage, 4);
+            if (document.getElementById('current').value === '') document.getElementById('current').value = roundTo(values.current, 4);
+            if (document.getElementById('resistance').value === '') document.getElementById('resistance').value = roundTo(values.resistance, 4);
+            if (document.getElementById('power').value === '') document.getElementById('power').value = roundTo(values.power, 4);
+
+            // Show results
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Calculated Values</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #3b82f6;">
+                        <p style="color: #6b7280; margin-bottom: 5px;">Voltage:</p>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: #3b82f6;">${roundTo(values.voltage, 4)} V</p>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #f59e0b;">
+                        <p style="color: #6b7280; margin-bottom: 5px;">Current:</p>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: #f59e0b;">${roundTo(values.current, 4)} A</p>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #10b981;">
+                        <p style="color: #6b7280; margin-bottom: 5px;">Resistance:</p>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: #10b981;">${roundTo(values.resistance, 4)} Ω</p>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #ef4444;">
+                        <p style="color: #6b7280; margin-bottom: 5px;">Power:</p>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: #ef4444;">${roundTo(values.power, 4)} W</p>
+                    </div>
+                </div>
+            `;
+            resultBox.style.display = 'block';
+        }
+
+        function clearAll() {
+            document.getElementById('voltage').value = '';
+            document.getElementById('current').value = '';
+            document.getElementById('resistance').value = '';
+            document.getElementById('power').value = '';
+            document.getElementById('result').style.display = 'none';
+            lastChanged = null;
+        }
+    </script>
+</body>
+</html>

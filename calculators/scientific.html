@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator - Free Online Calculator</title>
+    <meta name="description" content="Free scientific calculator online. Perform advanced calculations including trigonometry, logarithms, exponents, square roots, and more.">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .calculator {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        .display {
+            background: #1f2937;
+            color: #10b981;
+            padding: 20px;
+            font-size: 2rem;
+            text-align: right;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            min-height: 60px;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .btn-calc {
+            padding: 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #f3f4f6;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+        .btn-calc:hover {
+            background: #e5e7eb;
+            transform: scale(1.05);
+        }
+        .btn-calc:active {
+            transform: scale(0.95);
+        }
+        .btn-operator {
+            background: #3b82f6;
+            color: white;
+        }
+        .btn-operator:hover {
+            background: #2563eb;
+        }
+        .btn-equals {
+            background: #10b981;
+            color: white;
+            grid-column: span 2;
+        }
+        .btn-equals:hover {
+            background: #059669;
+        }
+        .btn-clear {
+            background: #ef4444;
+            color: white;
+        }
+        .btn-clear:hover {
+            background: #dc2626;
+        }
+        .btn-function {
+            background: #f59e0b;
+            color: white;
+            font-size: 1rem;
+        }
+        .btn-function:hover {
+            background: #d97706;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Scientific Calculator</h1>
+            <p class="tagline">Advanced mathematical calculations</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Scientific Calculator
+        </div>
+
+        <div class="calculator-container">
+            <div class="calculator">
+                <div class="display" id="display">0</div>
+                <div class="buttons">
+                    <button class="btn-calc btn-clear" onclick="clearDisplay()">C</button>
+                    <button class="btn-calc btn-clear" onclick="backspace()">⌫</button>
+                    <button class="btn-calc btn-operator" onclick="appendOperator('/')">/</button>
+                    <button class="btn-calc btn-operator" onclick="appendOperator('*')">×</button>
+
+                    <button class="btn-calc" onclick="appendNumber('7')">7</button>
+                    <button class="btn-calc" onclick="appendNumber('8')">8</button>
+                    <button class="btn-calc" onclick="appendNumber('9')">9</button>
+                    <button class="btn-calc btn-operator" onclick="appendOperator('-')">-</button>
+
+                    <button class="btn-calc" onclick="appendNumber('4')">4</button>
+                    <button class="btn-calc" onclick="appendNumber('5')">5</button>
+                    <button class="btn-calc" onclick="appendNumber('6')">6</button>
+                    <button class="btn-calc btn-operator" onclick="appendOperator('+')">+</button>
+
+                    <button class="btn-calc" onclick="appendNumber('1')">1</button>
+                    <button class="btn-calc" onclick="appendNumber('2')">2</button>
+                    <button class="btn-calc" onclick="appendNumber('3')">3</button>
+                    <button class="btn-calc btn-function" onclick="calculateSquareRoot()">√</button>
+
+                    <button class="btn-calc" onclick="appendNumber('0')">0</button>
+                    <button class="btn-calc" onclick="appendNumber('.')">.</button>
+                    <button class="btn-calc btn-equals" onclick="calculate()">=</button>
+
+                    <button class="btn-calc btn-function" onclick="calculatePower()">x²</button>
+                    <button class="btn-calc btn-function" onclick="appendOperator('^')">x^y</button>
+                    <button class="btn-calc btn-function" onclick="calculateSin()">sin</button>
+                    <button class="btn-calc btn-function" onclick="calculateCos()">cos</button>
+
+                    <button class="btn-calc btn-function" onclick="calculateTan()">tan</button>
+                    <button class="btn-calc btn-function" onclick="calculateLog()">log</button>
+                    <button class="btn-calc btn-function" onclick="calculateLn()">ln</button>
+                    <button class="btn-calc btn-function" onclick="appendNumber('3.14159')">π</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        let display = document.getElementById('display');
+        let currentValue = '0';
+        let previousValue = '';
+        let operation = null;
+
+        function updateDisplay() {
+            display.textContent = currentValue;
+        }
+
+        function clearDisplay() {
+            currentValue = '0';
+            previousValue = '';
+            operation = null;
+            updateDisplay();
+        }
+
+        function backspace() {
+            if (currentValue.length > 1) {
+                currentValue = currentValue.slice(0, -1);
+            } else {
+                currentValue = '0';
+            }
+            updateDisplay();
+        }
+
+        function appendNumber(num) {
+            if (currentValue === '0' && num !== '.') {
+                currentValue = num;
+            } else if (num === '.' && currentValue.includes('.')) {
+                return;
+            } else {
+                currentValue += num;
+            }
+            updateDisplay();
+        }
+
+        function appendOperator(op) {
+            if (operation !== null) {
+                calculate();
+            }
+            previousValue = currentValue;
+            currentValue = '0';
+            operation = op;
+        }
+
+        function calculate() {
+            let result;
+            const prev = parseFloat(previousValue);
+            const current = parseFloat(currentValue);
+
+            if (isNaN(prev) || isNaN(current)) return;
+
+            switch (operation) {
+                case '+':
+                    result = prev + current;
+                    break;
+                case '-':
+                    result = prev - current;
+                    break;
+                case '*':
+                    result = prev * current;
+                    break;
+                case '/':
+                    result = prev / current;
+                    break;
+                case '^':
+                    result = Math.pow(prev, current);
+                    break;
+                default:
+                    return;
+            }
+
+            currentValue = result.toString();
+            operation = null;
+            previousValue = '';
+            updateDisplay();
+        }
+
+        function calculateSquareRoot() {
+            const num = parseFloat(currentValue);
+            currentValue = Math.sqrt(num).toString();
+            updateDisplay();
+        }
+
+        function calculatePower() {
+            const num = parseFloat(currentValue);
+            currentValue = Math.pow(num, 2).toString();
+            updateDisplay();
+        }
+
+        function calculateSin() {
+            const num = parseFloat(currentValue);
+            currentValue = Math.sin(num * Math.PI / 180).toString();
+            updateDisplay();
+        }
+
+        function calculateCos() {
+            const num = parseFloat(currentValue);
+            currentValue = Math.cos(num * Math.PI / 180).toString();
+            updateDisplay();
+        }
+
+        function calculateTan() {
+            const num = parseFloat(currentValue);
+            currentValue = Math.tan(num * Math.PI / 180).toString();
+            updateDisplay();
+        }
+
+        function calculateLog() {
+            const num = parseFloat(currentValue);
+            currentValue = Math.log10(num).toString();
+            updateDisplay();
+        }
+
+        function calculateLn() {
+            const num = parseFloat(currentValue);
+            currentValue = Math.log(num).toString();
+            updateDisplay();
+        }
+
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (e.key >= '0' && e.key <= '9') appendNumber(e.key);
+            if (e.key === '.') appendNumber('.');
+            if (e.key === '+') appendOperator('+');
+            if (e.key === '-') appendOperator('-');
+            if (e.key === '*') appendOperator('*');
+            if (e.key === '/') {
+                e.preventDefault();
+                appendOperator('/');
+            }
+            if (e.key === 'Enter') calculate();
+            if (e.key === 'Escape') clearDisplay();
+            if (e.key === 'Backspace') backspace();
+        });
+    </script>
+</body>
+</html>

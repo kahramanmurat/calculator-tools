@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Length Converter - Convert Meters, Feet, Miles & More</title>
+    <meta name="description" content="Free length converter. Convert between meters, kilometers, miles, feet, inches, yards, and more. Instant conversion with 9+ units.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Length Converter</h1>
+            <p class="tagline">Convert between different units of length</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#converters">Converters</a> / Length Converter
+        </div>
+
+        <div class="calculator-container">
+            <h2>Length Unit Converter</h2>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="fromValue">Value:</label>
+                    <input type="number" id="fromValue" step="any" placeholder="Enter value" oninput="convertLength()">
+                </div>
+
+                <div class="form-group">
+                    <label for="fromUnit">From:</label>
+                    <select id="fromUnit" onchange="convertLength()">
+                        <option value="meter">Meter (m)</option>
+                        <option value="kilometer">Kilometer (km)</option>
+                        <option value="centimeter">Centimeter (cm)</option>
+                        <option value="millimeter">Millimeter (mm)</option>
+                        <option value="mile">Mile (mi)</option>
+                        <option value="yard">Yard (yd)</option>
+                        <option value="foot">Foot (ft)</option>
+                        <option value="inch">Inch (in)</option>
+                        <option value="nautical-mile">Nautical Mile (nmi)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="toUnit">To:</label>
+                    <select id="toUnit" onchange="convertLength()">
+                        <option value="meter">Meter (m)</option>
+                        <option value="kilometer">Kilometer (km)</option>
+                        <option value="centimeter">Centimeter (cm)</option>
+                        <option value="millimeter">Millimeter (mm)</option>
+                        <option value="mile">Mile (mi)</option>
+                        <option value="yard">Yard (yd)</option>
+                        <option value="foot" selected>Foot (ft)</option>
+                        <option value="inch">Inch (in)</option>
+                        <option value="nautical-mile">Nautical Mile (nmi)</option>
+                    </select>
+                </div>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+
+                <div style="margin-top: 30px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                    <h3 style="color: #2563eb; margin-bottom: 15px;">Common Conversions</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0;">1 kilometer = 0.621371 miles</li>
+                        <li style="padding: 8px 0;">1 meter = 3.28084 feet</li>
+                        <li style="padding: 8px 0;">1 inch = 2.54 centimeters</li>
+                        <li style="padding: 8px 0;">1 mile = 1.60934 kilometers</li>
+                        <li style="padding: 8px 0;">1 yard = 0.9144 meters</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Conversion factors to meters
+        const lengthUnits = {
+            'meter': 1,
+            'kilometer': 1000,
+            'centimeter': 0.01,
+            'millimeter': 0.001,
+            'mile': 1609.344,
+            'yard': 0.9144,
+            'foot': 0.3048,
+            'inch': 0.0254,
+            'nautical-mile': 1852
+        };
+
+        const unitNames = {
+            'meter': 'meters',
+            'kilometer': 'kilometers',
+            'centimeter': 'centimeters',
+            'millimeter': 'millimeters',
+            'mile': 'miles',
+            'yard': 'yards',
+            'foot': 'feet',
+            'inch': 'inches',
+            'nautical-mile': 'nautical miles'
+        };
+
+        function convertLength() {
+            const value = parseFloat(document.getElementById('fromValue').value);
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+
+            if (isNaN(value)) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            // Convert to meters first, then to target unit
+            const valueInMeters = value * lengthUnits[fromUnit];
+            const result = valueInMeters / lengthUnits[toUnit];
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Conversion Result</h3>
+                <div class="result-value">${formatNumber(roundTo(result, 6))} ${unitNames[toUnit]}</div>
+                <p style="margin-top: 10px; color: #6b7280;">
+                    ${formatNumber(value)} ${unitNames[fromUnit]} = ${formatNumber(roundTo(result, 6))} ${unitNames[toUnit]}
+                </p>
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

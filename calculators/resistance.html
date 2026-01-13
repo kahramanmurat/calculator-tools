@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resistance Calculator - Calculator Tools</title>
+    <meta name="description" content="Free resistance calculator. Calculate total resistance for series and parallel resistor circuits. Supports multiple resistors.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Resistance Calculator</h1>
+            <p class="tagline">Calculate series and parallel resistance</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Resistance Calculator
+        </div>
+
+        <div class="calculator-container">
+            <h2>Series and Parallel Resistance Calculator</h2>
+
+            <div class="calculator-form">
+                <h3>Resistors in Series</h3>
+                <p style="color: #6b7280; margin-bottom: 15px;">R<sub>total</sub> = R<sub>1</sub> + R<sub>2</sub> + R<sub>3</sub> + ...</p>
+                <div class="form-group">
+                    <label>Enter resistor values (Ω), separated by commas:</label>
+                    <textarea id="seriesResistors" rows="3" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 5px; font-size: 1rem; font-family: inherit;" placeholder="e.g., 100, 220, 330"></textarea>
+                </div>
+                <button class="btn" onclick="calcSeries()">Calculate Series Resistance</button>
+                <div id="result1" class="result-box" style="display: none;"></div>
+
+                <hr style="margin: 40px 0; border: 1px solid #e5e7eb;">
+
+                <h3>Resistors in Parallel</h3>
+                <p style="color: #6b7280; margin-bottom: 15px;">1/R<sub>total</sub> = 1/R<sub>1</sub> + 1/R<sub>2</sub> + 1/R<sub>3</sub> + ...</p>
+                <div class="form-group">
+                    <label>Enter resistor values (Ω), separated by commas:</label>
+                    <textarea id="parallelResistors" rows="3" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 5px; font-size: 1rem; font-family: inherit;" placeholder="e.g., 1000, 2200, 4700"></textarea>
+                </div>
+                <button class="btn" onclick="calcParallel()">Calculate Parallel Resistance</button>
+                <div id="result2" class="result-box" style="display: none;"></div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                <h3 style="color: #2563eb; margin-bottom: 15px;">Resistance Formulas</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4 style="color: #2563eb;">Series Resistance</h4>
+                        <p style="margin: 10px 0;">R<sub>total</sub> = R<sub>1</sub> + R<sub>2</sub> + R<sub>3</sub> + ...</p>
+                        <p style="color: #6b7280; font-size: 0.9rem;">In series, resistances add up. Total resistance is always greater than any individual resistor.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #2563eb;">Parallel Resistance</h4>
+                        <p style="margin: 10px 0;">1/R<sub>total</sub> = 1/R<sub>1</sub> + 1/R<sub>2</sub> + 1/R<sub>3</sub> + ...</p>
+                        <p style="color: #6b7280; font-size: 0.9rem;">In parallel, total resistance is always less than the smallest resistor.</p>
+                    </div>
+                </div>
+                <div style="margin-top: 15px; padding: 15px; background: white; border-radius: 5px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Two Resistors in Parallel</h4>
+                    <p>R<sub>total</sub> = (R<sub>1</sub> × R<sub>2</sub>) / (R<sub>1</sub> + R<sub>2</sub>)</p>
+                    <p style="color: #6b7280; font-size: 0.9rem; margin-top: 5px;">This simplified formula works for exactly two resistors.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function parseResistors(input) {
+            return input
+                .split(/[\s,\n]+/)
+                .map(r => r.trim())
+                .filter(r => r !== '')
+                .map(r => parseFloat(r))
+                .filter(r => !isNaN(r) && r > 0);
+        }
+
+        function calcSeries() {
+            const input = document.getElementById('seriesResistors').value;
+            const resistors = parseResistors(input);
+
+            if (resistors.length === 0) {
+                alert('Please enter valid resistor values');
+                return;
+            }
+
+            const total = resistors.reduce((sum, r) => sum + r, 0);
+
+            const resultBox = document.getElementById('result1');
+            resultBox.innerHTML = `
+                <h3>Series Resistance Result</h3>
+                <div class="result-value">${roundTo(total, 4)} Ω</div>
+                <p style="margin-top: 15px; color: #6b7280;">
+                    <strong>Resistors:</strong> ${resistors.map(r => roundTo(r, 2) + ' Ω').join(' + ')}<br>
+                    <strong>Count:</strong> ${resistors.length} resistors<br>
+                    <strong>Formula:</strong> R<sub>total</sub> = ${resistors.map(r => roundTo(r, 2)).join(' + ')} = ${roundTo(total, 4)} Ω
+                </p>
+            `;
+            resultBox.style.display = 'block';
+        }
+
+        function calcParallel() {
+            const input = document.getElementById('parallelResistors').value;
+            const resistors = parseResistors(input);
+
+            if (resistors.length === 0) {
+                alert('Please enter valid resistor values');
+                return;
+            }
+
+            // Calculate 1/R_total = 1/R1 + 1/R2 + ...
+            const reciprocalSum = resistors.reduce((sum, r) => sum + (1 / r), 0);
+            const total = 1 / reciprocalSum;
+
+            // For two resistors, show simplified formula
+            let simplifiedFormula = '';
+            if (resistors.length === 2) {
+                const r1 = resistors[0];
+                const r2 = resistors[1];
+                simplifiedFormula = `<p style="margin-top: 10px;"><strong>Simplified:</strong> R<sub>total</sub> = (${roundTo(r1, 2)} × ${roundTo(r2, 2)}) / (${roundTo(r1, 2)} + ${roundTo(r2, 2)}) = ${roundTo(total, 4)} Ω</p>`;
+            }
+
+            const resultBox = document.getElementById('result2');
+            resultBox.innerHTML = `
+                <h3>Parallel Resistance Result</h3>
+                <div class="result-value">${roundTo(total, 4)} Ω</div>
+                <p style="margin-top: 15px; color: #6b7280;">
+                    <strong>Resistors:</strong> ${resistors.map(r => roundTo(r, 2) + ' Ω').join(', ')}<br>
+                    <strong>Count:</strong> ${resistors.length} resistors<br>
+                    <strong>Formula:</strong> 1/R<sub>total</sub> = ${resistors.map(r => '1/' + roundTo(r, 2)).join(' + ')}<br>
+                    <strong>Result:</strong> R<sub>total</sub> = 1 / ${roundTo(reciprocalSum, 6)} = ${roundTo(total, 4)} Ω
+                </p>
+                ${simplifiedFormula}
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

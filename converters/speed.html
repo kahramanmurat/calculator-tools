@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Converter - Calculator Tools</title>
+    <meta name="description" content="Free speed converter. Convert between mph, km/h, m/s, knots, Mach, and speed of light. Perfect for physics and travel.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Speed Converter</h1>
+            <p class="tagline">Convert between different units of speed</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#converters">Converters</a> / Speed Converter
+        </div>
+
+        <div class="calculator-container">
+            <h2>Speed Unit Converter</h2>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="fromValue">Value:</label>
+                    <input type="number" id="fromValue" step="any" placeholder="Enter value" oninput="convertSpeed()">
+                </div>
+
+                <div class="form-group">
+                    <label for="fromUnit">From:</label>
+                    <select id="fromUnit" onchange="convertSpeed()">
+                        <option value="meter-per-second">Meter per second (m/s)</option>
+                        <option value="kilometer-per-hour" selected>Kilometer per hour (km/h)</option>
+                        <option value="mile-per-hour">Mile per hour (mph)</option>
+                        <option value="foot-per-second">Foot per second (ft/s)</option>
+                        <option value="knot">Knot (kn)</option>
+                        <option value="mach">Mach (speed of sound)</option>
+                        <option value="speed-of-light">Speed of light (c)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="toUnit">To:</label>
+                    <select id="toUnit" onchange="convertSpeed()">
+                        <option value="meter-per-second">Meter per second (m/s)</option>
+                        <option value="kilometer-per-hour">Kilometer per hour (km/h)</option>
+                        <option value="mile-per-hour" selected>Mile per hour (mph)</option>
+                        <option value="foot-per-second">Foot per second (ft/s)</option>
+                        <option value="knot">Knot (kn)</option>
+                        <option value="mach">Mach (speed of sound)</option>
+                        <option value="speed-of-light">Speed of light (c)</option>
+                    </select>
+                </div>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+
+                <div style="margin-top: 30px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                    <h3 style="color: #2563eb; margin-bottom: 15px;">Common Speed Conversions</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0;">1 m/s = 3.6 km/h = 2.237 mph</li>
+                        <li style="padding: 8px 0;">1 km/h = 0.621371 mph</li>
+                        <li style="padding: 8px 0;">1 mph = 1.60934 km/h</li>
+                        <li style="padding: 8px 0;">1 knot = 1.852 km/h</li>
+                        <li style="padding: 8px 0;">Mach 1 ≈ 343 m/s (at sea level)</li>
+                        <li style="padding: 8px 0;">Speed of light ≈ 299,792,458 m/s</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Conversion factors to meters per second
+        const speedUnits = {
+            'meter-per-second': 1,
+            'kilometer-per-hour': 0.277778,
+            'mile-per-hour': 0.44704,
+            'foot-per-second': 0.3048,
+            'knot': 0.514444,
+            'mach': 343, // At sea level, 20°C
+            'speed-of-light': 299792458
+        };
+
+        const unitNames = {
+            'meter-per-second': 'meters per second',
+            'kilometer-per-hour': 'kilometers per hour',
+            'mile-per-hour': 'miles per hour',
+            'foot-per-second': 'feet per second',
+            'knot': 'knots',
+            'mach': 'Mach',
+            'speed-of-light': 'speed of light'
+        };
+
+        function convertSpeed() {
+            const value = parseFloat(document.getElementById('fromValue').value);
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+
+            if (isNaN(value)) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            // Convert to m/s first, then to target unit
+            const valueInMS = value * speedUnits[fromUnit];
+            const result = valueInMS / speedUnits[toUnit];
+
+            // Add context for very large or small values
+            let context = '';
+            if (toUnit === 'mach' && result >= 1) {
+                context = `<p style="margin-top: 10px; padding: 10px; background: white; border-radius: 5px; color: #374151;">
+                    <strong>Supersonic speed!</strong> ${result < 5 ? 'Supersonic' : result < 10 ? 'High supersonic' : 'Hypersonic'} flight
+                </p>`;
+            } else if (toUnit === 'speed-of-light' && result >= 0.0001) {
+                context = `<p style="margin-top: 10px; padding: 10px; background: white; border-radius: 5px; color: #374151;">
+                    <strong>${roundTo(result * 100, 6)}%</strong> of the speed of light
+                </p>`;
+            }
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Conversion Result</h3>
+                <div class="result-value">${formatNumber(roundTo(result, 6))} ${unitNames[toUnit]}</div>
+                <p style="margin-top: 10px; color: #6b7280;">
+                    ${formatNumber(value)} ${unitNames[fromUnit]} = ${formatNumber(roundTo(result, 6))} ${unitNames[toUnit]}
+                </p>
+                ${context}
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

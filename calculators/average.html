@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Average Calculator - Calculator Tools</title>
+    <meta name="description" content="Free average calculator. Calculate mean, median, mode, range, and sum instantly. Perfect for statistics and data analysis.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Average Calculator</h1>
+            <p class="tagline">Calculate mean, median, and mode</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Average Calculator
+        </div>
+
+        <div class="calculator-container">
+            <h2>Calculate Average (Mean, Median, Mode)</h2>
+            <p style="margin-bottom: 20px; color: #6b7280;">Enter numbers separated by commas, spaces, or line breaks</p>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="numbers">Enter Numbers:</label>
+                    <textarea id="numbers" rows="6" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 5px; font-size: 1rem; font-family: inherit;" placeholder="e.g., 10, 20, 30, 40, 50"></textarea>
+                </div>
+
+                <button class="btn" onclick="calculateAverage()">Calculate</button>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                <h3 style="color: #2563eb; margin-bottom: 15px;">About These Calculations</h3>
+                <ul style="list-style: disc; padding-left: 20px; color: #374151;">
+                    <li style="margin-bottom: 8px;"><strong>Mean:</strong> The sum of all numbers divided by the count</li>
+                    <li style="margin-bottom: 8px;"><strong>Median:</strong> The middle value when numbers are sorted</li>
+                    <li style="margin-bottom: 8px;"><strong>Mode:</strong> The most frequently occurring number(s)</li>
+                    <li style="margin-bottom: 8px;"><strong>Range:</strong> The difference between max and min values</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function calculateAverage() {
+            const input = document.getElementById('numbers').value;
+
+            // Parse numbers from input (comma, space, or newline separated)
+            const numbers = input
+                .split(/[\s,\n]+/)
+                .map(n => n.trim())
+                .filter(n => n !== '')
+                .map(n => parseFloat(n))
+                .filter(n => !isNaN(n));
+
+            if (numbers.length === 0) {
+                alert('Please enter valid numbers');
+                return;
+            }
+
+            // Calculate mean
+            const sum = numbers.reduce((a, b) => a + b, 0);
+            const mean = sum / numbers.length;
+
+            // Calculate median
+            const sorted = [...numbers].sort((a, b) => a - b);
+            let median;
+            const mid = Math.floor(sorted.length / 2);
+            if (sorted.length % 2 === 0) {
+                median = (sorted[mid - 1] + sorted[mid]) / 2;
+            } else {
+                median = sorted[mid];
+            }
+
+            // Calculate mode
+            const frequency = {};
+            numbers.forEach(n => {
+                frequency[n] = (frequency[n] || 0) + 1;
+            });
+            const maxFreq = Math.max(...Object.values(frequency));
+            const modes = Object.keys(frequency).filter(k => frequency[k] === maxFreq).map(Number);
+
+            let modeText;
+            if (maxFreq === 1) {
+                modeText = 'No mode (all values appear once)';
+            } else {
+                modeText = modes.join(', ') + ` (appears ${maxFreq} times)`;
+            }
+
+            // Calculate range and other stats
+            const min = Math.min(...numbers);
+            const max = Math.max(...numbers);
+            const range = max - min;
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Statistical Results</h3>
+                <div style="display: grid; gap: 15px; margin-top: 15px;">
+                    <div>
+                        <p style="color: #6b7280; margin-bottom: 5px;">Count:</p>
+                        <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">${numbers.length} numbers</p>
+                    </div>
+                    <div>
+                        <p style="color: #6b7280; margin-bottom: 5px;">Mean (Average):</p>
+                        <p style="font-size: 1.2rem; font-weight: 700; color: #10b981;">${roundTo(mean, 4)}</p>
+                    </div>
+                    <div>
+                        <p style="color: #6b7280; margin-bottom: 5px;">Median:</p>
+                        <p style="font-size: 1.2rem; font-weight: 700; color: #10b981;">${roundTo(median, 4)}</p>
+                    </div>
+                    <div>
+                        <p style="color: #6b7280; margin-bottom: 5px;">Mode:</p>
+                        <p style="font-size: 1.2rem; font-weight: 700; color: #10b981;">${modeText}</p>
+                    </div>
+                    <div>
+                        <p style="color: #6b7280; margin-bottom: 5px;">Range:</p>
+                        <p style="font-size: 1.2rem; font-weight: 700; color: #10b981;">${roundTo(range, 4)} (Min: ${min}, Max: ${max})</p>
+                    </div>
+                    <div>
+                        <p style="color: #6b7280; margin-bottom: 5px;">Sum:</p>
+                        <p style="font-size: 1.2rem; font-weight: 700; color: #10b981;">${roundTo(sum, 4)}</p>
+                    </div>
+                </div>
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

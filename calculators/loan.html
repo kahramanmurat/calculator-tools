@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator - Calculate Monthly Loan Payments</title>
+    <meta name="description" content="Free loan calculator. Calculate monthly loan payments, total interest, and payment schedules. Works for car loans, personal loans, and more.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Loan Calculator</h1>
+            <p class="tagline">Calculate loan payments and total cost</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Loan Calculator
+        </div>
+
+        <div class="calculator-container">
+            <h2>Loan Payment Calculator</h2>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="loanAmount">Loan Amount ($):</label>
+                    <input type="number" id="loanAmount" step="100" placeholder="e.g., 25000" oninput="calculateLoan()">
+                </div>
+
+                <div class="form-group">
+                    <label for="interestRate">Annual Interest Rate (%):</label>
+                    <input type="number" id="interestRate" step="0.01" placeholder="e.g., 7.5" oninput="calculateLoan()">
+                </div>
+
+                <div class="form-group">
+                    <label for="loanTerm">Loan Term:</label>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                        <input type="number" id="loanTermValue" step="1" placeholder="e.g., 5" oninput="calculateLoan()">
+                        <select id="loanTermUnit" onchange="calculateLoan()">
+                            <option value="months">Months</option>
+                            <option value="years" selected>Years</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function calculateLoan() {
+            const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+            const annualRate = parseFloat(document.getElementById('interestRate').value);
+            const termValue = parseFloat(document.getElementById('loanTermValue').value);
+            const termUnit = document.getElementById('loanTermUnit').value;
+
+            if (isNaN(loanAmount) || isNaN(annualRate) || isNaN(termValue)) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            if (loanAmount <= 0 || annualRate < 0 || termValue <= 0) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            // Convert to months
+            const months = termUnit === 'years' ? termValue * 12 : termValue;
+            const monthlyRate = annualRate / 100 / 12;
+
+            // Calculate monthly payment
+            let monthlyPayment;
+            if (monthlyRate === 0) {
+                monthlyPayment = loanAmount / months;
+            } else {
+                monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, months)) /
+                                (Math.pow(1 + monthlyRate, months) - 1);
+            }
+
+            const totalPayment = monthlyPayment * months;
+            const totalInterest = totalPayment - loanAmount;
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Loan Payment Summary</h3>
+                <div style="display: grid; gap: 15px; margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #10b981;">
+                        <p style="color: #6b7280; margin-bottom: 5px;">Monthly Payment:</p>
+                        <p style="font-size: 2rem; font-weight: 700; color: #10b981;">$${formatNumber(roundTo(monthlyPayment, 2))}</p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Loan Amount:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">$${formatNumber(roundTo(loanAmount, 2))}</p>
+                        </div>
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Total Interest:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #f59e0b;">$${formatNumber(roundTo(totalInterest, 2))}</p>
+                        </div>
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Total Payment:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">$${formatNumber(roundTo(totalPayment, 2))}</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p><strong>Loan Term:</strong> ${months} months (${roundTo(months/12, 1)} years)</p>
+                        <p><strong>Interest Rate:</strong> ${annualRate}% per year (${roundTo(monthlyRate * 100, 3)}% per month)</p>
+                        <p><strong>Number of Payments:</strong> ${months}</p>
+                    </div>
+
+                    <div style="background: #f3f4f6; padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">Payment Breakdown</h4>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Principal:</span>
+                            <strong>$${formatNumber(roundTo(loanAmount, 2))}</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Interest:</span>
+                            <strong style="color: #f59e0b;">+ $${formatNumber(roundTo(totalInterest, 2))}</strong>
+                        </div>
+                        <hr style="margin: 10px 0; border: 1px solid #d1d5db;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span><strong>Total:</strong></span>
+                            <strong style="color: #10b981;">$${formatNumber(roundTo(totalPayment, 2))}</strong>
+                        </div>
+                    </div>
+                </div>
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

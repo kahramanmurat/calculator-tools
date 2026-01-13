@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Fat Calculator - Calculator Tools</title>
+    <meta name="description" content="Free body fat calculator using US Navy method. Calculate body fat percentage, fat mass, and lean body mass from body measurements.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Body Fat Calculator</h1>
+            <p class="tagline">Estimate body fat percentage using Navy method</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Body Fat Calculator
+        </div>
+
+        <div class="calculator-container">
+            <h2>Body Fat Percentage Calculator (US Navy Method)</h2>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" onchange="toggleFields()">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age (years):</label>
+                    <input type="number" id="age" step="1" placeholder="e.g., 30">
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">Weight:</label>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                        <input type="number" id="weight" step="0.1" placeholder="e.g., 70">
+                        <select id="weightUnit">
+                            <option value="kg">kg</option>
+                            <option value="lbs">lbs</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="height">Height:</label>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                        <input type="number" id="height" step="0.1" placeholder="e.g., 170">
+                        <select id="heightUnit">
+                            <option value="cm">cm</option>
+                            <option value="inches">inches</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="neck">Neck Circumference:</label>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                        <input type="number" id="neck" step="0.1" placeholder="e.g., 38">
+                        <select id="neckUnit">
+                            <option value="cm" selected>cm</option>
+                            <option value="inches">inches</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="waist">Waist Circumference (at naval):</label>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                        <input type="number" id="waist" step="0.1" placeholder="e.g., 85">
+                        <select id="waistUnit">
+                            <option value="cm" selected>cm</option>
+                            <option value="inches">inches</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" id="hipGroup" style="display: none;">
+                    <label for="hip">Hip Circumference (at widest point):</label>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                        <input type="number" id="hip" step="0.1" placeholder="e.g., 95">
+                        <select id="hipUnit">
+                            <option value="cm" selected>cm</option>
+                            <option value="inches">inches</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="calculateBodyFat()">Calculate Body Fat</button>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                <h3 style="color: #2563eb; margin-bottom: 15px;">Body Fat Percentage Categories</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div>
+                        <h4 style="color: #2563eb;">Men</h4>
+                        <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+                            <li style="padding: 5px 0;">Essential: 2-5%</li>
+                            <li style="padding: 5px 0;">Athletes: 6-13%</li>
+                            <li style="padding: 5px 0;">Fitness: 14-17%</li>
+                            <li style="padding: 5px 0;">Average: 18-24%</li>
+                            <li style="padding: 5px 0;">Obese: 25%+</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #2563eb;">Women</h4>
+                        <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+                            <li style="padding: 5px 0;">Essential: 10-13%</li>
+                            <li style="padding: 5px 0;">Athletes: 14-20%</li>
+                            <li style="padding: 5px 0;">Fitness: 21-24%</li>
+                            <li style="padding: 5px 0;">Average: 25-31%</li>
+                            <li style="padding: 5px 0;">Obese: 32%+</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function toggleFields() {
+            const gender = document.getElementById('gender').value;
+            const hipGroup = document.getElementById('hipGroup');
+            hipGroup.style.display = gender === 'female' ? 'block' : 'none';
+        }
+
+        function calculateBodyFat() {
+            const gender = document.getElementById('gender').value;
+            const age = parseInt(document.getElementById('age').value);
+            let weight = parseFloat(document.getElementById('weight').value);
+            let height = parseFloat(document.getElementById('height').value);
+            let neck = parseFloat(document.getElementById('neck').value);
+            let waist = parseFloat(document.getElementById('waist').value);
+            let hip = gender === 'female' ? parseFloat(document.getElementById('hip').value) : 0;
+
+            const weightUnit = document.getElementById('weightUnit').value;
+            const heightUnit = document.getElementById('heightUnit').value;
+            const neckUnit = document.getElementById('neckUnit').value;
+            const waistUnit = document.getElementById('waistUnit').value;
+            const hipUnit = gender === 'female' ? document.getElementById('hipUnit').value : 'cm';
+
+            // Validate inputs
+            if (!validateNumber(age, "Age") || !validateNumber(weight, "Weight") ||
+                !validateNumber(height, "Height") || !validateNumber(neck, "Neck") ||
+                !validateNumber(waist, "Waist")) {
+                return;
+            }
+
+            if (gender === 'female' && !validateNumber(hip, "Hip")) {
+                return;
+            }
+
+            // Convert to metric (cm and kg)
+            if (weightUnit === 'lbs') weight = weight * 0.453592;
+            if (heightUnit === 'inches') height = height * 2.54;
+            if (neckUnit === 'inches') neck = neck * 2.54;
+            if (waistUnit === 'inches') waist = waist * 2.54;
+            if (hipUnit === 'inches') hip = hip * 2.54;
+
+            // US Navy Method calculation
+            let bodyFatPercent;
+            if (gender === 'male') {
+                // Male formula: 495 / (1.0324 - 0.19077 * log10(waist - neck) + 0.15456 * log10(height)) - 450
+                bodyFatPercent = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+            } else {
+                // Female formula: 495 / (1.29579 - 0.35004 * log10(waist + hip - neck) + 0.22100 * log10(height)) - 450
+                bodyFatPercent = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
+            }
+
+            // Calculate lean body mass and fat mass
+            const fatMass = weight * (bodyFatPercent / 100);
+            const leanMass = weight - fatMass;
+
+            // Determine category
+            let category, color;
+            if (gender === 'male') {
+                if (bodyFatPercent < 6) {
+                    category = 'Essential / Athletes';
+                    color = '#3b82f6';
+                } else if (bodyFatPercent < 14) {
+                    category = 'Athletes';
+                    color = '#10b981';
+                } else if (bodyFatPercent < 18) {
+                    category = 'Fitness';
+                    color = '#10b981';
+                } else if (bodyFatPercent < 25) {
+                    category = 'Average';
+                    color = '#f59e0b';
+                } else {
+                    category = 'Obese';
+                    color = '#ef4444';
+                }
+            } else {
+                if (bodyFatPercent < 14) {
+                    category = 'Essential / Athletes';
+                    color = '#3b82f6';
+                } else if (bodyFatPercent < 21) {
+                    category = 'Athletes';
+                    color = '#10b981';
+                } else if (bodyFatPercent < 25) {
+                    category = 'Fitness';
+                    color = '#10b981';
+                } else if (bodyFatPercent < 32) {
+                    category = 'Average';
+                    color = '#f59e0b';
+                } else {
+                    category = 'Obese';
+                    color = '#ef4444';
+                }
+            }
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Body Fat Results</h3>
+                <div style="display: grid; gap: 15px; margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid ${color};">
+                        <p style="color: #6b7280; margin-bottom: 5px;">Body Fat Percentage:</p>
+                        <p style="font-size: 2rem; font-weight: 700; color: ${color};">${roundTo(bodyFatPercent, 1)}%</p>
+                        <p style="margin-top: 10px; font-size: 1.1rem;">Category: <strong style="color: ${color};">${category}</strong></p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Fat Mass:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #ef4444;">${roundTo(fatMass, 1)} kg</p>
+                            <p style="color: #6b7280; font-size: 0.9rem;">${roundTo(fatMass * 2.20462, 1)} lbs</p>
+                        </div>
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Lean Mass:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #10b981;">${roundTo(leanMass, 1)} kg</p>
+                            <p style="color: #6b7280; font-size: 0.9rem;">${roundTo(leanMass * 2.20462, 1)} lbs</p>
+                        </div>
+                    </div>
+
+                    <div style="background: #eff6ff; padding: 15px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                        <p style="color: #374151; font-size: 0.95rem;">
+                            <strong>Note:</strong> This calculator uses the US Navy circumference method, which provides an estimate of body fat percentage. For the most accurate measurement, consider methods like DEXA scans or hydrostatic weighing. Consult a healthcare provider for personalized health advice.
+                        </p>
+                    </div>
+                </div>
+            `;
+            resultBox.style.display = 'block';
+        }
+
+        // Initialize fields on page load
+        toggleFields();
+    </script>
+</body>
+</html>

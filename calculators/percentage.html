@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Percentage Calculator - Calculate Percentages Online</title>
+    <meta name="description" content="Free percentage calculator. Calculate percentages, percentage change, and percentage increase/decrease instantly. Easy to use with step-by-step results.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Percentage Calculator</h1>
+            <p class="tagline">Calculate percentages easily</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Percentage Calculator
+        </div>
+
+        <div class="calculator-container">
+            <h2>Calculate Percentages</h2>
+
+            <div class="calculator-form">
+                <h3>What is X% of Y?</h3>
+                <div class="form-group">
+                    <label for="percent1">Percentage (%):</label>
+                    <input type="number" id="percent1" step="any" placeholder="e.g., 25">
+                </div>
+                <div class="form-group">
+                    <label for="value1">Value:</label>
+                    <input type="number" id="value1" step="any" placeholder="e.g., 200">
+                </div>
+                <button class="btn" onclick="calculatePercentOf()">Calculate</button>
+                <div id="result1" class="result-box" style="display: none;"></div>
+            </div>
+
+            <hr style="margin: 40px 0; border: 1px solid #e5e7eb;">
+
+            <div class="calculator-form">
+                <h3>X is what percent of Y?</h3>
+                <div class="form-group">
+                    <label for="value2">Value X:</label>
+                    <input type="number" id="value2" step="any" placeholder="e.g., 50">
+                </div>
+                <div class="form-group">
+                    <label for="total2">Total Y:</label>
+                    <input type="number" id="total2" step="any" placeholder="e.g., 200">
+                </div>
+                <button class="btn" onclick="calculateWhatPercent()">Calculate</button>
+                <div id="result2" class="result-box" style="display: none;"></div>
+            </div>
+
+            <hr style="margin: 40px 0; border: 1px solid #e5e7eb;">
+
+            <div class="calculator-form">
+                <h3>Percentage Increase/Decrease</h3>
+                <div class="form-group">
+                    <label for="original">Original Value:</label>
+                    <input type="number" id="original" step="any" placeholder="e.g., 100">
+                </div>
+                <div class="form-group">
+                    <label for="new">New Value:</label>
+                    <input type="number" id="new" step="any" placeholder="e.g., 150">
+                </div>
+                <button class="btn" onclick="calculatePercentChange()">Calculate</button>
+                <div id="result3" class="result-box" style="display: none;"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function calculatePercentOf() {
+            const percent = parseFloat(document.getElementById('percent1').value);
+            const value = parseFloat(document.getElementById('value1').value);
+
+            if (!validateNumber(percent, "Percentage") || !validateNumber(value, "Value")) {
+                return;
+            }
+
+            const result = (percent / 100) * value;
+            showResult('result1', `${percent}% of ${formatNumber(value)} = ${formatNumber(roundTo(result, 2))}`, 'Result');
+        }
+
+        function calculateWhatPercent() {
+            const value = parseFloat(document.getElementById('value2').value);
+            const total = parseFloat(document.getElementById('total2').value);
+
+            if (!validateNumber(value, "Value") || !validateNumber(total, "Total")) {
+                return;
+            }
+
+            if (total === 0) {
+                alert("Total cannot be zero");
+                return;
+            }
+
+            const result = (value / total) * 100;
+            showResult('result2', `${formatNumber(value)} is ${formatNumber(roundTo(result, 2))}% of ${formatNumber(total)}`, 'Result');
+        }
+
+        function calculatePercentChange() {
+            const original = parseFloat(document.getElementById('original').value);
+            const newValue = parseFloat(document.getElementById('new').value);
+
+            if (!validateNumber(original, "Original Value") || !validateNumber(newValue, "New Value")) {
+                return;
+            }
+
+            if (original === 0) {
+                alert("Original value cannot be zero");
+                return;
+            }
+
+            const change = ((newValue - original) / original) * 100;
+            const changeType = change >= 0 ? 'increase' : 'decrease';
+            const absChange = Math.abs(change);
+
+            showResult('result3',
+                `Percentage ${changeType}: ${formatNumber(roundTo(absChange, 2))}%<br>
+                Change: ${formatNumber(roundTo(newValue - original, 2))}`,
+                'Result');
+        }
+    </script>
+</body>
+</html>

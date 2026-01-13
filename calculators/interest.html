@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Interest Calculator - Investment Growth Calculator</title>
+    <meta name="description" content="Free compound interest calculator. Calculate investment growth with compound interest and monthly contributions. Compare simple vs compound interest.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Interest Calculator</h1>
+            <p class="tagline">Calculate simple and compound interest</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Interest Calculator
+        </div>
+
+        <div class="calculator-container">
+            <h2>Compound Interest Calculator</h2>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="principal">Principal Amount ($):</label>
+                    <input type="number" id="principal" step="100" placeholder="e.g., 10000" oninput="calculateInterest()">
+                </div>
+
+                <div class="form-group">
+                    <label for="rate">Annual Interest Rate (%):</label>
+                    <input type="number" id="rate" step="0.01" placeholder="e.g., 5.5" oninput="calculateInterest()">
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Time Period (years):</label>
+                    <input type="number" id="time" step="0.1" placeholder="e.g., 10" oninput="calculateInterest()">
+                </div>
+
+                <div class="form-group">
+                    <label for="compound">Compound Frequency:</label>
+                    <select id="compound" onchange="calculateInterest()">
+                        <option value="1">Annually (1x per year)</option>
+                        <option value="2">Semi-annually (2x per year)</option>
+                        <option value="4">Quarterly (4x per year)</option>
+                        <option value="12" selected>Monthly (12x per year)</option>
+                        <option value="365">Daily (365x per year)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="contribution">Monthly Contribution ($):</label>
+                    <input type="number" id="contribution" step="10" placeholder="e.g., 100" value="0" oninput="calculateInterest()">
+                    <small style="color: #6b7280;">Optional: Additional amount added each month</small>
+                </div>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function calculateInterest() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const rate = parseFloat(document.getElementById('rate').value);
+            const time = parseFloat(document.getElementById('time').value);
+            const compound = parseFloat(document.getElementById('compound').value);
+            const monthlyContribution = parseFloat(document.getElementById('contribution').value) || 0;
+
+            if (isNaN(principal) || isNaN(rate) || isNaN(time)) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            if (principal <= 0 || rate < 0 || time <= 0) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            const r = rate / 100;
+
+            // Compound interest with regular contributions
+            // Future Value = P(1 + r/n)^(nt) + PMT × [((1 + r/n)^(nt) - 1) / (r/n)]
+            const n = compound;
+            const t = time;
+
+            // Principal compound interest
+            const compoundAmount = principal * Math.pow(1 + r / n, n * t);
+
+            // Future value of monthly contributions
+            let contributionValue = 0;
+            if (monthlyContribution > 0) {
+                const monthlyRate = r / 12;
+                const months = t * 12;
+                contributionValue = monthlyContribution * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+            }
+
+            const totalValue = compoundAmount + contributionValue;
+            const totalContributions = monthlyContribution * 12 * t;
+            const totalDeposited = principal + totalContributions;
+            const totalInterest = totalValue - totalDeposited;
+
+            // Simple interest for comparison
+            const simpleInterest = principal * r * t;
+            const simpleTotal = principal + simpleInterest;
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Investment Growth</h3>
+                <div style="display: grid; gap: 15px; margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #10b981;">
+                        <p style="color: #6b7280; margin-bottom: 5px;">Final Amount:</p>
+                        <p style="font-size: 2rem; font-weight: 700; color: #10b981;">$${formatNumber(roundTo(totalValue, 2))}</p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Principal:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">$${formatNumber(roundTo(principal, 2))}</p>
+                        </div>
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Total Contributions:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">$${formatNumber(roundTo(totalContributions, 2))}</p>
+                        </div>
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Interest Earned:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #10b981;">$${formatNumber(roundTo(totalInterest, 2))}</p>
+                        </div>
+                    </div>
+
+                    <div style="background: #f3f4f6; padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">Breakdown</h4>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Initial Principal:</span>
+                            <strong>$${formatNumber(roundTo(principal, 2))}</strong>
+                        </div>
+                        ${monthlyContribution > 0 ? `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Monthly Contributions (${t * 12} months):</span>
+                            <strong>+ $${formatNumber(roundTo(totalContributions, 2))}</strong>
+                        </div>
+                        ` : ''}
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Interest Earned:</span>
+                            <strong style="color: #10b981;">+ $${formatNumber(roundTo(totalInterest, 2))}</strong>
+                        </div>
+                        <hr style="margin: 10px 0; border: 1px solid #d1d5db;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span><strong>Total Value:</strong></span>
+                            <strong style="color: #10b981;">$${formatNumber(roundTo(totalValue, 2))}</strong>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p><strong>Interest Rate:</strong> ${rate}% per year</p>
+                        <p><strong>Time Period:</strong> ${time} years</p>
+                        <p><strong>Compounding:</strong> ${compound}x per year</p>
+                        <p><strong>Return on Investment:</strong> ${roundTo((totalInterest / totalDeposited) * 100, 2)}%</p>
+                    </div>
+
+                    <div style="background: #eff6ff; padding: 15px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                        <h4 style="color: #2563eb; margin-bottom: 5px;">Comparison</h4>
+                        <p style="color: #6b7280; font-size: 0.95rem;">
+                            With simple interest (no compounding), you would have <strong>$${formatNumber(roundTo(simpleTotal, 2))}</strong>.
+                            Compound interest earned you an extra <strong style="color: #10b981;">$${formatNumber(roundTo(totalValue - simpleTotal, 2))}</strong>!
+                        </p>
+                    </div>
+                </div>
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - Free Body Mass Index Calculator</title>
+    <meta name="description" content="Free BMI calculator. Calculate your Body Mass Index (BMI) instantly using metric or imperial units. Includes BMI categories and health information.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>BMI Calculator</h1>
+            <p class="tagline">Calculate your Body Mass Index</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / BMI Calculator
+        </div>
+
+        <div class="calculator-container">
+            <h2>Body Mass Index (BMI) Calculator</h2>
+            <p style="margin-bottom: 20px; color: #6b7280;">Enter your height and weight to calculate your BMI</p>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="unit">Unit System:</label>
+                    <select id="unit" onchange="toggleUnits()">
+                        <option value="metric">Metric (kg, cm)</option>
+                        <option value="imperial">Imperial (lbs, inches)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">Weight:</label>
+                    <input type="number" id="weight" step="any" placeholder="Enter weight">
+                    <small id="weightUnit">kilograms (kg)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="height">Height:</label>
+                    <input type="number" id="height" step="any" placeholder="Enter height">
+                    <small id="heightUnit">centimeters (cm)</small>
+                </div>
+
+                <button class="btn" onclick="calculateBMI()">Calculate BMI</button>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                <h3 style="color: #2563eb; margin-bottom: 15px;">BMI Categories</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr style="background: white;">
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Underweight</strong></td>
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;">BMI less than 18.5</td>
+                    </tr>
+                    <tr style="background: #f9fafb;">
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Normal weight</strong></td>
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;">BMI 18.5 - 24.9</td>
+                    </tr>
+                    <tr style="background: white;">
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Overweight</strong></td>
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;">BMI 25 - 29.9</td>
+                    </tr>
+                    <tr style="background: #f9fafb;">
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Obese</strong></td>
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;">BMI 30 or greater</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function toggleUnits() {
+            const unit = document.getElementById('unit').value;
+            if (unit === 'metric') {
+                document.getElementById('weightUnit').textContent = 'kilograms (kg)';
+                document.getElementById('heightUnit').textContent = 'centimeters (cm)';
+                document.getElementById('weight').placeholder = 'e.g., 70';
+                document.getElementById('height').placeholder = 'e.g., 170';
+            } else {
+                document.getElementById('weightUnit').textContent = 'pounds (lbs)';
+                document.getElementById('heightUnit').textContent = 'inches (in)';
+                document.getElementById('weight').placeholder = 'e.g., 154';
+                document.getElementById('height').placeholder = 'e.g., 67';
+            }
+        }
+
+        function calculateBMI() {
+            const unit = document.getElementById('unit').value;
+            let weight = parseFloat(document.getElementById('weight').value);
+            let height = parseFloat(document.getElementById('height').value);
+
+            if (!validateNumber(weight, "Weight") || !validateNumber(height, "Height")) {
+                return;
+            }
+
+            if (weight <= 0 || height <= 0) {
+                alert("Weight and height must be positive numbers");
+                return;
+            }
+
+            let bmi;
+            if (unit === 'metric') {
+                // BMI = weight (kg) / (height (m))^2
+                const heightInMeters = height / 100;
+                bmi = weight / (heightInMeters * heightInMeters);
+            } else {
+                // BMI = (weight (lbs) / (height (in))^2) * 703
+                bmi = (weight / (height * height)) * 703;
+            }
+
+            let category, color;
+            if (bmi < 18.5) {
+                category = 'Underweight';
+                color = '#3b82f6';
+            } else if (bmi < 25) {
+                category = 'Normal weight';
+                color = '#10b981';
+            } else if (bmi < 30) {
+                category = 'Overweight';
+                color = '#f59e0b';
+            } else {
+                category = 'Obese';
+                color = '#ef4444';
+            }
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Your BMI Result</h3>
+                <div class="result-value" style="color: ${color};">${roundTo(bmi, 1)}</div>
+                <p style="margin-top: 10px; font-size: 1.1rem;">Category: <strong style="color: ${color};">${category}</strong></p>
+                <p style="margin-top: 10px; color: #6b7280; font-size: 0.95rem;">
+                    Note: BMI is a screening tool and does not diagnose body fatness or health.
+                    Consult a healthcare provider for health assessments.
+                </p>
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

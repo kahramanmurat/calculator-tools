@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Deviation Calculator - Calculator Tools</title>
+    <meta name="description" content="Free standard deviation calculator. Calculate sample or population standard deviation, variance, and coefficient of variation.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Standard Deviation Calculator</h1>
+            <p class="tagline">Calculate standard deviation and variance</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Standard Deviation
+        </div>
+
+        <div class="calculator-container">
+            <h2>Standard Deviation Calculator</h2>
+            <p style="margin-bottom: 20px; color: #6b7280;">Enter numbers separated by commas, spaces, or line breaks</p>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="dataType">Data Type:</label>
+                    <select id="dataType">
+                        <option value="sample">Sample (n-1)</option>
+                        <option value="population">Population (n)</option>
+                    </select>
+                    <small style="color: #6b7280;">Sample: Use when data represents a sample from a larger population<br>Population: Use when data represents the entire population</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="numbers">Enter Numbers:</label>
+                    <textarea id="numbers" rows="6" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 5px; font-size: 1rem; font-family: inherit;" placeholder="e.g., 2, 4, 4, 4, 5, 5, 7, 9"></textarea>
+                </div>
+
+                <button class="btn" onclick="calculateStats()">Calculate</button>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                <h3 style="color: #2563eb; margin-bottom: 15px;">About Standard Deviation</h3>
+                <p style="color: #374151; margin-bottom: 10px;">
+                    Standard deviation measures the amount of variation or dispersion in a set of values. A low standard deviation indicates that values tend to be close to the mean, while a high standard deviation indicates values are spread out over a wider range.
+                </p>
+                <div style="margin-top: 15px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Formulas:</h4>
+                    <p style="margin-bottom: 5px;"><strong>Sample Standard Deviation:</strong> σ = √(Σ(x - μ)² / (n - 1))</p>
+                    <p><strong>Population Standard Deviation:</strong> σ = √(Σ(x - μ)² / n)</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function calculateStats() {
+            const input = document.getElementById('numbers').value;
+            const dataType = document.getElementById('dataType').value;
+
+            const numbers = input
+                .split(/[\s,\n]+/)
+                .map(n => n.trim())
+                .filter(n => n !== '')
+                .map(n => parseFloat(n))
+                .filter(n => !isNaN(n));
+
+            if (numbers.length === 0) {
+                alert('Please enter valid numbers');
+                return;
+            }
+
+            if (numbers.length === 1) {
+                alert('Please enter at least 2 numbers');
+                return;
+            }
+
+            // Calculate mean
+            const sum = numbers.reduce((a, b) => a + b, 0);
+            const mean = sum / numbers.length;
+
+            // Calculate variance
+            const squaredDifferences = numbers.map(x => Math.pow(x - mean, 2));
+            const sumSquaredDiff = squaredDifferences.reduce((a, b) => a + b, 0);
+            const divisor = dataType === 'sample' ? numbers.length - 1 : numbers.length;
+            const variance = sumSquaredDiff / divisor;
+
+            // Calculate standard deviation
+            const stdDev = Math.sqrt(variance);
+
+            // Calculate additional statistics
+            const sorted = [...numbers].sort((a, b) => a - b);
+            const min = sorted[0];
+            const max = sorted[sorted.length - 1];
+            const range = max - min;
+
+            // Calculate coefficient of variation
+            const cv = (stdDev / mean) * 100;
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Statistical Results</h3>
+                <div style="display: grid; gap: 15px; margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #10b981;">
+                        <p style="color: #6b7280; margin-bottom: 5px;">Standard Deviation (${dataType}):</p>
+                        <p style="font-size: 2rem; font-weight: 700; color: #10b981;">${roundTo(stdDev, 6)}</p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Variance:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">${roundTo(variance, 6)}</p>
+                        </div>
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Mean:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">${roundTo(mean, 6)}</p>
+                        </div>
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Count:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">${numbers.length}</p>
+                        </div>
+                    </div>
+
+                    <div style="background: #f3f4f6; padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">Additional Statistics</h4>
+                        <p style="margin-bottom: 5px;">Range: <strong>${roundTo(range, 4)}</strong> (Min: ${min}, Max: ${max})</p>
+                        <p style="margin-bottom: 5px;">Sum: <strong>${roundTo(sum, 4)}</strong></p>
+                        <p style="margin-bottom: 5px;">Coefficient of Variation: <strong>${roundTo(cv, 2)}%</strong></p>
+                        <p style="margin-bottom: 5px;">Sum of Squared Differences: <strong>${roundTo(sumSquaredDiff, 4)}</strong></p>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">Data Set</h4>
+                        <p style="color: #6b7280; word-wrap: break-word;">${numbers.join(', ')}</p>
+                    </div>
+                </div>
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

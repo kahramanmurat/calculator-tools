@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Calculator - Calculator Tools</title>
+    <meta name="description" content="Free electrical power calculator. Calculate power using voltage and current (P=VI), resistance (P=I²R), or voltage and resistance (P=V²/R).">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Electrical Power Calculator</h1>
+            <p class="tagline">Calculate electrical power in watts</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Power Calculator
+        </div>
+
+        <div class="calculator-container">
+            <h2>Electrical Power Calculator</h2>
+
+            <div class="calculator-form">
+                <h3>Calculate Power from Voltage and Current</h3>
+                <div class="form-group">
+                    <label for="voltage1">Voltage (V):</label>
+                    <input type="number" id="voltage1" step="any" placeholder="e.g., 120">
+                </div>
+                <div class="form-group">
+                    <label for="current1">Current (A):</label>
+                    <input type="number" id="current1" step="any" placeholder="e.g., 10">
+                </div>
+                <button class="btn" onclick="calcFromVI()">Calculate Power</button>
+                <div id="result1" class="result-box" style="display: none;"></div>
+
+                <hr style="margin: 40px 0; border: 1px solid #e5e7eb;">
+
+                <h3>Calculate Power from Current and Resistance</h3>
+                <div class="form-group">
+                    <label for="current2">Current (A):</label>
+                    <input type="number" id="current2" step="any" placeholder="e.g., 5">
+                </div>
+                <div class="form-group">
+                    <label for="resistance2">Resistance (Ω):</label>
+                    <input type="number" id="resistance2" step="any" placeholder="e.g., 10">
+                </div>
+                <button class="btn" onclick="calcFromIR()">Calculate Power</button>
+                <div id="result2" class="result-box" style="display: none;"></div>
+
+                <hr style="margin: 40px 0; border: 1px solid #e5e7eb;">
+
+                <h3>Calculate Power from Voltage and Resistance</h3>
+                <div class="form-group">
+                    <label for="voltage3">Voltage (V):</label>
+                    <input type="number" id="voltage3" step="any" placeholder="e.g., 12">
+                </div>
+                <div class="form-group">
+                    <label for="resistance3">Resistance (Ω):</label>
+                    <input type="number" id="resistance3" step="any" placeholder="e.g., 6">
+                </div>
+                <button class="btn" onclick="calcFromVR()">Calculate Power</button>
+                <div id="result3" class="result-box" style="display: none;"></div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                <h3 style="color: #2563eb; margin-bottom: 15px;">Power Formulas</h3>
+                <ul style="list-style: none; padding: 0; color: #374151;">
+                    <li style="padding: 8px 0;"><strong>P = V × I</strong> (Power = Voltage × Current)</li>
+                    <li style="padding: 8px 0;"><strong>P = I² × R</strong> (Power = Current² × Resistance)</li>
+                    <li style="padding: 8px 0;"><strong>P = V² / R</strong> (Power = Voltage² / Resistance)</li>
+                </ul>
+                <div style="margin-top: 15px; padding: 15px; background: white; border-radius: 5px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Common Power Units</h4>
+                    <p style="margin-bottom: 5px;">1 kilowatt (kW) = 1,000 watts</p>
+                    <p style="margin-bottom: 5px;">1 megawatt (MW) = 1,000,000 watts</p>
+                    <p style="margin-bottom: 5px;">1 horsepower (hp) ≈ 746 watts</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function calcFromVI() {
+            const voltage = parseFloat(document.getElementById('voltage1').value);
+            const current = parseFloat(document.getElementById('current1').value);
+
+            if (!validateNumber(voltage, "Voltage") || !validateNumber(current, "Current")) {
+                return;
+            }
+
+            const power = voltage * current;
+            const powerKW = power / 1000;
+
+            showResult('result1',
+                `Power: <strong style="color: #ef4444; font-size: 1.5rem;">${roundTo(power, 2)} W</strong> (${roundTo(powerKW, 3)} kW)<br>
+                <p style="margin-top: 10px; color: #6b7280;">Formula: P = V × I = ${voltage} × ${current} = ${roundTo(power, 2)} W</p>`,
+                'Result');
+        }
+
+        function calcFromIR() {
+            const current = parseFloat(document.getElementById('current2').value);
+            const resistance = parseFloat(document.getElementById('resistance2').value);
+
+            if (!validateNumber(current, "Current") || !validateNumber(resistance, "Resistance")) {
+                return;
+            }
+
+            const power = current * current * resistance;
+            const powerKW = power / 1000;
+            const voltage = current * resistance;
+
+            showResult('result2',
+                `Power: <strong style="color: #ef4444; font-size: 1.5rem;">${roundTo(power, 2)} W</strong> (${roundTo(powerKW, 3)} kW)<br>
+                <p style="margin-top: 10px; color: #6b7280;">Formula: P = I² × R = ${current}² × ${resistance} = ${roundTo(power, 2)} W</p>
+                <p style="color: #6b7280;">Voltage across resistor: ${roundTo(voltage, 2)} V</p>`,
+                'Result');
+        }
+
+        function calcFromVR() {
+            const voltage = parseFloat(document.getElementById('voltage3').value);
+            const resistance = parseFloat(document.getElementById('resistance3').value);
+
+            if (!validateNumber(voltage, "Voltage") || !validateNumber(resistance, "Resistance")) {
+                return;
+            }
+
+            if (resistance === 0) {
+                alert("Resistance cannot be zero");
+                return;
+            }
+
+            const power = (voltage * voltage) / resistance;
+            const powerKW = power / 1000;
+            const current = voltage / resistance;
+
+            showResult('result3',
+                `Power: <strong style="color: #ef4444; font-size: 1.5rem;">${roundTo(power, 2)} W</strong> (${roundTo(powerKW, 3)} kW)<br>
+                <p style="margin-top: 10px; color: #6b7280;">Formula: P = V² / R = ${voltage}² / ${resistance} = ${roundTo(power, 2)} W</p>
+                <p style="color: #6b7280;">Current through resistor: ${roundTo(current, 2)} A</p>`,
+                'Result');
+        }
+    </script>
+</body>
+</html>

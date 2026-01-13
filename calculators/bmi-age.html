@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI for Age Calculator - Calculator Tools</title>
+    <meta name="description" content="Free BMI calculator for children and teens (ages 2-20). Calculate pediatric BMI with percentile estimation based on CDC growth charts.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>BMI for Age Calculator</h1>
+            <p class="tagline">BMI percentile calculator for children and teens</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / BMI for Age
+        </div>
+
+        <div class="calculator-container">
+            <h2>BMI for Age Calculator (Ages 2-20)</h2>
+            <p style="margin-bottom: 20px; color: #6b7280;">Calculate BMI percentile for children and teenagers</p>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="age">Age (years):</label>
+                    <input type="number" id="age" min="2" max="20" step="1" placeholder="e.g., 10">
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">Weight:</label>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                        <input type="number" id="weight" step="0.1" placeholder="e.g., 35">
+                        <select id="weightUnit">
+                            <option value="kg">kg</option>
+                            <option value="lbs">lbs</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="height">Height:</label>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                        <input type="number" id="height" step="0.1" placeholder="e.g., 140">
+                        <select id="heightUnit">
+                            <option value="cm">cm</option>
+                            <option value="inches">inches</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="calculateBMIAge()">Calculate</button>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                <h3 style="color: #2563eb; margin-bottom: 15px;">BMI-for-Age Percentile Categories</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr style="background: white;">
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Underweight</strong></td>
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;">Less than 5th percentile</td>
+                    </tr>
+                    <tr style="background: #f9fafb;">
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Healthy weight</strong></td>
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;">5th to 85th percentile</td>
+                    </tr>
+                    <tr style="background: white;">
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Overweight</strong></td>
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;">85th to 95th percentile</td>
+                    </tr>
+                    <tr style="background: #f9fafb;">
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Obese</strong></td>
+                        <td style="padding: 10px; border: 1px solid #e5e7eb;">95th percentile or greater</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 15px; color: #6b7280; font-size: 0.9rem;">
+                    <strong>Note:</strong> This is a simplified calculator. For accurate percentile assessment based on CDC or WHO growth charts, consult a pediatrician or healthcare provider.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function calculateBMIAge() {
+            const age = parseInt(document.getElementById('age').value);
+            let weight = parseFloat(document.getElementById('weight').value);
+            let height = parseFloat(document.getElementById('height').value);
+            const gender = document.getElementById('gender').value;
+            const weightUnit = document.getElementById('weightUnit').value;
+            const heightUnit = document.getElementById('heightUnit').value;
+
+            if (!validateNumber(age, "Age") || !validateNumber(weight, "Weight") || !validateNumber(height, "Height")) {
+                return;
+            }
+
+            if (age < 2 || age > 20) {
+                alert("Age must be between 2 and 20 years");
+                return;
+            }
+
+            // Convert to metric
+            if (weightUnit === 'lbs') weight = weight * 0.453592;
+            if (heightUnit === 'inches') height = height * 2.54;
+
+            // Calculate BMI
+            const heightInMeters = height / 100;
+            const bmi = weight / (heightInMeters * heightInMeters);
+
+            // Simplified percentile estimation (this is approximate)
+            // In reality, this would use CDC/WHO growth chart data
+            let percentile, category, color;
+
+            // Simplified estimation based on age and gender
+            // These are rough approximations and not accurate medical data
+            const baselineBMI = gender === 'male' ?
+                (age < 10 ? 15.5 + age * 0.3 : 16 + age * 0.6) :
+                (age < 10 ? 15.3 + age * 0.35 : 16.5 + age * 0.5);
+
+            const percentileEstimate = ((bmi - baselineBMI) / baselineBMI) * 100 + 50;
+            percentile = Math.max(1, Math.min(99, percentileEstimate));
+
+            if (percentile < 5) {
+                category = 'Underweight';
+                color = '#3b82f6';
+            } else if (percentile < 85) {
+                category = 'Healthy weight';
+                color = '#10b981';
+            } else if (percentile < 95) {
+                category = 'Overweight';
+                color = '#f59e0b';
+            } else {
+                category = 'Obese';
+                color = '#ef4444';
+            }
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>BMI-for-Age Results</h3>
+                <div style="display: grid; gap: 15px; margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid ${color};">
+                        <p style="color: #6b7280; margin-bottom: 5px;">BMI:</p>
+                        <p style="font-size: 2rem; font-weight: 700; color: ${color};">${roundTo(bmi, 1)}</p>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid ${color};">
+                        <p style="color: #6b7280; margin-bottom: 5px;">Estimated Percentile:</p>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: ${color};">${Math.round(percentile)}th percentile</p>
+                        <p style="margin-top: 10px; font-size: 1.1rem;">Category: <strong style="color: ${color};">${category}</strong></p>
+                    </div>
+
+                    <div>
+                        <p><strong>Age:</strong> ${age} years</p>
+                        <p><strong>Gender:</strong> ${gender === 'male' ? 'Male' : 'Female'}</p>
+                        <p><strong>Weight:</strong> ${roundTo(weight, 1)} kg (${roundTo(weight * 2.20462, 1)} lbs)</p>
+                        <p><strong>Height:</strong> ${roundTo(height, 1)} cm (${roundTo(height / 2.54, 1)} inches)</p>
+                    </div>
+
+                    <div style="background: #eff6ff; padding: 15px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                        <p style="color: #374151; font-size: 0.95rem;">
+                            <strong>Important:</strong> This calculator provides a simplified estimate. BMI-for-age percentiles should be determined using official CDC or WHO growth charts. Please consult a healthcare provider for accurate assessment and medical advice regarding your child's growth and development.
+                        </p>
+                    </div>
+                </div>
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

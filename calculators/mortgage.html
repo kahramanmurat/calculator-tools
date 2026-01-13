@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Calculator - Free Monthly Payment Calculator</title>
+    <meta name="description" content="Free mortgage calculator. Calculate monthly mortgage payments with taxes and insurance. See total interest and payment breakdown.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Mortgage Calculator</h1>
+            <p class="tagline">Calculate monthly mortgage payments</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Mortgage Calculator
+        </div>
+
+        <div class="calculator-container">
+            <h2>Mortgage Payment Calculator</h2>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="homePrice">Home Price ($):</label>
+                    <input type="number" id="homePrice" step="1000" placeholder="e.g., 300000" value="300000">
+                </div>
+
+                <div class="form-group">
+                    <label for="downPayment">Down Payment ($):</label>
+                    <input type="number" id="downPayment" step="1000" placeholder="e.g., 60000" value="60000">
+                </div>
+
+                <div class="form-group">
+                    <label for="loanTerm">Loan Term (years):</label>
+                    <select id="loanTerm">
+                        <option value="10">10 years</option>
+                        <option value="15">15 years</option>
+                        <option value="20">20 years</option>
+                        <option value="25">25 years</option>
+                        <option value="30" selected>30 years</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="interestRate">Interest Rate (% per year):</label>
+                    <input type="number" id="interestRate" step="0.01" placeholder="e.g., 6.5" value="6.5">
+                </div>
+
+                <div class="form-group">
+                    <label for="propertyTax">Property Tax ($ per year):</label>
+                    <input type="number" id="propertyTax" step="100" placeholder="e.g., 3000" value="3000">
+                </div>
+
+                <div class="form-group">
+                    <label for="insurance">Home Insurance ($ per year):</label>
+                    <input type="number" id="insurance" step="100" placeholder="e.g., 1200" value="1200">
+                </div>
+
+                <button class="btn" onclick="calculateMortgage()">Calculate Payment</button>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function calculateMortgage() {
+            const homePrice = parseFloat(document.getElementById('homePrice').value);
+            const downPayment = parseFloat(document.getElementById('downPayment').value);
+            const loanTerm = parseInt(document.getElementById('loanTerm').value);
+            const annualRate = parseFloat(document.getElementById('interestRate').value);
+            const propertyTax = parseFloat(document.getElementById('propertyTax').value) || 0;
+            const insurance = parseFloat(document.getElementById('insurance').value) || 0;
+
+            if (!validateNumber(homePrice, "Home Price") || !validateNumber(downPayment, "Down Payment") ||
+                !validateNumber(annualRate, "Interest Rate")) {
+                return;
+            }
+
+            if (downPayment >= homePrice) {
+                alert("Down payment must be less than home price");
+                return;
+            }
+
+            const loanAmount = homePrice - downPayment;
+            const monthlyRate = annualRate / 100 / 12;
+            const numberOfPayments = loanTerm * 12;
+
+            // Calculate monthly principal and interest using mortgage formula
+            let monthlyPI;
+            if (monthlyRate === 0) {
+                monthlyPI = loanAmount / numberOfPayments;
+            } else {
+                monthlyPI = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) /
+                           (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+            }
+
+            const monthlyTax = propertyTax / 12;
+            const monthlyInsurance = insurance / 12;
+            const totalMonthly = monthlyPI + monthlyTax + monthlyInsurance;
+
+            const totalPayments = monthlyPI * numberOfPayments;
+            const totalInterest = totalPayments - loanAmount;
+            const totalCost = totalPayments + propertyTax * loanTerm + insurance * loanTerm + downPayment;
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Monthly Payment Breakdown</h3>
+                <div style="display: grid; gap: 15px; margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #10b981;">
+                        <p style="color: #6b7280; margin-bottom: 5px;">Total Monthly Payment:</p>
+                        <p style="font-size: 2rem; font-weight: 700; color: #10b981;">$${formatNumber(roundTo(totalMonthly, 2))}</p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Principal & Interest:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">$${formatNumber(roundTo(monthlyPI, 2))}</p>
+                        </div>
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Property Tax:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">$${formatNumber(roundTo(monthlyTax, 2))}</p>
+                        </div>
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Home Insurance:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">$${formatNumber(roundTo(monthlyInsurance, 2))}</p>
+                        </div>
+                    </div>
+
+                    <hr style="border: 1px solid #e5e7eb;">
+
+                    <div>
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">Loan Summary</h4>
+                        <p><strong>Loan Amount:</strong> $${formatNumber(roundTo(loanAmount, 2))}</p>
+                        <p><strong>Down Payment:</strong> $${formatNumber(roundTo(downPayment, 2))} (${roundTo((downPayment/homePrice)*100, 1)}%)</p>
+                        <p><strong>Loan Term:</strong> ${loanTerm} years (${numberOfPayments} payments)</p>
+                        <p><strong>Interest Rate:</strong> ${annualRate}% per year</p>
+                    </div>
+
+                    <div>
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">Total Cost Over ${loanTerm} Years</h4>
+                        <p><strong>Total Principal Paid:</strong> $${formatNumber(roundTo(loanAmount, 2))}</p>
+                        <p><strong>Total Interest Paid:</strong> $${formatNumber(roundTo(totalInterest, 2))}</p>
+                        <p><strong>Total of All Payments:</strong> $${formatNumber(roundTo(totalCost, 2))}</p>
+                    </div>
+                </div>
+            `;
+            resultBox.style.display = 'block';
+        }
+
+        // Auto-calculate on input
+        document.querySelectorAll('input, select').forEach(el => {
+            el.addEventListener('change', () => {
+                if (document.getElementById('result').style.display !== 'none') {
+                    calculateMortgage();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

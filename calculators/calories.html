@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Calculator - Calculate Daily Calorie Needs (TDEE)</title>
+    <meta name="description" content="Free calorie calculator. Calculate your daily calorie needs (TDEE) and BMR. Includes weight loss/gain goals and macro recommendations.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Calorie Calculator</h1>
+            <p class="tagline">Calculate your daily calorie needs</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Calorie Calculator
+        </div>
+
+        <div class="calculator-container">
+            <h2>Daily Calorie Needs Calculator</h2>
+            <p style="margin-bottom: 20px; color: #6b7280;">Calculate your Total Daily Energy Expenditure (TDEE)</p>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="age">Age (years):</label>
+                    <input type="number" id="age" step="1" placeholder="e.g., 30">
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">Weight:</label>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                        <input type="number" id="weight" step="0.1" placeholder="e.g., 70">
+                        <select id="weightUnit">
+                            <option value="kg">kg</option>
+                            <option value="lbs">lbs</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="height">Height:</label>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+                        <input type="number" id="height" step="0.1" placeholder="e.g., 170">
+                        <select id="heightUnit">
+                            <option value="cm">cm</option>
+                            <option value="inches">inches</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="activity">Activity Level:</label>
+                    <select id="activity">
+                        <option value="1.2">Sedentary (little or no exercise)</option>
+                        <option value="1.375">Lightly active (1-3 days/week)</option>
+                        <option value="1.55" selected>Moderately active (3-5 days/week)</option>
+                        <option value="1.725">Very active (6-7 days/week)</option>
+                        <option value="1.9">Extra active (very intense exercise daily)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="goal">Goal:</label>
+                    <select id="goal">
+                        <option value="-500">Weight Loss (lose 0.5 kg/1 lb per week)</option>
+                        <option value="-250">Moderate Weight Loss (lose 0.25 kg/0.5 lb per week)</option>
+                        <option value="0" selected>Maintain Weight</option>
+                        <option value="250">Moderate Weight Gain (gain 0.25 kg/0.5 lb per week)</option>
+                        <option value="500">Weight Gain (gain 0.5 kg/1 lb per week)</option>
+                    </select>
+                </div>
+
+                <button class="btn" onclick="calculateCalories()">Calculate</button>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function calculateCalories() {
+            const age = parseInt(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            let weight = parseFloat(document.getElementById('weight').value);
+            let height = parseFloat(document.getElementById('height').value);
+            const weightUnit = document.getElementById('weightUnit').value;
+            const heightUnit = document.getElementById('heightUnit').value;
+            const activity = parseFloat(document.getElementById('activity').value);
+            const goal = parseInt(document.getElementById('goal').value);
+
+            if (!validateNumber(age, "Age") || !validateNumber(weight, "Weight") || !validateNumber(height, "Height")) {
+                return;
+            }
+
+            // Convert to metric
+            if (weightUnit === 'lbs') weight = weight * 0.453592;
+            if (heightUnit === 'inches') height = height * 2.54;
+
+            // Calculate BMR using Mifflin-St Jeor Equation
+            let bmr;
+            if (gender === 'male') {
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else {
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            }
+
+            // Calculate TDEE
+            const tdee = bmr * activity;
+            const targetCalories = tdee + goal;
+
+            // Macronutrient recommendations
+            const protein = weight * 2.2; // 2.2g per kg
+            const fat = (targetCalories * 0.25) / 9; // 25% of calories from fat
+            const carbs = (targetCalories - (protein * 4) - (fat * 9)) / 4;
+
+            let goalText, goalColor;
+            if (goal < 0) {
+                goalText = "Weight Loss";
+                goalColor = "#ef4444";
+            } else if (goal > 0) {
+                goalText = "Weight Gain";
+                goalColor = "#10b981";
+            } else {
+                goalText = "Maintain Weight";
+                goalColor = "#3b82f6";
+            }
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Your Daily Calorie Needs</h3>
+                <div style="display: grid; gap: 15px; margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid ${goalColor};">
+                        <p style="color: #6b7280; margin-bottom: 5px;">Daily Calories for ${goalText}:</p>
+                        <p style="font-size: 2rem; font-weight: 700; color: ${goalColor};">${Math.round(targetCalories)} calories</p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">BMR:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">${Math.round(bmr)} cal</p>
+                            <small style="color: #6b7280;">Base metabolic rate</small>
+                        </div>
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">TDEE:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">${Math.round(tdee)} cal</p>
+                            <small style="color: #6b7280;">Maintenance calories</small>
+                        </div>
+                    </div>
+
+                    <div style="background: #f3f4f6; padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">Recommended Macronutrients</h4>
+                        <div style="margin-bottom: 8px;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Protein:</span>
+                                <strong>${Math.round(protein)}g (${Math.round((protein * 4 / targetCalories) * 100)}%)</strong>
+                            </div>
+                            <div style="background: #e5e7eb; height: 8px; border-radius: 4px; margin-top: 5px;">
+                                <div style="background: #3b82f6; height: 100%; width: ${Math.round((protein * 4 / targetCalories) * 100)}%; border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Fat:</span>
+                                <strong>${Math.round(fat)}g (${Math.round((fat * 9 / targetCalories) * 100)}%)</strong>
+                            </div>
+                            <div style="background: #e5e7eb; height: 8px; border-radius: 4px; margin-top: 5px;">
+                                <div style="background: #f59e0b; height: 100%; width: ${Math.round((fat * 9 / targetCalories) * 100)}%; border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Carbs:</span>
+                                <strong>${Math.round(carbs)}g (${Math.round((carbs * 4 / targetCalories) * 100)}%)</strong>
+                            </div>
+                            <div style="background: #e5e7eb; height: 8px; border-radius: 4px; margin-top: 5px;">
+                                <div style="background: #10b981; height: 100%; width: ${Math.round((carbs * 4 / targetCalories) * 100)}%; border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: #eff6ff; padding: 15px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                        <p style="color: #6b7280; font-size: 0.9rem;">
+                            <strong>Note:</strong> These calculations are estimates. Individual needs may vary based on metabolism, body composition, and other factors. Consult a healthcare professional for personalized advice.
+                        </p>
+                    </div>
+                </div>
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

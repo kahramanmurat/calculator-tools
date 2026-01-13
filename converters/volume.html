@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volume Converter - Calculator Tools</title>
+    <meta name="description" content="Free volume converter. Convert between liters, gallons (US/UK), cups, milliliters, cubic meters, and more. 15+ units for cooking and science.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Volume Converter</h1>
+            <p class="tagline">Convert between different units of volume</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#converters">Converters</a> / Volume Converter
+        </div>
+
+        <div class="calculator-container">
+            <h2>Volume Unit Converter</h2>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="fromValue">Value:</label>
+                    <input type="number" id="fromValue" step="any" placeholder="Enter value" oninput="convertVolume()">
+                </div>
+
+                <div class="form-group">
+                    <label for="fromUnit">From:</label>
+                    <select id="fromUnit" onchange="convertVolume()">
+                        <option value="liter" selected>Liter (L)</option>
+                        <option value="milliliter">Milliliter (mL)</option>
+                        <option value="cubic-meter">Cubic Meter (m³)</option>
+                        <option value="cubic-centimeter">Cubic Centimeter (cm³)</option>
+                        <option value="cubic-millimeter">Cubic Millimeter (mm³)</option>
+                        <option value="gallon-us">US Gallon (gal)</option>
+                        <option value="quart-us">US Quart (qt)</option>
+                        <option value="pint-us">US Pint (pt)</option>
+                        <option value="cup-us">US Cup</option>
+                        <option value="fluid-ounce-us">US Fluid Ounce (fl oz)</option>
+                        <option value="tablespoon-us">US Tablespoon (tbsp)</option>
+                        <option value="teaspoon-us">US Teaspoon (tsp)</option>
+                        <option value="gallon-uk">UK Gallon</option>
+                        <option value="cubic-foot">Cubic Foot (ft³)</option>
+                        <option value="cubic-inch">Cubic Inch (in³)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="toUnit">To:</label>
+                    <select id="toUnit" onchange="convertVolume()">
+                        <option value="liter">Liter (L)</option>
+                        <option value="milliliter" selected>Milliliter (mL)</option>
+                        <option value="cubic-meter">Cubic Meter (m³)</option>
+                        <option value="cubic-centimeter">Cubic Centimeter (cm³)</option>
+                        <option value="cubic-millimeter">Cubic Millimeter (mm³)</option>
+                        <option value="gallon-us">US Gallon (gal)</option>
+                        <option value="quart-us">US Quart (qt)</option>
+                        <option value="pint-us">US Pint (pt)</option>
+                        <option value="cup-us">US Cup</option>
+                        <option value="fluid-ounce-us">US Fluid Ounce (fl oz)</option>
+                        <option value="tablespoon-us">US Tablespoon (tbsp)</option>
+                        <option value="teaspoon-us">US Teaspoon (tsp)</option>
+                        <option value="gallon-uk">UK Gallon</option>
+                        <option value="cubic-foot">Cubic Foot (ft³)</option>
+                        <option value="cubic-inch">Cubic Inch (in³)</option>
+                    </select>
+                </div>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+
+                <div style="margin-top: 30px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                    <h3 style="color: #2563eb; margin-bottom: 15px;">Common Volume Conversions</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0;">1 liter = 1,000 milliliters</li>
+                        <li style="padding: 8px 0;">1 cubic meter = 1,000 liters</li>
+                        <li style="padding: 8px 0;">1 US gallon = 3.78541 liters</li>
+                        <li style="padding: 8px 0;">1 UK gallon = 4.54609 liters</li>
+                        <li style="padding: 8px 0;">1 US cup = 236.588 milliliters</li>
+                        <li style="padding: 8px 0;">1 tablespoon = 14.787 milliliters</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Conversion factors to liters
+        const volumeUnits = {
+            'liter': 1,
+            'milliliter': 0.001,
+            'cubic-meter': 1000,
+            'cubic-centimeter': 0.001,
+            'cubic-millimeter': 0.000001,
+            'gallon-us': 3.78541,
+            'quart-us': 0.946353,
+            'pint-us': 0.473176,
+            'cup-us': 0.236588,
+            'fluid-ounce-us': 0.0295735,
+            'tablespoon-us': 0.0147868,
+            'teaspoon-us': 0.00492892,
+            'gallon-uk': 4.54609,
+            'cubic-foot': 28.3168,
+            'cubic-inch': 0.0163871
+        };
+
+        const unitNames = {
+            'liter': 'liters',
+            'milliliter': 'milliliters',
+            'cubic-meter': 'cubic meters',
+            'cubic-centimeter': 'cubic centimeters',
+            'cubic-millimeter': 'cubic millimeters',
+            'gallon-us': 'US gallons',
+            'quart-us': 'US quarts',
+            'pint-us': 'US pints',
+            'cup-us': 'US cups',
+            'fluid-ounce-us': 'US fluid ounces',
+            'tablespoon-us': 'US tablespoons',
+            'teaspoon-us': 'US teaspoons',
+            'gallon-uk': 'UK gallons',
+            'cubic-foot': 'cubic feet',
+            'cubic-inch': 'cubic inches'
+        };
+
+        function convertVolume() {
+            const value = parseFloat(document.getElementById('fromValue').value);
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+
+            if (isNaN(value)) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            // Convert to liters first, then to target unit
+            const valueInLiters = value * volumeUnits[fromUnit];
+            const result = valueInLiters / volumeUnits[toUnit];
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Conversion Result</h3>
+                <div class="result-value">${formatNumber(roundTo(result, 6))} ${unitNames[toUnit]}</div>
+                <p style="margin-top: 10px; color: #6b7280;">
+                    ${formatNumber(value)} ${unitNames[fromUnit]} = ${formatNumber(roundTo(result, 6))} ${unitNames[toUnit]}
+                </p>
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

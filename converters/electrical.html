@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrical Units Converter | Calculator Tools</title>
+    <meta name="description" content="Convert between electrical and electronic units: Ampere (A), Volt (V), Watt (W), Ohm (Ω), Farad (F), dB, dBm, dBW, kVA, kW, kWh">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚡ Electrical Units Converter</h1>
+            <p class="tagline">Convert between electrical and electronic units</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="calculator-card">
+            <h2>Power Conversion</h2>
+            <div class="input-group">
+                <label for="powerValue">Value:</label>
+                <input type="number" id="powerValue" placeholder="Enter value" oninput="convertPower()">
+            </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="powerFrom">From:</label>
+                    <select id="powerFrom" onchange="convertPower()">
+                        <option value="W">Watt (W)</option>
+                        <option value="kW">Kilowatt (kW)</option>
+                        <option value="MW">Megawatt (MW)</option>
+                        <option value="hp">Horsepower (hp)</option>
+                        <option value="dBm">dB-milliwatt (dBm)</option>
+                        <option value="dBW">dB-watt (dBW)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="powerTo">To:</label>
+                    <select id="powerTo" onchange="convertPower()">
+                        <option value="kW">Kilowatt (kW)</option>
+                        <option value="W">Watt (W)</option>
+                        <option value="MW">Megawatt (MW)</option>
+                        <option value="hp">Horsepower (hp)</option>
+                        <option value="dBm">dB-milliwatt (dBm)</option>
+                        <option value="dBW">dB-watt (dBW)</option>
+                    </select>
+                </div>
+            </div>
+            <div id="powerResult" class="result-box"></div>
+        </div>
+
+        <div class="calculator-card">
+            <h2>Current Conversion</h2>
+            <div class="input-group">
+                <label for="currentValue">Value:</label>
+                <input type="number" id="currentValue" placeholder="Enter value" oninput="convertCurrent()">
+            </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="currentFrom">From:</label>
+                    <select id="currentFrom" onchange="convertCurrent()">
+                        <option value="A">Ampere (A)</option>
+                        <option value="mA">Milliampere (mA)</option>
+                        <option value="µA">Microampere (µA)</option>
+                        <option value="kA">Kiloampere (kA)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="currentTo">To:</label>
+                    <select id="currentTo" onchange="convertCurrent()">
+                        <option value="mA">Milliampere (mA)</option>
+                        <option value="A">Ampere (A)</option>
+                        <option value="µA">Microampere (µA)</option>
+                        <option value="kA">Kiloampere (kA)</option>
+                    </select>
+                </div>
+            </div>
+            <div id="currentResult" class="result-box"></div>
+        </div>
+
+        <div class="calculator-card">
+            <h2>Voltage Conversion</h2>
+            <div class="input-group">
+                <label for="voltageValue">Value:</label>
+                <input type="number" id="voltageValue" placeholder="Enter value" oninput="convertVoltage()">
+            </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="voltageFrom">From:</label>
+                    <select id="voltageFrom" onchange="convertVoltage()">
+                        <option value="V">Volt (V)</option>
+                        <option value="mV">Millivolt (mV)</option>
+                        <option value="µV">Microvolt (µV)</option>
+                        <option value="kV">Kilovolt (kV)</option>
+                        <option value="MV">Megavolt (MV)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="voltageTo">To:</label>
+                    <select id="voltageTo" onchange="convertVoltage()">
+                        <option value="kV">Kilovolt (kV)</option>
+                        <option value="V">Volt (V)</option>
+                        <option value="mV">Millivolt (mV)</option>
+                        <option value="µV">Microvolt (µV)</option>
+                        <option value="MV">Megavolt (MV)</option>
+                    </select>
+                </div>
+            </div>
+            <div id="voltageResult" class="result-box"></div>
+        </div>
+
+        <div class="calculator-card">
+            <h2>Resistance Conversion</h2>
+            <div class="input-group">
+                <label for="resistanceValue">Value:</label>
+                <input type="number" id="resistanceValue" placeholder="Enter value" oninput="convertResistance()">
+            </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="resistanceFrom">From:</label>
+                    <select id="resistanceFrom" onchange="convertResistance()">
+                        <option value="Ω">Ohm (Ω)</option>
+                        <option value="kΩ">Kilohm (kΩ)</option>
+                        <option value="MΩ">Megohm (MΩ)</option>
+                        <option value="mΩ">Milliohm (mΩ)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="resistanceTo">To:</label>
+                    <select id="resistanceTo" onchange="convertResistance()">
+                        <option value="kΩ">Kilohm (kΩ)</option>
+                        <option value="Ω">Ohm (Ω)</option>
+                        <option value="MΩ">Megohm (MΩ)</option>
+                        <option value="mΩ">Milliohm (mΩ)</option>
+                    </select>
+                </div>
+            </div>
+            <div id="resistanceResult" class="result-box"></div>
+        </div>
+
+        <div class="calculator-card">
+            <h2>Capacitance Conversion</h2>
+            <div class="input-group">
+                <label for="capacitanceValue">Value:</label>
+                <input type="number" id="capacitanceValue" placeholder="Enter value" oninput="convertCapacitance()">
+            </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="capacitanceFrom">From:</label>
+                    <select id="capacitanceFrom" onchange="convertCapacitance()">
+                        <option value="F">Farad (F)</option>
+                        <option value="mF">Millifarad (mF)</option>
+                        <option value="µF">Microfarad (µF)</option>
+                        <option value="nF">Nanofarad (nF)</option>
+                        <option value="pF">Picofarad (pF)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="capacitanceTo">To:</label>
+                    <select id="capacitanceTo" onchange="convertCapacitance()">
+                        <option value="µF">Microfarad (µF)</option>
+                        <option value="F">Farad (F)</option>
+                        <option value="mF">Millifarad (mF)</option>
+                        <option value="nF">Nanofarad (nF)</option>
+                        <option value="pF">Picofarad (pF)</option>
+                    </select>
+                </div>
+            </div>
+            <div id="capacitanceResult" class="result-box"></div>
+        </div>
+
+        <div class="calculator-card">
+            <h2>Energy & Apparent Power</h2>
+            <div class="input-group">
+                <label for="energyValue">Value:</label>
+                <input type="number" id="energyValue" placeholder="Enter value" oninput="convertEnergy()">
+            </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="energyFrom">From:</label>
+                    <select id="energyFrom" onchange="convertEnergy()">
+                        <option value="kWh">Kilowatt-hour (kWh)</option>
+                        <option value="Wh">Watt-hour (Wh)</option>
+                        <option value="kVA">Kilovolt-ampere (kVA)</option>
+                        <option value="VA">Volt-ampere (VA)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="energyTo">To:</label>
+                    <select id="energyTo" onchange="convertEnergy()">
+                        <option value="Wh">Watt-hour (Wh)</option>
+                        <option value="kWh">Kilowatt-hour (kWh)</option>
+                        <option value="VA">Volt-ampere (VA)</option>
+                        <option value="kVA">Kilovolt-ampere (kVA)</option>
+                    </select>
+                </div>
+            </div>
+            <div id="energyResult" class="result-box"></div>
+        </div>
+
+        <div class="info-box">
+            <h3>About Electrical Units</h3>
+            <p><strong>Power (W, kW):</strong> Rate of energy consumption or production</p>
+            <p><strong>Current (A):</strong> Flow of electric charge</p>
+            <p><strong>Voltage (V):</strong> Electric potential difference</p>
+            <p><strong>Resistance (Ω):</strong> Opposition to current flow</p>
+            <p><strong>Capacitance (F):</strong> Ability to store electric charge</p>
+            <p><strong>dBm/dBW:</strong> Power levels in decibels (logarithmic scale)</p>
+            <p><strong>kVA:</strong> Apparent power (combination of real and reactive power)</p>
+        </div>
+
+        <div class="related-calculators">
+            <h3>Related Tools</h3>
+            <div class="calculator-grid">
+                <a href="../calculators/ohms-law.html" class="calculator-link">Ohm's Law Calculator</a>
+                <a href="../calculators/power.html" class="calculator-link">Power Calculator</a>
+                <a href="../calculators/resistance.html" class="calculator-link">Resistance Calculator</a>
+                <a href="../calculators/voltage.html" class="calculator-link">Voltage Divider</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+            <p>Free online calculators and conversion tools for everyone.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Power conversion (includes logarithmic dBm/dBW)
+        function convertPower() {
+            const value = parseFloat(document.getElementById('powerValue').value);
+            const fromUnit = document.getElementById('powerFrom').value;
+            const toUnit = document.getElementById('powerTo').value;
+
+            if (isNaN(value)) {
+                document.getElementById('powerResult').style.display = 'none';
+                return;
+            }
+
+            let result;
+
+            // Convert to Watts first
+            let watts;
+            if (fromUnit === 'dBm') {
+                watts = Math.pow(10, value / 10) / 1000; // dBm to Watts
+            } else if (fromUnit === 'dBW') {
+                watts = Math.pow(10, value / 10); // dBW to Watts
+            } else {
+                const powerUnits = {
+                    'W': 1,
+                    'kW': 1000,
+                    'MW': 1000000,
+                    'hp': 745.7
+                };
+                watts = value * powerUnits[fromUnit];
+            }
+
+            // Convert from Watts to target unit
+            if (toUnit === 'dBm') {
+                result = 10 * Math.log10(watts * 1000); // Watts to dBm
+            } else if (toUnit === 'dBW') {
+                result = 10 * Math.log10(watts); // Watts to dBW
+            } else {
+                const powerUnits = {
+                    'W': 1,
+                    'kW': 1000,
+                    'MW': 1000000,
+                    'hp': 745.7
+                };
+                result = watts / powerUnits[toUnit];
+            }
+
+            showResult('powerResult', `${formatNumber(roundTo(result, 6))} ${toUnit}`, 'Result');
+        }
+
+        // Current conversion
+        function convertCurrent() {
+            const value = parseFloat(document.getElementById('currentValue').value);
+            const fromUnit = document.getElementById('currentFrom').value;
+            const toUnit = document.getElementById('currentTo').value;
+
+            if (isNaN(value)) {
+                document.getElementById('currentResult').style.display = 'none';
+                return;
+            }
+
+            const currentUnits = {
+                'A': 1,
+                'mA': 0.001,
+                'µA': 0.000001,
+                'kA': 1000
+            };
+
+            const amperes = value * currentUnits[fromUnit];
+            const result = amperes / currentUnits[toUnit];
+
+            showResult('currentResult', `${formatNumber(roundTo(result, 6))} ${toUnit}`, 'Result');
+        }
+
+        // Voltage conversion
+        function convertVoltage() {
+            const value = parseFloat(document.getElementById('voltageValue').value);
+            const fromUnit = document.getElementById('voltageFrom').value;
+            const toUnit = document.getElementById('voltageTo').value;
+
+            if (isNaN(value)) {
+                document.getElementById('voltageResult').style.display = 'none';
+                return;
+            }
+
+            const voltageUnits = {
+                'V': 1,
+                'mV': 0.001,
+                'µV': 0.000001,
+                'kV': 1000,
+                'MV': 1000000
+            };
+
+            const volts = value * voltageUnits[fromUnit];
+            const result = volts / voltageUnits[toUnit];
+
+            showResult('voltageResult', `${formatNumber(roundTo(result, 6))} ${toUnit}`, 'Result');
+        }
+
+        // Resistance conversion
+        function convertResistance() {
+            const value = parseFloat(document.getElementById('resistanceValue').value);
+            const fromUnit = document.getElementById('resistanceFrom').value;
+            const toUnit = document.getElementById('resistanceTo').value;
+
+            if (isNaN(value)) {
+                document.getElementById('resistanceResult').style.display = 'none';
+                return;
+            }
+
+            const resistanceUnits = {
+                'Ω': 1,
+                'kΩ': 1000,
+                'MΩ': 1000000,
+                'mΩ': 0.001
+            };
+
+            const ohms = value * resistanceUnits[fromUnit];
+            const result = ohms / resistanceUnits[toUnit];
+
+            showResult('resistanceResult', `${formatNumber(roundTo(result, 6))} ${toUnit}`, 'Result');
+        }
+
+        // Capacitance conversion
+        function convertCapacitance() {
+            const value = parseFloat(document.getElementById('capacitanceValue').value);
+            const fromUnit = document.getElementById('capacitanceFrom').value;
+            const toUnit = document.getElementById('capacitanceTo').value;
+
+            if (isNaN(value)) {
+                document.getElementById('capacitanceResult').style.display = 'none';
+                return;
+            }
+
+            const capacitanceUnits = {
+                'F': 1,
+                'mF': 0.001,
+                'µF': 0.000001,
+                'nF': 0.000000001,
+                'pF': 0.000000000001
+            };
+
+            const farads = value * capacitanceUnits[fromUnit];
+            const result = farads / capacitanceUnits[toUnit];
+
+            showResult('capacitanceResult', `${formatNumber(roundTo(result, 6))} ${toUnit}`, 'Result');
+        }
+
+        // Energy and apparent power conversion
+        function convertEnergy() {
+            const value = parseFloat(document.getElementById('energyValue').value);
+            const fromUnit = document.getElementById('energyFrom').value;
+            const toUnit = document.getElementById('energyTo').value;
+
+            if (isNaN(value)) {
+                document.getElementById('energyResult').style.display = 'none';
+                return;
+            }
+
+            const energyUnits = {
+                'kWh': 1000,
+                'Wh': 1,
+                'kVA': 1000, // Apparent power (1 kVA ≈ 1 kW for unity power factor)
+                'VA': 1
+            };
+
+            const baseValue = value * energyUnits[fromUnit];
+            const result = baseValue / energyUnits[toUnit];
+
+            showResult('energyResult', `${formatNumber(roundTo(result, 6))} ${toUnit}`, 'Result');
+        }
+    </script>
+</body>
+</html>

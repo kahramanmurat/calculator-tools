@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voltage Divider Calculator - Calculator Tools</title>
+    <meta name="description" content="Free voltage divider calculator. Calculate output voltage, current, and power dissipation for voltage divider circuits.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Voltage Divider Calculator</h1>
+            <p class="tagline">Calculate output voltage in a voltage divider circuit</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Voltage Divider
+        </div>
+
+        <div class="calculator-container">
+            <h2>Voltage Divider Calculator</h2>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <svg width="200" height="250" style="border: 2px solid #e5e7eb; border-radius: 10px; background: white; padding: 20px;">
+                    <text x="100" y="20" text-anchor="middle" font-size="14" fill="#2563eb">V<tspan baseline-shift="sub" font-size="10">in</tspan></text>
+                    <line x1="100" y1="25" x2="100" y2="50" stroke="#374151" stroke-width="2"/>
+                    <rect x="80" y="50" width="40" height="60" fill="none" stroke="#2563eb" stroke-width="2" rx="3"/>
+                    <text x="100" y="85" text-anchor="middle" font-size="14" fill="#2563eb">R<tspan baseline-shift="sub" font-size="10">1</tspan></text>
+                    <line x1="100" y1="110" x2="100" y2="130" stroke="#374151" stroke-width="2"/>
+                    <circle cx="100" cy="130" r="4" fill="#ef4444"/>
+                    <text x="140" y="135" font-size="14" fill="#ef4444">V<tspan baseline-shift="sub" font-size="10">out</tspan></text>
+                    <line x1="100" y1="130" x2="100" y2="150" stroke="#374151" stroke-width="2"/>
+                    <rect x="80" y="150" width="40" height="60" fill="none" stroke="#10b981" stroke-width="2" rx="3"/>
+                    <text x="100" y="185" text-anchor="middle" font-size="14" fill="#10b981">R<tspan baseline-shift="sub" font-size="10">2</tspan></text>
+                    <line x1="100" y1="210" x2="100" y2="225" stroke="#374151" stroke-width="2"/>
+                    <line x1="85" y1="225" x2="115" y2="225" stroke="#374151" stroke-width="2"/>
+                    <line x1="90" y1="230" x2="110" y2="230" stroke="#374151" stroke-width="1.5"/>
+                    <line x1="95" y1="235" x2="105" y2="235" stroke="#374151" stroke-width="1"/>
+                </svg>
+            </div>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="vin">Input Voltage (V<sub>in</sub>) - Volts:</label>
+                    <input type="number" id="vin" step="any" placeholder="e.g., 12" oninput="calculate()">
+                </div>
+
+                <div class="form-group">
+                    <label for="r1">Resistor 1 (R<sub>1</sub>) - Ohms (Ω):</label>
+                    <input type="number" id="r1" step="any" placeholder="e.g., 10000" oninput="calculate()">
+                </div>
+
+                <div class="form-group">
+                    <label for="r2">Resistor 2 (R<sub>2</sub>) - Ohms (Ω):</label>
+                    <input type="number" id="r2" step="any" placeholder="e.g., 4700" oninput="calculate()">
+                </div>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                <h3 style="color: #2563eb; margin-bottom: 15px;">Voltage Divider Formula</h3>
+                <div style="background: white; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 15px;">
+                    <p style="font-size: 1.3rem; font-weight: 700; color: #2563eb;">
+                        V<sub>out</sub> = V<sub>in</sub> × (R<sub>2</sub> / (R<sub>1</sub> + R<sub>2</sub>))
+                    </p>
+                </div>
+                <ul style="list-style: none; padding: 0; color: #374151;">
+                    <li style="padding: 8px 0;"><strong>V<sub>in</sub></strong> - Input voltage applied across both resistors</li>
+                    <li style="padding: 8px 0;"><strong>V<sub>out</sub></strong> - Output voltage measured across R<sub>2</sub></li>
+                    <li style="padding: 8px 0;"><strong>R<sub>1</sub></strong> - Upper resistor (between V<sub>in</sub> and V<sub>out</sub>)</li>
+                    <li style="padding: 8px 0;"><strong>R<sub>2</sub></strong> - Lower resistor (between V<sub>out</sub> and ground)</li>
+                </ul>
+                <div style="margin-top: 15px; padding: 15px; background: #eff6ff; border-radius: 5px; border-left: 4px solid #3b82f6;">
+                    <p style="color: #374151; font-size: 0.95rem;">
+                        <strong>Note:</strong> Voltage dividers work best when no current is drawn from the output.
+                        When a load is connected, the output voltage will decrease. For accurate results,
+                        the load resistance should be at least 10 times larger than R<sub>2</sub>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function calculate() {
+            const vin = parseFloat(document.getElementById('vin').value);
+            const r1 = parseFloat(document.getElementById('r1').value);
+            const r2 = parseFloat(document.getElementById('r2').value);
+
+            if (isNaN(vin) || isNaN(r1) || isNaN(r2)) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            if (r1 <= 0 || r2 <= 0) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            // Calculate output voltage
+            const vout = vin * (r2 / (r1 + r2));
+            const ratio = r2 / (r1 + r2);
+            const percentageOut = (vout / vin) * 100;
+            const voltageDrop = vin - vout;
+
+            // Calculate current through divider (assuming no load)
+            const current = vin / (r1 + r2);
+            const currentMA = current * 1000;
+
+            // Calculate power dissipation
+            const powerR1 = current * current * r1;
+            const powerR2 = current * current * r2;
+            const totalPower = powerR1 + powerR2;
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Voltage Divider Results</h3>
+                <div style="display: grid; gap: 15px; margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #ef4444;">
+                        <p style="color: #6b7280; margin-bottom: 5px;">Output Voltage (V<sub>out</sub>):</p>
+                        <p style="font-size: 2rem; font-weight: 700; color: #ef4444;">${roundTo(vout, 4)} V</p>
+                        <p style="color: #6b7280; font-size: 0.9rem; margin-top: 5px;">
+                            ${roundTo(percentageOut, 2)}% of input voltage
+                        </p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Voltage Drop (R<sub>1</sub>):</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">${roundTo(voltageDrop, 4)} V</p>
+                        </div>
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Division Ratio:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">${roundTo(ratio, 6)}</p>
+                        </div>
+                        <div>
+                            <p style="color: #6b7280; margin-bottom: 5px;">Current:</p>
+                            <p style="font-size: 1.2rem; font-weight: 700; color: #2563eb;">
+                                ${currentMA < 1 ? roundTo(currentMA * 1000, 2) + ' μA' : roundTo(currentMA, 2) + ' mA'}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="background: #f3f4f6; padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">Power Dissipation</h4>
+                        <p style="margin-bottom: 5px;">R<sub>1</sub> (${formatNumber(r1)} Ω): <strong>${roundTo(powerR1 * 1000, 2)} mW</strong></p>
+                        <p style="margin-bottom: 5px;">R<sub>2</sub> (${formatNumber(r2)} Ω): <strong>${roundTo(powerR2 * 1000, 2)} mW</strong></p>
+                        <p>Total Power: <strong style="color: #ef4444;">${roundTo(totalPower * 1000, 2)} mW</strong></p>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">Calculation</h4>
+                        <p style="color: #374151; font-size: 0.95rem;">
+                            V<sub>out</sub> = ${vin} × (${formatNumber(r2)} / (${formatNumber(r1)} + ${formatNumber(r2)}))<br>
+                            V<sub>out</sub> = ${vin} × ${roundTo(ratio, 6)}<br>
+                            V<sub>out</sub> = ${roundTo(vout, 4)} V
+                        </p>
+                    </div>
+                </div>
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

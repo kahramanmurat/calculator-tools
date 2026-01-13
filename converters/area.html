@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Converter - Calculator Tools</title>
+    <meta name="description" content="Free area converter. Convert between square meters, acres, hectares, square feet, and more. 10+ area units supported.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Area Converter</h1>
+            <p class="tagline">Convert between different units of area</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#converters">Converters</a> / Area Converter
+        </div>
+
+        <div class="calculator-container">
+            <h2>Area Unit Converter</h2>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="fromValue">Value:</label>
+                    <input type="number" id="fromValue" step="any" placeholder="Enter value" oninput="convertArea()">
+                </div>
+
+                <div class="form-group">
+                    <label for="fromUnit">From:</label>
+                    <select id="fromUnit" onchange="convertArea()">
+                        <option value="square-meter" selected>Square Meter (m²)</option>
+                        <option value="square-kilometer">Square Kilometer (km²)</option>
+                        <option value="square-centimeter">Square Centimeter (cm²)</option>
+                        <option value="square-millimeter">Square Millimeter (mm²)</option>
+                        <option value="square-mile">Square Mile (mi²)</option>
+                        <option value="square-yard">Square Yard (yd²)</option>
+                        <option value="square-foot">Square Foot (ft²)</option>
+                        <option value="square-inch">Square Inch (in²)</option>
+                        <option value="hectare">Hectare (ha)</option>
+                        <option value="acre">Acre (ac)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="toUnit">To:</label>
+                    <select id="toUnit" onchange="convertArea()">
+                        <option value="square-meter">Square Meter (m²)</option>
+                        <option value="square-kilometer">Square Kilometer (km²)</option>
+                        <option value="square-centimeter">Square Centimeter (cm²)</option>
+                        <option value="square-millimeter">Square Millimeter (mm²)</option>
+                        <option value="square-mile">Square Mile (mi²)</option>
+                        <option value="square-yard">Square Yard (yd²)</option>
+                        <option value="square-foot" selected>Square Foot (ft²)</option>
+                        <option value="square-inch">Square Inch (in²)</option>
+                        <option value="hectare">Hectare (ha)</option>
+                        <option value="acre">Acre (ac)</option>
+                    </select>
+                </div>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+
+                <div style="margin-top: 30px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                    <h3 style="color: #2563eb; margin-bottom: 15px;">Common Area Conversions</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0;">1 square kilometer = 100 hectares</li>
+                        <li style="padding: 8px 0;">1 hectare = 10,000 square meters</li>
+                        <li style="padding: 8px 0;">1 acre = 4,046.86 square meters</li>
+                        <li style="padding: 8px 0;">1 square mile = 2.59 square kilometers</li>
+                        <li style="padding: 8px 0;">1 square meter = 10.764 square feet</li>
+                        <li style="padding: 8px 0;">1 square foot = 144 square inches</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Conversion factors to square meters
+        const areaUnits = {
+            'square-meter': 1,
+            'square-kilometer': 1000000,
+            'square-centimeter': 0.0001,
+            'square-millimeter': 0.000001,
+            'square-mile': 2589988.11,
+            'square-yard': 0.836127,
+            'square-foot': 0.092903,
+            'square-inch': 0.00064516,
+            'hectare': 10000,
+            'acre': 4046.86
+        };
+
+        const unitNames = {
+            'square-meter': 'square meters',
+            'square-kilometer': 'square kilometers',
+            'square-centimeter': 'square centimeters',
+            'square-millimeter': 'square millimeters',
+            'square-mile': 'square miles',
+            'square-yard': 'square yards',
+            'square-foot': 'square feet',
+            'square-inch': 'square inches',
+            'hectare': 'hectares',
+            'acre': 'acres'
+        };
+
+        function convertArea() {
+            const value = parseFloat(document.getElementById('fromValue').value);
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+
+            if (isNaN(value)) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            // Convert to square meters first, then to target unit
+            const valueInSquareMeters = value * areaUnits[fromUnit];
+            const result = valueInSquareMeters / areaUnits[toUnit];
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Conversion Result</h3>
+                <div class="result-value">${formatNumber(roundTo(result, 6))} ${unitNames[toUnit]}</div>
+                <p style="margin-top: 10px; color: #6b7280;">
+                    ${formatNumber(value)} ${unitNames[fromUnit]} = ${formatNumber(roundTo(result, 6))} ${unitNames[toUnit]}
+                </p>
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

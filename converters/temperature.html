@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter - Celsius, Fahrenheit, Kelvin</title>
+    <meta name="description" content="Free temperature converter. Convert between Celsius, Fahrenheit, and Kelvin instantly. Includes common temperature reference points.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Temperature Converter</h1>
+            <p class="tagline">Convert between Celsius, Fahrenheit, and Kelvin</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#converters">Converters</a> / Temperature Converter
+        </div>
+
+        <div class="calculator-container">
+            <h2>Temperature Unit Converter</h2>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="fromValue">Value:</label>
+                    <input type="number" id="fromValue" step="any" placeholder="Enter temperature" oninput="convertTemperature()">
+                </div>
+
+                <div class="form-group">
+                    <label for="fromUnit">From:</label>
+                    <select id="fromUnit" onchange="convertTemperature()">
+                        <option value="celsius">Celsius (°C)</option>
+                        <option value="fahrenheit">Fahrenheit (°F)</option>
+                        <option value="kelvin">Kelvin (K)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="toUnit">To:</label>
+                    <select id="toUnit" onchange="convertTemperature()">
+                        <option value="celsius">Celsius (°C)</option>
+                        <option value="fahrenheit" selected>Fahrenheit (°F)</option>
+                        <option value="kelvin">Kelvin (K)</option>
+                    </select>
+                </div>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+
+                <div style="margin-top: 30px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                    <h3 style="color: #2563eb; margin-bottom: 15px;">Temperature Reference</h3>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Absolute Zero</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">-273.15°C, -459.67°F, 0K</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Water Freezing Point</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">0°C, 32°F, 273.15K</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Room Temperature</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">20°C, 68°F, 293.15K</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Body Temperature</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">37°C, 98.6°F, 310.15K</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Water Boiling Point</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">100°C, 212°F, 373.15K</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function celsiusToFahrenheit(c) {
+            return (c * 9/5) + 32;
+        }
+
+        function celsiusToKelvin(c) {
+            return c + 273.15;
+        }
+
+        function fahrenheitToCelsius(f) {
+            return (f - 32) * 5/9;
+        }
+
+        function fahrenheitToKelvin(f) {
+            return celsiusToKelvin(fahrenheitToCelsius(f));
+        }
+
+        function kelvinToCelsius(k) {
+            return k - 273.15;
+        }
+
+        function kelvinToFahrenheit(k) {
+            return celsiusToFahrenheit(kelvinToCelsius(k));
+        }
+
+        function convertTemperature() {
+            const value = parseFloat(document.getElementById('fromValue').value);
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+
+            if (isNaN(value)) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            let result;
+
+            if (fromUnit === toUnit) {
+                result = value;
+            } else if (fromUnit === 'celsius') {
+                if (toUnit === 'fahrenheit') {
+                    result = celsiusToFahrenheit(value);
+                } else {
+                    result = celsiusToKelvin(value);
+                }
+            } else if (fromUnit === 'fahrenheit') {
+                if (toUnit === 'celsius') {
+                    result = fahrenheitToCelsius(value);
+                } else {
+                    result = fahrenheitToKelvin(value);
+                }
+            } else if (fromUnit === 'kelvin') {
+                if (toUnit === 'celsius') {
+                    result = kelvinToCelsius(value);
+                } else {
+                    result = kelvinToFahrenheit(value);
+                }
+            }
+
+            const unitSymbols = {
+                'celsius': '°C',
+                'fahrenheit': '°F',
+                'kelvin': 'K'
+            };
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Conversion Result</h3>
+                <div class="result-value">${roundTo(result, 2)} ${unitSymbols[toUnit]}</div>
+                <p style="margin-top: 10px; color: #6b7280;">
+                    ${value} ${unitSymbols[fromUnit]} = ${roundTo(result, 2)} ${unitSymbols[toUnit]}
+                </p>
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

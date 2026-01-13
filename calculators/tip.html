@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator - Calculate Tips and Split Bills</title>
+    <meta name="description" content="Free tip calculator. Calculate tips and split bills easily. Includes quick tip buttons (10%, 15%, 18%, 20%, 25%) and per-person breakdown.">
+    <link rel="stylesheet" href="../styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Tip Calculator</h1>
+            <p class="tagline">Calculate tips and split bills easily</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <a href="../index.html#calculators">Calculators</a> / Tip Calculator
+        </div>
+
+        <div class="calculator-container">
+            <h2>Tip Calculator</h2>
+
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="billAmount">Bill Amount ($):</label>
+                    <input type="number" id="billAmount" step="0.01" placeholder="e.g., 50.00" oninput="calculateTip()">
+                </div>
+
+                <div class="form-group">
+                    <label for="tipPercent">Tip Percentage (%):</label>
+                    <input type="number" id="tipPercent" value="15" step="1" min="0" max="100" oninput="calculateTip()">
+                    <div style="display: flex; gap: 10px; margin-top: 10px;">
+                        <button class="btn" style="padding: 8px 15px; font-size: 0.9rem;" onclick="setTip(10)">10%</button>
+                        <button class="btn" style="padding: 8px 15px; font-size: 0.9rem;" onclick="setTip(15)">15%</button>
+                        <button class="btn" style="padding: 8px 15px; font-size: 0.9rem;" onclick="setTip(18)">18%</button>
+                        <button class="btn" style="padding: 8px 15px; font-size: 0.9rem;" onclick="setTip(20)">20%</button>
+                        <button class="btn" style="padding: 8px 15px; font-size: 0.9rem;" onclick="setTip(25)">25%</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="numPeople">Number of People:</label>
+                    <input type="number" id="numPeople" value="1" step="1" min="1" oninput="calculateTip()">
+                </div>
+
+                <div id="result" class="result-box" style="display: none;"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function setTip(percentage) {
+            document.getElementById('tipPercent').value = percentage;
+            calculateTip();
+        }
+
+        function calculateTip() {
+            const billAmount = parseFloat(document.getElementById('billAmount').value);
+            const tipPercent = parseFloat(document.getElementById('tipPercent').value);
+            const numPeople = parseInt(document.getElementById('numPeople').value);
+
+            if (isNaN(billAmount) || billAmount <= 0) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            if (isNaN(tipPercent) || tipPercent < 0) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            if (isNaN(numPeople) || numPeople < 1) {
+                document.getElementById('result').style.display = 'none';
+                return;
+            }
+
+            const tipAmount = (billAmount * tipPercent) / 100;
+            const totalAmount = billAmount + tipAmount;
+            const perPersonBill = billAmount / numPeople;
+            const perPersonTip = tipAmount / numPeople;
+            const perPersonTotal = totalAmount / numPeople;
+
+            const resultBox = document.getElementById('result');
+            resultBox.innerHTML = `
+                <h3>Calculation Results</h3>
+                <div style="display: grid; gap: 15px; margin-top: 15px;">
+                    <div>
+                        <p style="color: #6b7280; margin-bottom: 5px;">Tip Amount:</p>
+                        <p style="font-size: 1.3rem; font-weight: 700; color: #2563eb;">$${roundTo(tipAmount, 2).toFixed(2)}</p>
+                    </div>
+                    <div>
+                        <p style="color: #6b7280; margin-bottom: 5px;">Total Amount:</p>
+                        <p style="font-size: 1.3rem; font-weight: 700; color: #10b981;">$${roundTo(totalAmount, 2).toFixed(2)}</p>
+                    </div>
+                    ${numPeople > 1 ? `
+                    <hr style="border: 1px solid #e5e7eb;">
+                    <div>
+                        <p style="color: #6b7280; margin-bottom: 5px;">Per Person (${numPeople} people):</p>
+                        <p style="font-size: 1rem; color: #374151;">
+                            Bill: $${roundTo(perPersonBill, 2).toFixed(2)} +
+                            Tip: $${roundTo(perPersonTip, 2).toFixed(2)} =
+                            <strong style="color: #10b981;">$${roundTo(perPersonTotal, 2).toFixed(2)}</strong>
+                        </p>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

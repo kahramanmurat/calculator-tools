@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Notepad | Calculator Tools</title>
+    <meta name="description" content="Free online notepad with auto-save, word count, and text formatting. Save your notes in your browser.">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .notepad-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .notepad-toolbar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 15px;
+            background: #f3f4f6;
+            border-radius: 10px 10px 0 0;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .notepad-toolbar button {
+            padding: 8px 15px;
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .notepad-toolbar button:hover {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .notepad-textarea {
+            width: 100%;
+            min-height: 500px;
+            padding: 20px;
+            font-size: 16px;
+            font-family: 'Courier New', monospace;
+            border: 2px solid #e5e7eb;
+            border-radius: 0 0 10px 10px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .notepad-textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .notepad-stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: #2563eb;
+        }
+
+        .save-indicator {
+            padding: 5px 10px;
+            background: #10b981;
+            color: white;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .save-indicator.show {
+            opacity: 1;
+        }
+
+        .font-size-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .font-size-control input {
+            width: 80px;
+        }
+    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
+     crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5V7FN0QRJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C5V7FN0QRJ');
+</script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📝 Online Notepad</h1>
+            <p class="tagline">Simple, fast notepad with auto-save</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../calculators.html">Calculators</a></li>
+                <li><a href="../converters.html">Converters</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="notepad-container">
+            <div class="notepad-toolbar">
+                <button onclick="clearNotepad()" title="Clear all text">🗑️ Clear</button>
+                <button onclick="copyText()" title="Copy to clipboard">📋 Copy</button>
+                <button onclick="downloadText()" title="Download as text file">💾 Download</button>
+                <button onclick="printText()" title="Print notepad">🖨️ Print</button>
+                <button onclick="toggleDarkMode()" title="Toggle dark mode">🌙 Dark Mode</button>
+                <div class="font-size-control">
+                    <label>Font Size:</label>
+                    <input type="range" id="fontSize" min="12" max="24" value="16" oninput="changeFontSize(this.value)">
+                    <span id="fontSizeValue">16px</span>
+                </div>
+                <span class="save-indicator" id="saveIndicator">✓ Saved</span>
+            </div>
+
+            <textarea
+                class="notepad-textarea"
+                id="notepad"
+                placeholder="Start typing... Your notes are automatically saved in your browser."
+                oninput="autoSave()"
+            ></textarea>
+
+            <div class="notepad-stats">
+                <div class="stat-item">
+                    <span>Characters:</span>
+                    <span class="stat-value" id="charCount">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Words:</span>
+                    <span class="stat-value" id="wordCount">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Lines:</span>
+                    <span class="stat-value" id="lineCount">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Last saved:</span>
+                    <span class="stat-value" id="lastSaved">Never</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box" style="margin-top: 30px;">
+            <h3>Features</h3>
+            <ul style="line-height: 1.8;">
+                <li><strong>Auto-Save:</strong> Your notes are automatically saved in your browser's local storage</li>
+                <li><strong>Privacy:</strong> All data stays on your device - nothing is sent to any server</li>
+                <li><strong>Word Count:</strong> Real-time character, word, and line counting</li>
+                <li><strong>Download:</strong> Save your notes as a .txt file</li>
+                <li><strong>Copy:</strong> Quick copy to clipboard</li>
+                <li><strong>Print:</strong> Print your notes directly from browser</li>
+                <li><strong>Dark Mode:</strong> Easy on the eyes for long writing sessions</li>
+                <li><strong>Adjustable Font:</strong> Change font size for comfortable reading</li>
+            </ul>
+        </div>
+
+        <div class="info-box" style="margin-top: 20px;">
+            <h3>Keyboard Shortcuts</h3>
+            <ul style="line-height: 1.8;">
+                <li><strong>Ctrl/Cmd + S:</strong> Force save (auto-saves anyway)</li>
+                <li><strong>Ctrl/Cmd + P:</strong> Print</li>
+                <li><strong>Ctrl/Cmd + A:</strong> Select all</li>
+                <li><strong>Ctrl/Cmd + Z:</strong> Undo</li>
+                <li><strong>Ctrl/Cmd + Y:</strong> Redo</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+            <p>Free online calculators and conversion tools for everyone.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        const notepad = document.getElementById('notepad');
+        const charCount = document.getElementById('charCount');
+        const wordCount = document.getElementById('wordCount');
+        const lineCount = document.getElementById('lineCount');
+        const lastSaved = document.getElementById('lastSaved');
+        const saveIndicator = document.getElementById('saveIndicator');
+
+        // Load saved content on page load
+        window.addEventListener('load', function() {
+            const savedContent = localStorage.getItem('notepadContent');
+            const savedFontSize = localStorage.getItem('notepadFontSize');
+            const savedDarkMode = localStorage.getItem('notepadDarkMode');
+
+            if (savedContent) {
+                notepad.value = savedContent;
+                updateStats();
+            }
+
+            if (savedFontSize) {
+                document.getElementById('fontSize').value = savedFontSize;
+                changeFontSize(savedFontSize);
+            }
+
+            if (savedDarkMode === 'true') {
+                toggleDarkMode();
+            }
+
+            const savedTime = localStorage.getItem('notepadLastSaved');
+            if (savedTime) {
+                lastSaved.textContent = new Date(parseInt(savedTime)).toLocaleString();
+            }
+        });
+
+        // Auto-save function
+        function autoSave() {
+            localStorage.setItem('notepadContent', notepad.value);
+            localStorage.setItem('notepadLastSaved', Date.now().toString());
+            lastSaved.textContent = new Date().toLocaleString();
+            updateStats();
+
+            // Show save indicator
+            saveIndicator.classList.add('show');
+            setTimeout(() => {
+                saveIndicator.classList.remove('show');
+            }, 1000);
+        }
+
+        // Update statistics
+        function updateStats() {
+            const text = notepad.value;
+
+            // Character count
+            charCount.textContent = text.length;
+
+            // Word count
+            const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+            wordCount.textContent = words.length;
+
+            // Line count
+            const lines = text.split('\n').length;
+            lineCount.textContent = lines;
+        }
+
+        // Clear notepad
+        function clearNotepad() {
+            if (confirm('Are you sure you want to clear all text? This cannot be undone.')) {
+                notepad.value = '';
+                localStorage.removeItem('notepadContent');
+                updateStats();
+                lastSaved.textContent = 'Never';
+            }
+        }
+
+        // Copy to clipboard
+        function copyText() {
+            notepad.select();
+            document.execCommand('copy');
+            alert('Text copied to clipboard!');
+        }
+
+        // Download as text file
+        function downloadText() {
+            const text = notepad.value;
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'notepad_' + new Date().toISOString().slice(0,10) + '.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Print text
+        function printText() {
+            window.print();
+        }
+
+        // Change font size
+        function changeFontSize(size) {
+            notepad.style.fontSize = size + 'px';
+            document.getElementById('fontSizeValue').textContent = size + 'px';
+            localStorage.setItem('notepadFontSize', size);
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            const isDark = notepad.classList.contains('dark-mode');
+
+            if (isDark) {
+                notepad.classList.remove('dark-mode');
+                notepad.style.background = 'white';
+                notepad.style.color = '#1f2937';
+                localStorage.setItem('notepadDarkMode', 'false');
+            } else {
+                notepad.classList.add('dark-mode');
+                notepad.style.background = '#1f2937';
+                notepad.style.color = '#f3f4f6';
+                localStorage.setItem('notepadDarkMode', 'true');
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + S to save
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                autoSave();
+            }
+        });
+
+        // Print styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @media print {
+                header, nav, footer, .notepad-toolbar, .notepad-stats, .info-box {
+                    display: none !important;
+                }
+                .notepad-textarea {
+                    border: none;
+                    min-height: auto;
+                    font-family: 'Times New Roman', serif;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

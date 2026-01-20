@@ -3,7 +3,7 @@
   <!-- Main Pages -->
   <url>
     <loc>https://www.bestcalculators.online/</loc>
-    <lastmod>2026-01-13</lastmod>
+    <lastmod>2026-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -29,6 +29,34 @@
     <priority>0.9</priority>
   </url>
 
+  <url>
+    <loc>https://www.bestcalculators.online/about.html</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bestcalculators.online/contact.html</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bestcalculators.online/privacy-policy.html</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.bestcalculators.online/terms-of-service.html</loc>
+    <lastmod>2026-01-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- Math Calculators -->
   <url>
     <loc>https://www.bestcalculators.online/calculators/scientific.html</loc>
@@ -39,7 +67,7 @@
 
   <url>
     <loc>https://www.bestcalculators.online/calculators/percentage.html</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -90,7 +118,7 @@
   <!-- Health & Fitness Calculators -->
   <url>
     <loc>https://www.bestcalculators.online/calculators/bmi.html</loc>
-    <lastmod>2026-01-12</lastmod>
+    <lastmod>2026-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

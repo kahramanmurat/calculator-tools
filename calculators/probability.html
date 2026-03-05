@@ -32,6 +32,9 @@
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../calculators.html">Calculators</a></li>
                 <li><a href="../converters.html">Converters</a></li>
+                <li><a href="../tools.html">Tools</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -107,6 +110,169 @@
                 </ul>
             </div>
         </div>
+
+        <div class="calculator-container" style="margin-top: 30px;">
+            <h2 style="color: #2563eb; margin-bottom: 20px;">Understanding Probability</h2>
+            <div style="line-height: 1.8; color: #374151;">
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">What is Probability?</h3>
+                <p style="line-height: 1.8; color: #374151;">Probability is the branch of mathematics that deals with measuring the likelihood of events occurring. It provides a numerical value between <strong>0 and 1</strong> (or equivalently, 0% to 100%) that describes how likely an event is to happen. A probability of 0 means the event is impossible, while a probability of 1 means it is certain.</p>
+                <p style="line-height: 1.8; color: #374151; margin-top: 10px;">Key terminology includes the <strong>sample space</strong> (the set of all possible outcomes), an <strong>event</strong> (a specific outcome or set of outcomes you are interested in), and a <strong>trial</strong> (a single performance of an experiment). For example, when rolling a six-sided die, the sample space is {1, 2, 3, 4, 5, 6}, and the event "rolling a 3" has a probability of 1/6.</p>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Types of Probability</h3>
+                <ul style="list-style: disc; padding-left: 20px; margin: 15px 0; color: #374151;">
+                    <li style="margin-bottom: 12px;"><strong>Theoretical (Classical) Probability:</strong> Based on reasoning and known possible outcomes. Assumes all outcomes are equally likely. <em>Example:</em> The probability of drawing an ace from a standard deck is 4/52 = 1/13 because there are 4 aces among 52 cards.</li>
+                    <li style="margin-bottom: 12px;"><strong>Experimental (Empirical) Probability:</strong> Based on actual observations or experiments. Calculated by dividing the number of times an event occurs by the total number of trials. <em>Example:</em> If you flip a coin 1,000 times and get heads 513 times, the experimental probability of heads is 513/1000 = 0.513.</li>
+                    <li style="margin-bottom: 12px;"><strong>Subjective Probability:</strong> Based on personal judgment, experience, or intuition rather than mathematical calculation. <em>Example:</em> A doctor estimating a 70% chance of recovery based on clinical experience. Commonly used in business forecasting and risk assessment.</li>
+                </ul>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Probability Rules</h3>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Addition Rule (OR)</h4>
+                    <p style="color: #4b5563; line-height: 1.6; margin-bottom: 10px;">Used when calculating the probability of <strong>either</strong> event A <strong>or</strong> event B occurring.</p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-bottom: 10px;"><strong>Mutually exclusive events:</strong> P(A or B) = P(A) + P(B)</p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-bottom: 10px;"><strong>Non-mutually exclusive events:</strong> P(A or B) = P(A) + P(B) - P(A and B)</p>
+                    <p style="color: #4b5563; line-height: 1.6;"><strong>Example:</strong> Probability of drawing a King or a Queen from a deck = 4/52 + 4/52 = 8/52 = 2/13 (mutually exclusive, since no card is both a King and a Queen).</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #10b981; border-radius: 4px;">
+                    <h4 style="color: #10b981; margin-bottom: 10px;">Multiplication Rule (AND)</h4>
+                    <p style="color: #4b5563; line-height: 1.6; margin-bottom: 10px;">Used when calculating the probability of <strong>both</strong> event A <strong>and</strong> event B occurring.</p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-bottom: 10px;"><strong>Independent events:</strong> P(A and B) = P(A) x P(B)</p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-bottom: 10px;"><strong>Dependent events:</strong> P(A and B) = P(A) x P(B|A)</p>
+                    <p style="color: #4b5563; line-height: 1.6;"><strong>Example:</strong> Probability of flipping heads twice in a row = 1/2 x 1/2 = 1/4 (independent events).</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #f59e0b; border-radius: 4px;">
+                    <h4 style="color: #f59e0b; margin-bottom: 10px;">Complement Rule (NOT)</h4>
+                    <p style="color: #4b5563; line-height: 1.6; margin-bottom: 10px;">The probability that an event does <strong>not</strong> occur equals 1 minus the probability that it does occur.</p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-bottom: 10px;"><strong>Formula:</strong> P(not A) = 1 - P(A)</p>
+                    <p style="color: #4b5563; line-height: 1.6;"><strong>Example:</strong> If the probability of rain is 0.3, then the probability of no rain is 1 - 0.3 = 0.7 (70%).</p>
+                </div>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Combinations vs Permutations</h3>
+                <p style="line-height: 1.8; color: #374151;">The key difference between combinations and permutations is whether <strong>order matters</strong>:</p>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <thead style="background: #2563eb; color: white;">
+                        <tr>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Feature</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Combinations C(n,r)</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Permutations P(n,r)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #dbeafe;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Order</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Does NOT matter</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">DOES matter</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Formula</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">n! / (r! x (n-r)!)</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">n! / (n-r)!</td>
+                        </tr>
+                        <tr style="background: #dbeafe;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Example</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Choosing 3 cards from a deck (hand of cards)</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Arranging 3 runners in 1st, 2nd, 3rd place</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>C(5,3) vs P(5,3)</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">10 combinations</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">60 permutations</td>
+                        </tr>
+                        <tr style="background: #dbeafe;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Real-world use</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Lottery numbers, committee selection, poker hands</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">PIN codes, race results, seating arrangements</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="line-height: 1.8; color: #374151; margin-top: 10px;"><strong>Lottery example:</strong> In a 6/49 lottery, you choose 6 numbers from 49 and order does not matter. The number of combinations is C(49,6) = 13,983,816. Your chance of winning the jackpot with a single ticket is 1 in 13,983,816 (approximately 0.0000072%).</p>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Common Probability Examples</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <thead style="background: #2563eb; color: white;">
+                        <tr>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Event</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Probability</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Odds (1 in X)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #dbeafe;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Coin flip (heads)</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">50%</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1 in 2</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Rolling a specific number on a die</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">16.67%</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1 in 6</td>
+                        </tr>
+                        <tr style="background: #dbeafe;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Drawing an Ace from a deck</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">7.69%</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1 in 13</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Drawing a Heart from a deck</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">25%</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1 in 4</td>
+                        </tr>
+                        <tr style="background: #dbeafe;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Rolling doubles with two dice</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">16.67%</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1 in 6</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Royal Flush in poker (5 cards)</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">0.000154%</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1 in 649,740</td>
+                        </tr>
+                        <tr style="background: #dbeafe;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Lottery jackpot (6/49)</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">0.0000072%</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1 in 13,983,816</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Probability in Real Life</h3>
+                <p style="line-height: 1.8; color: #374151;">Probability is used extensively across many fields:</p>
+                <ul style="list-style: disc; padding-left: 20px; margin: 15px 0; color: #374151;">
+                    <li style="margin-bottom: 12px;"><strong>Weather Forecasting:</strong> When a forecast says "40% chance of rain," it means that in similar atmospheric conditions, rain occurred 40% of the time. This is based on historical data and computational models analyzing temperature, humidity, and pressure patterns.</li>
+                    <li style="margin-bottom: 12px;"><strong>Insurance:</strong> Insurance companies use actuarial tables built on probability to calculate premiums. They assess the likelihood of events such as car accidents, house fires, or health issues based on demographic data, setting premiums that cover expected payouts while remaining profitable.</li>
+                    <li style="margin-bottom: 12px;"><strong>Medical Testing:</strong> Probability helps evaluate diagnostic tests through concepts like sensitivity (probability of a positive test when disease is present) and specificity (probability of a negative test when disease is absent). Understanding false positive and false negative rates is critical for proper medical decision-making.</li>
+                    <li style="margin-bottom: 12px;"><strong>Gambling and Games:</strong> Every casino game is designed around probability. The "house edge" represents the mathematical advantage the casino has. For example, in European roulette, the house edge is 2.7% because there are 37 slots but payouts are calculated as if there were 36.</li>
+                </ul>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Frequently Asked Questions</h3>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: What is the difference between odds and probability?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: Probability expresses the likelihood of an event as a fraction of all possible outcomes (e.g., 1/6 for rolling a 3 on a die). Odds compare the number of favorable outcomes to unfavorable outcomes (e.g., 1:5 for rolling a 3, meaning 1 way to succeed vs 5 ways to fail). To convert: if odds are a:b, then probability = a/(a+b).</p>
+                </div>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: What is the Gambler's Fallacy?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: The Gambler's Fallacy is the mistaken belief that past random events affect future ones. For example, if a fair coin lands heads 10 times in a row, many people believe tails is "due." In reality, each flip is independent and the probability of heads remains exactly 50% regardless of previous results. The coin has no memory.</p>
+                </div>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: Can probability be greater than 1 or less than 0?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: No. By definition, probability must always be between 0 and 1 (inclusive). A probability of 0 means the event is impossible, and a probability of 1 means it is certain. If your calculation yields a value outside this range, there is an error in the setup. The sum of probabilities of all possible outcomes in a sample space must always equal exactly 1.</p>
+                </div>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: When should I use combinations vs permutations?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: Ask yourself: "Does the order of selection matter?" If you are forming a committee of 3 people from 10 candidates, use combinations -- the group {Alice, Bob, Carol} is the same regardless of selection order. If you are assigning President, Vice President, and Secretary from 10 candidates, use permutations -- Alice as President and Bob as VP is different from Bob as President and Alice as VP.</p>
+                </div>
+            </div>
+        </div>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
      crossorigin="anonymous"></script>
@@ -125,7 +291,13 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+            <p>&copy; 2025 Calculator Tools. All rights reserved.</p>
+            <p>
+                <a href="../about.html" style="color: white; margin: 0 10px;">About Us</a> |
+                <a href="../contact.html" style="color: white; margin: 0 10px;">Contact</a> |
+                <a href="../privacy-policy.html" style="color: white; margin: 0 10px;">Privacy Policy</a> |
+                <a href="../terms-of-service.html" style="color: white; margin: 0 10px;">Terms of Service</a>
+            </p>
         </div>
     </footer>
 

@@ -32,6 +32,9 @@
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../calculators.html">Calculators</a></li>
                 <li><a href="../converters.html">Converters</a></li>
+                <li><a href="../tools.html">Tools</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -65,6 +68,148 @@
                     <li style="margin-bottom: 8px;"><strong>Range:</strong> The difference between max and min values</li>
                 </ul>
             </div>
+
+            <div style="margin-top: 40px; padding: 30px; background: #f0f9ff; border-radius: 12px; border: 1px solid #bae6fd;">
+                <h2 style="color: #1e40af; margin-bottom: 20px; font-size: 1.6rem;">Understanding Averages and Central Tendency</h2>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 15px;">In statistics, <strong>central tendency</strong> refers to the way we describe the center or typical value of a dataset. Averages are the most common measures of central tendency, and they help us summarize large amounts of data into a single representative number. Whether you are analyzing test scores, financial data, scientific measurements, or survey responses, understanding averages is fundamental to making sense of numerical information.</p>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 15px;">Central tendency matters because raw data alone can be overwhelming. Imagine looking at the individual test scores of 500 students. A single average value instantly tells you how the group performed overall. However, different types of averages reveal different aspects of the data, which is why statisticians rely on multiple measures rather than just one.</p>
+                <p style="line-height: 1.8; color: #374151;">The three primary measures of central tendency are the <strong>mean</strong>, <strong>median</strong>, and <strong>mode</strong>. Each has specific strengths and is suited to different types of data and analysis scenarios. Choosing the right measure can mean the difference between an accurate summary and a misleading one.</p>
+
+                <h3 style="color: #1e40af; margin-top: 30px; margin-bottom: 15px;">Types of Averages Explained</h3>
+
+                <h4 style="color: #2563eb; margin-top: 20px; margin-bottom: 10px;">Arithmetic Mean</h4>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 10px;">The arithmetic mean is what most people think of when they hear the word "average." It is calculated by adding all values together and dividing by the total number of values.</p>
+                <div style="background: white; padding: 15px; border-radius: 4px; border-left: 4px solid #2563eb; margin: 15px 0;">
+                    <p style="color: #1e40af; font-weight: 600; margin-bottom: 8px;">Formula:</p>
+                    <p style="color: #374151; font-family: monospace; font-size: 1.1rem;">Mean = (x1 + x2 + x3 + ... + xn) / n</p>
+                </div>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 10px;"><strong>Step-by-step example:</strong> Find the mean of 12, 15, 18, 22, and 33.</p>
+                <ul style="line-height: 2; color: #374151; padding-left: 20px; margin-bottom: 15px;">
+                    <li>Step 1: Add all values: 12 + 15 + 18 + 22 + 33 = 100</li>
+                    <li>Step 2: Count the values: n = 5</li>
+                    <li>Step 3: Divide the sum by the count: 100 / 5 = <strong>20</strong></li>
+                </ul>
+                <p style="line-height: 1.8; color: #374151;">The arithmetic mean works best when data is evenly distributed without extreme outliers. It uses every data point in its calculation, which makes it sensitive to unusually high or low values.</p>
+
+                <h4 style="color: #2563eb; margin-top: 20px; margin-bottom: 10px;">Weighted Mean</h4>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 10px;">A weighted mean assigns different levels of importance (weights) to different values. This is used when some data points should count more than others in the final result.</p>
+                <div style="background: white; padding: 15px; border-radius: 4px; border-left: 4px solid #2563eb; margin: 15px 0;">
+                    <p style="color: #1e40af; font-weight: 600; margin-bottom: 8px;">Formula:</p>
+                    <p style="color: #374151; font-family: monospace; font-size: 1.1rem;">Weighted Mean = (w1*x1 + w2*x2 + ... + wn*xn) / (w1 + w2 + ... + wn)</p>
+                </div>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 10px;"><strong>GPA Example:</strong> Suppose a student earns the following grades:</p>
+                <ul style="line-height: 2; color: #374151; padding-left: 20px; margin-bottom: 10px;">
+                    <li>Math (4 credits): Grade A = 4.0</li>
+                    <li>English (3 credits): Grade B = 3.0</li>
+                    <li>Art (2 credits): Grade A = 4.0</li>
+                </ul>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 10px;">Weighted GPA = (4*4.0 + 3*3.0 + 2*4.0) / (4 + 3 + 2) = (16 + 9 + 8) / 9 = 33 / 9 = <strong>3.67</strong></p>
+                <p style="line-height: 1.8; color: #374151;">A simple (unweighted) mean of the grades would be (4.0 + 3.0 + 4.0) / 3 = 3.67, but this coincidence only occurs because of these specific numbers. In most cases, weighted and unweighted means differ, and the weighted mean provides a more accurate picture when values carry different importance.</p>
+
+                <h4 style="color: #2563eb; margin-top: 20px; margin-bottom: 10px;">Median</h4>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 10px;">The median is the middle value in a dataset when the numbers are arranged in order. If there is an even number of values, the median is the average of the two middle values. The median is often a better measure of central tendency than the mean when the data contains outliers.</p>
+                <div style="background: #fef3c7; padding: 20px; border-radius: 4px; border-left: 4px solid #f59e0b; margin: 15px 0;">
+                    <p style="color: #78350f; font-weight: 600; margin-bottom: 10px;">Why Median Is Often Better Than Mean: A Salary Example</p>
+                    <p style="color: #78350f; line-height: 1.8; margin-bottom: 10px;">Consider the annual salaries at a small company with 7 employees:</p>
+                    <p style="color: #78350f; line-height: 1.8; margin-bottom: 10px;">$35,000 &middot; $38,000 &middot; $40,000 &middot; $42,000 &middot; $45,000 &middot; $48,000 &middot; $500,000 (CEO)</p>
+                    <p style="color: #78350f; line-height: 1.8; margin-bottom: 5px;"><strong>Mean salary:</strong> $106,857 &mdash; This is misleading because no regular employee earns anywhere near this amount.</p>
+                    <p style="color: #78350f; line-height: 1.8;"><strong>Median salary:</strong> $42,000 &mdash; This accurately represents what a typical employee earns. The CEO's salary is an outlier that dramatically pulls the mean upward but does not affect the median.</p>
+                </div>
+
+                <h4 style="color: #2563eb; margin-top: 20px; margin-bottom: 10px;">Mode</h4>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 10px;">The mode is the value that appears most frequently in a dataset. A dataset can have one mode (unimodal), two modes (bimodal), multiple modes (multimodal), or no mode at all if every value occurs the same number of times.</p>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 10px;">The mode is especially useful for <strong>categorical data</strong>, where mean and median cannot be calculated. For example, if you survey 100 people about their favorite color and get: Blue (35), Red (28), Green (22), Yellow (15), the mode is "Blue" because it appears most frequently. You cannot calculate a mean or median of colors, but the mode gives you the most popular choice.</p>
+                <p style="line-height: 1.8; color: #374151;">For numerical data, the mode helps identify the most common value. In manufacturing, if a machine produces bolts and the most common diameter measurement is 10.0 mm, that is the mode. It tells you what the machine produces most often, which is useful for quality control.</p>
+
+                <h3 style="color: #1e40af; margin-top: 30px; margin-bottom: 15px;">When to Use Mean vs Median vs Mode</h3>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 15px;">Choosing the right measure of central tendency depends on the nature of your data and what you want to communicate. The table below provides a quick comparison.</p>
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <thead>
+                        <tr style="background: #1e40af; color: white;">
+                            <th style="padding: 12px; border: 1px solid #e5e7eb; text-align: left;">Measure</th>
+                            <th style="padding: 12px; border: 1px solid #e5e7eb; text-align: left;">Best Used When</th>
+                            <th style="padding: 12px; border: 1px solid #e5e7eb; text-align: left;">Avoid When</th>
+                            <th style="padding: 12px; border: 1px solid #e5e7eb; text-align: left;">Example Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #dbeafe;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Mean</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Data is symmetrically distributed with no extreme outliers</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Data is heavily skewed or contains outliers</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Average test score for a class</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Median</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Data is skewed or has outliers; ordinal data</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Data is categorical or you need to use every value</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Median household income in a city</td>
+                        </tr>
+                        <tr style="background: #dbeafe;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Mode</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Data is categorical; finding most common value</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">All values are unique; continuous data with no repeats</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Most popular shoe size sold in a store</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="color: #1e40af; margin-top: 30px; margin-bottom: 15px;">Step-by-Step Calculation Example</h3>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 15px;">Let us calculate all measures of central tendency for the following dataset:</p>
+                <div style="background: white; padding: 15px; border-radius: 4px; border-left: 4px solid #2563eb; margin: 15px 0;">
+                    <p style="color: #1e40af; font-weight: 600; margin-bottom: 8px;">Dataset:</p>
+                    <p style="color: #374151; font-family: monospace; font-size: 1.1rem;">5, 8, 12, 8, 15, 20, 8, 3, 12</p>
+                </div>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 10px;"><strong>1. Sorting the data:</strong> 3, 5, 8, 8, 8, 12, 12, 15, 20</p>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 10px;"><strong>2. Mean:</strong> (3 + 5 + 8 + 8 + 8 + 12 + 12 + 15 + 20) / 9 = 91 / 9 = <strong>10.11</strong></p>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 10px;"><strong>3. Median:</strong> With 9 values, the middle value is the 5th number. Counting through the sorted list: 3, 5, 8, 8, <strong>8</strong>, 12, 12, 15, 20. The median is <strong>8</strong>.</p>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 10px;"><strong>4. Mode:</strong> The number 8 appears 3 times, more than any other value. The mode is <strong>8</strong>.</p>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 10px;"><strong>5. Range:</strong> Maximum - Minimum = 20 - 3 = <strong>17</strong></p>
+                <p style="line-height: 1.8; color: #374151;"><strong>6. Sum:</strong> 3 + 5 + 8 + 8 + 8 + 12 + 12 + 15 + 20 = <strong>91</strong></p>
+                <p style="line-height: 1.8; color: #374151; margin-top: 10px;">Notice that the mean (10.11) is higher than both the median and mode (both 8). This is because the value 20 pulls the mean upward. In this case, the median or mode may better represent the "typical" value in the dataset.</p>
+
+                <h3 style="color: #1e40af; margin-top: 30px; margin-bottom: 15px;">Real-World Applications</h3>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 15px;">Averages and measures of central tendency are used across virtually every field. Here are some of the most common applications:</p>
+
+                <h4 style="color: #2563eb; margin-top: 15px; margin-bottom: 10px;">Education and Grades</h4>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 15px;">Teachers use the mean to calculate overall class performance and individual student averages. Grade point averages (GPAs) use a weighted mean where courses with more credit hours have a greater impact. Standardized test reporting often uses both the mean score and the median score to provide a complete picture, since a few very high or very low scores can skew the mean.</p>
+
+                <h4 style="color: #2563eb; margin-top: 15px; margin-bottom: 10px;">Sports Statistics</h4>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 15px;">In baseball, a batting average is a mean of hits per at-bat. Basketball uses the mean to calculate points per game, rebounds per game, and assists per game. Sports analysts rely on the median when comparing player salaries because a few superstar contracts would otherwise distort the average. The mode can identify the most common score in a game or the most frequent margin of victory.</p>
+
+                <h4 style="color: #2563eb; margin-top: 15px; margin-bottom: 10px;">Finance and Economics</h4>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 15px;">Economists prefer the median for reporting household income and home prices because wealth distribution is heavily skewed. The mean stock return is used to estimate expected portfolio performance. Financial analysts use weighted averages to calculate portfolio returns where each investment's return is weighted by the amount invested. Credit rating agencies use averages to assess risk across loan portfolios.</p>
+
+                <h4 style="color: #2563eb; margin-top: 15px; margin-bottom: 10px;">Scientific Research</h4>
+                <p style="line-height: 1.8; color: #374151;">Researchers use the mean as the primary measure in experiments, along with standard deviation to measure variability. In medical research, the median is often used for survival times because patient outcomes can vary dramatically. The mode is used in epidemiology to identify the most common symptoms, diseases, or age groups affected by a condition. Environmental scientists use averages to track temperature trends, pollution levels, and rainfall patterns over time.</p>
+
+                <h3 style="color: #1e40af; margin-top: 30px; margin-bottom: 15px;">Frequently Asked Questions</h3>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: What is the difference between average and mean?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: In everyday language, "average" and "mean" are often used interchangeably, and both typically refer to the arithmetic mean. However, in statistics, "average" is a broader term that can refer to any measure of central tendency, including the mean, median, and mode. When someone asks for "the average," they usually want the arithmetic mean, but it is always good practice to clarify which measure is most appropriate for the data.</p>
+                </div>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: Can a dataset have more than one mode?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: Yes. A dataset with two modes is called bimodal, and one with more than two modes is called multimodal. For example, in the dataset {2, 3, 3, 5, 7, 7, 9}, both 3 and 7 appear twice, making it bimodal. If every value appears the same number of times, the dataset has no mode. Multimodal distributions often indicate that the data comes from two or more distinct groups.</p>
+                </div>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: How do outliers affect the mean and median?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: Outliers have a significant effect on the mean because every value is used in the calculation. A single extremely high or low value can pull the mean far from where most data points lie. The median, on the other hand, is resistant to outliers because it depends only on the position of the middle value, not on the magnitude of extreme values. This is why the median is preferred for skewed distributions like income, housing prices, and response times.</p>
+                </div>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: When are mean, median, and mode all equal?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: The mean, median, and mode are all equal in a perfectly symmetrical distribution, such as a normal distribution (bell curve). In such distributions, the data is evenly spread around the center point. In real-world data, this rarely happens exactly, but many natural phenomena (like height, blood pressure, and measurement errors) approximate a normal distribution, so the three measures tend to be close to each other. When they diverge significantly, it usually indicates that the data is skewed in one direction.</p>
+                </div>
+
+                <div style="background: #eff6ff; padding: 20px; border-radius: 4px; border-left: 4px solid #2563eb; margin-top: 25px;">
+                    <h4 style="color: #1e40af; margin-bottom: 10px;">Tip for Accurate Analysis</h4>
+                    <p style="color: #1e3a8a; line-height: 1.6;">Always report multiple measures of central tendency together. The mean alone can be misleading if your data is skewed. Presenting the mean, median, and mode gives your audience a complete picture of the data distribution. Additionally, consider reporting the range or standard deviation to show how spread out the values are.</p>
+                </div>
+            </div>
         </div>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
@@ -84,7 +229,13 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+            <p>&copy; 2025 Calculator Tools. All rights reserved.</p>
+            <p>
+                <a href="../about.html" style="color: white; margin: 0 10px;">About Us</a> |
+                <a href="../contact.html" style="color: white; margin: 0 10px;">Contact</a> |
+                <a href="../privacy-policy.html" style="color: white; margin: 0 10px;">Privacy Policy</a> |
+                <a href="../terms-of-service.html" style="color: white; margin: 0 10px;">Terms of Service</a>
+            </p>
         </div>
     </footer>
 

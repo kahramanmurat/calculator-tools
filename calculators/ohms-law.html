@@ -32,6 +32,9 @@
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../calculators.html">Calculators</a></li>
                 <li><a href="../converters.html">Converters</a></li>
+                <li><a href="../tools.html">Tools</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -91,6 +94,316 @@
                     <li style="padding: 8px 0;"><strong>P = V² / R</strong> (Power = Voltage² / Resistance)</li>
                 </ul>
             </div>
+
+            <!-- Understanding Ohm's Law -->
+            <div style="margin-top: 40px;">
+                <h3 style="color: #1e40af; margin-bottom: 15px; font-size: 1.4rem;">Understanding Ohm's Law</h3>
+                <p style="color: #374151; line-height: 1.8; margin-bottom: 15px;">
+                    Ohm's Law is one of the most fundamental principles in electrical engineering and physics. It was first published in 1827 by German physicist <strong>Georg Simon Ohm</strong> in his groundbreaking work <em>Die galvanische Kette, mathematisch bearbeitet</em> (The Galvanic Circuit Investigated Mathematically). Ohm discovered that the electric current flowing through a conductor between two points is directly proportional to the voltage across those two points, and inversely proportional to the resistance between them.
+                </p>
+                <p style="color: #374151; line-height: 1.8; margin-bottom: 15px;">
+                    The law is expressed simply as <strong>V = I × R</strong>, where V is voltage in volts, I is current in amperes, and R is resistance in ohms. Despite its simplicity, this relationship is the cornerstone of all circuit analysis and electrical design. Ohm's work was initially met with skepticism, but it eventually earned him the Copley Medal from the Royal Society and the unit of electrical resistance — the ohm (symbol: &Omega;) — was named in his honor.
+                </p>
+
+                <h4 style="color: #2563eb; margin: 20px 0 10px;">The Water Analogy</h4>
+                <p style="color: #374151; line-height: 1.8; margin-bottom: 10px;">
+                    One of the best ways to understand Ohm's Law is through the <strong>water pipe analogy</strong>, which maps electrical concepts to the behavior of water flowing through pipes:
+                </p>
+                <ul style="color: #374151; line-height: 1.8; padding-left: 20px; margin-bottom: 15px;">
+                    <li style="padding: 6px 0;"><strong>Voltage (V)</strong> is like <strong>water pressure</strong>. Just as higher water pressure pushes water through a pipe with more force, higher voltage pushes electrical charge through a conductor with more force. A battery or power supply acts like a pump that creates this pressure.</li>
+                    <li style="padding: 6px 0;"><strong>Current (I)</strong> is like the <strong>flow rate of water</strong>. It measures how much charge (water) passes a given point per second. More pressure (voltage) or a wider pipe (less resistance) means more flow (current).</li>
+                    <li style="padding: 6px 0;"><strong>Resistance (R)</strong> is like the <strong>width or constriction of the pipe</strong>. A narrow pipe restricts water flow just as a high-resistance component restricts current flow. Thicker wires and highly conductive materials have low resistance, like wide-open pipes.</li>
+                    <li style="padding: 6px 0;"><strong>Power (P)</strong> is like the <strong>energy delivered by the water</strong> — the combination of how much water is flowing and how hard it is being pushed. In electrical terms, power is the rate at which energy is transferred or consumed.</li>
+                </ul>
+            </div>
+
+            <!-- The Ohm's Law Wheel -->
+            <div style="margin-top: 40px;">
+                <h3 style="color: #1e40af; margin-bottom: 15px; font-size: 1.4rem;">The Ohm's Law Wheel — All 12 Formulas</h3>
+                <p style="color: #374151; line-height: 1.8; margin-bottom: 15px;">
+                    The Ohm's Law Wheel (also called the Power Wheel or Ohm's Law Pie Chart) organizes all 12 key formulas that relate voltage (V), current (I), resistance (R), and power (P). By knowing any two of these four quantities, you can calculate the other two. The table below is a complete reference:
+                </p>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.95rem;">
+                        <thead>
+                            <tr style="background: #2563eb; color: white;">
+                                <th style="padding: 12px 15px; text-align: left; border: 1px solid #ddd;">To Find</th>
+                                <th style="padding: 12px 15px; text-align: left; border: 1px solid #ddd;">Using V &amp; I</th>
+                                <th style="padding: 12px 15px; text-align: left; border: 1px solid #ddd;">Using V &amp; R</th>
+                                <th style="padding: 12px 15px; text-align: left; border: 1px solid #ddd;">Using I &amp; R</th>
+                                <th style="padding: 12px 15px; text-align: left; border: 1px solid #ddd;">Using P</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: #f9fafb;">
+                                <td style="padding: 12px 15px; border: 1px solid #ddd; font-weight: 600;">Voltage (V)</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">—</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">—</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">V = I × R</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">V = P / I &nbsp;or&nbsp; V = √(P × R)</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd; font-weight: 600;">Current (I)</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">—</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">I = V / R</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">—</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">I = P / V &nbsp;or&nbsp; I = √(P / R)</td>
+                            </tr>
+                            <tr style="background: #f9fafb;">
+                                <td style="padding: 12px 15px; border: 1px solid #ddd; font-weight: 600;">Resistance (R)</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">R = V / I</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">—</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">—</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">R = V² / P &nbsp;or&nbsp; R = P / I²</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd; font-weight: 600;">Power (P)</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">P = V × I</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">P = V² / R</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">P = I² × R</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="color: #374151; line-height: 1.8;">
+                    These 12 formulas are not independent — they are all derived from the two core equations: <strong>V = I × R</strong> (Ohm's Law) and <strong>P = V × I</strong> (electrical power). By substituting one into the other, you can express any quantity in terms of any two others. Memorizing the wheel makes circuit analysis quick and intuitive.
+                </p>
+            </div>
+
+            <!-- Worked Examples -->
+            <div style="margin-top: 40px;">
+                <h3 style="color: #1e40af; margin-bottom: 15px; font-size: 1.4rem;">Worked Examples</h3>
+
+                <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; border-left: 4px solid #2563eb; margin-bottom: 20px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Example 1: Finding Current Through a Resistor</h4>
+                    <p style="color: #374151; line-height: 1.8; margin-bottom: 10px;">
+                        <strong>Problem:</strong> A 100-ohm resistor is connected to a 12V battery. How much current flows through the resistor, and how much power does it dissipate?
+                    </p>
+                    <p style="color: #374151; line-height: 1.8; margin-bottom: 5px;">
+                        <strong>Solution:</strong>
+                    </p>
+                    <ul style="color: #374151; line-height: 1.8; padding-left: 20px;">
+                        <li>Given: V = 12 V, R = 100 &Omega;</li>
+                        <li>Current: I = V / R = 12 / 100 = <strong>0.12 A (120 mA)</strong></li>
+                        <li>Power: P = V × I = 12 × 0.12 = <strong>1.44 W</strong></li>
+                        <li>Verification: P = V² / R = 144 / 100 = 1.44 W &#10003;</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; border-left: 4px solid #2563eb; margin-bottom: 20px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Example 2: Choosing a Resistor for an LED</h4>
+                    <p style="color: #374151; line-height: 1.8; margin-bottom: 10px;">
+                        <strong>Problem:</strong> You want to power a red LED (forward voltage 2V, typical current 20 mA) from a 5V supply. What resistance value do you need for the current-limiting resistor?
+                    </p>
+                    <p style="color: #374151; line-height: 1.8; margin-bottom: 5px;">
+                        <strong>Solution:</strong>
+                    </p>
+                    <ul style="color: #374151; line-height: 1.8; padding-left: 20px;">
+                        <li>Voltage across resistor: V<sub>R</sub> = 5V - 2V = 3V</li>
+                        <li>Desired current: I = 20 mA = 0.020 A</li>
+                        <li>Resistance: R = V / I = 3 / 0.020 = <strong>150 &Omega;</strong></li>
+                        <li>Power dissipated: P = V × I = 3 × 0.020 = <strong>0.06 W (60 mW)</strong></li>
+                        <li>A standard 1/4 W (250 mW) resistor is more than sufficient.</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; border-left: 4px solid #2563eb; margin-bottom: 20px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Example 3: Finding Voltage from Power and Resistance</h4>
+                    <p style="color: #374151; line-height: 1.8; margin-bottom: 10px;">
+                        <strong>Problem:</strong> A 50-ohm heating element is rated at 200 watts. What voltage should be applied to it?
+                    </p>
+                    <p style="color: #374151; line-height: 1.8; margin-bottom: 5px;">
+                        <strong>Solution:</strong>
+                    </p>
+                    <ul style="color: #374151; line-height: 1.8; padding-left: 20px;">
+                        <li>Given: R = 50 &Omega;, P = 200 W</li>
+                        <li>Using: V = √(P × R) = √(200 × 50) = √10000 = <strong>100 V</strong></li>
+                        <li>Current drawn: I = P / V = 200 / 100 = <strong>2 A</strong></li>
+                        <li>Verification: P = I² × R = 4 × 50 = 200 W &#10003;</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; border-left: 4px solid #2563eb; margin-bottom: 20px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Example 4: Household Circuit Analysis</h4>
+                    <p style="color: #374151; line-height: 1.8; margin-bottom: 10px;">
+                        <strong>Problem:</strong> A 1,500W space heater is plugged into a standard 120V household outlet on a 15A circuit breaker. Will the breaker trip?
+                    </p>
+                    <p style="color: #374151; line-height: 1.8; margin-bottom: 5px;">
+                        <strong>Solution:</strong>
+                    </p>
+                    <ul style="color: #374151; line-height: 1.8; padding-left: 20px;">
+                        <li>Given: P = 1,500 W, V = 120 V</li>
+                        <li>Current: I = P / V = 1500 / 120 = <strong>12.5 A</strong></li>
+                        <li>The breaker is rated for 15A, so 12.5A is within the limit.</li>
+                        <li>However, NEC recommends loading a circuit to no more than 80% capacity (12A), so running this heater with other devices on the same circuit could trip the breaker.</li>
+                        <li>Resistance of element: R = V² / P = 14400 / 1500 = <strong>9.6 &Omega;</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Understanding Each Quantity -->
+            <div style="margin-top: 40px;">
+                <h3 style="color: #1e40af; margin-bottom: 15px; font-size: 1.4rem;">Understanding Each Quantity</h3>
+
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Voltage (V) — Measured in Volts</h4>
+                    <p style="color: #374151; line-height: 1.8;">
+                        Voltage, also called <strong>electromotive force (EMF)</strong> or <strong>potential difference</strong>, is the electrical "pressure" that drives current through a circuit. It is defined as the energy (in joules) per unit charge (in coulombs): 1 volt = 1 joule per coulomb. Voltage is always measured <em>between two points</em> — it is a relative quantity, not an absolute one. Common voltage sources include batteries (1.5V, 9V, 12V), wall outlets (120V in North America, 230V in Europe), and solar panels (typically 18–45V per panel). Named after Italian physicist <strong>Alessandro Volta</strong>, who invented the first chemical battery in 1800.
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Current (I) — Measured in Amperes (Amps)</h4>
+                    <p style="color: #374151; line-height: 1.8;">
+                        Electric current is the <strong>rate of flow of electric charge</strong> through a conductor. One ampere equals one coulomb of charge passing a point per second (approximately 6.24 × 10<sup>18</sup> electrons per second). Current is conventionally described as flowing from positive to negative (conventional current flow), although electrons physically move in the opposite direction. Current is measured using an <strong>ammeter</strong>, which must be connected in series with the circuit. The symbol "I" comes from the French word <em>intensit&eacute;</em> (intensity). Named after French physicist <strong>Andr&eacute;-Marie Amp&egrave;re</strong>.
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Resistance (R) — Measured in Ohms (&Omega;)</h4>
+                    <p style="color: #374151; line-height: 1.8;">
+                        Resistance is the opposition to the flow of electric current. Every material has some resistance; <strong>conductors</strong> like copper and silver have very low resistance, while <strong>insulators</strong> like rubber and glass have extremely high resistance. Resistance depends on the material's <strong>resistivity</strong>, its <strong>length</strong> (longer = more resistance), its <strong>cross-sectional area</strong> (thicker = less resistance), and its <strong>temperature</strong>. Resistors are components specifically designed to provide a precise amount of resistance in a circuit, and their values are indicated by color-coded bands. Named after <strong>Georg Simon Ohm</strong>.
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Power (P) — Measured in Watts</h4>
+                    <p style="color: #374151; line-height: 1.8;">
+                        Electrical power is the <strong>rate at which electrical energy is transferred or consumed</strong>. One watt equals one joule of energy per second, or equivalently, one volt times one ampere. Power tells you how quickly a device uses energy — a 100W light bulb uses energy twice as fast as a 50W bulb. Energy consumed over time is measured in <strong>watt-hours (Wh)</strong> or <strong>kilowatt-hours (kWh)</strong>; for example, a 100W bulb running for 10 hours uses 1 kWh of energy. In circuits, power is dissipated as heat in resistors (this is why electronics get warm). Named after Scottish engineer <strong>James Watt</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Common Circuit Values -->
+            <div style="margin-top: 40px;">
+                <h3 style="color: #1e40af; margin-bottom: 15px; font-size: 1.4rem;">Common Circuit Values — Quick Reference</h3>
+                <p style="color: #374151; line-height: 1.8; margin-bottom: 15px;">
+                    The following table shows typical voltage, current, and power values for common electrical systems and devices. These values can serve as a useful sanity check when performing calculations.
+                </p>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.95rem;">
+                        <thead>
+                            <tr style="background: #2563eb; color: white;">
+                                <th style="padding: 12px 15px; text-align: left; border: 1px solid #ddd;">Application</th>
+                                <th style="padding: 12px 15px; text-align: left; border: 1px solid #ddd;">Typical Voltage</th>
+                                <th style="padding: 12px 15px; text-align: left; border: 1px solid #ddd;">Typical Current</th>
+                                <th style="padding: 12px 15px; text-align: left; border: 1px solid #ddd;">Typical Power</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: #f9fafb;">
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">AA Battery</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">1.5 V</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">0.5–2 A (max)</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">~3.75 Wh capacity</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">USB Port (USB 2.0)</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">5 V</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">0.5 A</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">2.5 W</td>
+                            </tr>
+                            <tr style="background: #f9fafb;">
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">Arduino / Microcontroller</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">3.3 V or 5 V</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">20–200 mA</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">0.1–1 W</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">Automotive (Car Battery)</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">12 V (nominal)</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">1–300 A</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">Up to 3,600 W</td>
+                            </tr>
+                            <tr style="background: #f9fafb;">
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">Household (North America)</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">120 V AC</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">15 or 20 A (breaker)</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">1,800–2,400 W</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">Household (Europe / Asia)</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">220–240 V AC</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">10–16 A (breaker)</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">2,200–3,840 W</td>
+                            </tr>
+                            <tr style="background: #f9fafb;">
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">EV Charger (Level 2)</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">240 V AC</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">30–50 A</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">7.2–12 kW</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">Industrial 3-Phase</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">208–480 V AC</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">50–200 A</td>
+                                <td style="padding: 12px 15px; border: 1px solid #ddd;">18–166 kW</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Ohm's Law Limitations -->
+            <div style="margin-top: 40px;">
+                <h3 style="color: #1e40af; margin-bottom: 15px; font-size: 1.4rem;">Ohm's Law Limitations</h3>
+                <p style="color: #374151; line-height: 1.8; margin-bottom: 15px;">
+                    While Ohm's Law is tremendously useful, it is important to understand that it is not a universal law of nature — it is an empirical observation that applies to a specific class of materials and conditions. Here are the key limitations:
+                </p>
+                <ul style="color: #374151; line-height: 1.8; padding-left: 20px; margin-bottom: 15px;">
+                    <li style="padding: 6px 0;"><strong>Non-linear components:</strong> Devices such as diodes, LEDs, and transistors do not obey Ohm's Law. Their current-voltage relationship is exponential, not linear. For example, a silicon diode has almost zero current below about 0.7V, then current increases exponentially.</li>
+                    <li style="padding: 6px 0;"><strong>Semiconductors:</strong> The resistance of semiconductor materials changes with voltage, temperature, and light exposure. This is what makes transistors, solar cells, and integrated circuits possible — but it means V/I is not constant.</li>
+                    <li style="padding: 6px 0;"><strong>Temperature effects:</strong> The resistance of most conductors increases with temperature. A tungsten light bulb filament, for instance, has about 10 times more resistance when hot (operating) than when cold. This means the current at turn-on is much higher than the steady-state current.</li>
+                    <li style="padding: 6px 0;"><strong>AC circuits:</strong> In alternating current circuits, the concept of resistance is extended to <strong>impedance</strong>, which includes the effects of capacitors and inductors. Impedance depends on the frequency of the AC signal, adding complexity that pure Ohm's Law does not capture.</li>
+                    <li style="padding: 6px 0;"><strong>Superconductors:</strong> Below their critical temperature, superconducting materials have exactly zero resistance, allowing current to flow indefinitely without voltage. Ohm's Law gives V = I × 0 = 0 regardless of current, which, while technically correct, is not particularly informative.</li>
+                    <li style="padding: 6px 0;"><strong>Very high voltages and frequencies:</strong> At extreme voltages, breakdown can occur in insulators (sparking, arcing), and at very high frequencies, the skin effect and electromagnetic radiation effects alter current distribution in conductors.</li>
+                </ul>
+                <p style="color: #374151; line-height: 1.8;">
+                    Materials and components that do follow Ohm's Law are called <strong>ohmic</strong> (e.g., metal wires, carbon resistors at constant temperature), while those that do not are called <strong>non-ohmic</strong>. Our calculator assumes ohmic behavior.
+                </p>
+            </div>
+
+            <!-- FAQ Section -->
+            <div style="margin-top: 40px;">
+                <h3 style="color: #1e40af; margin-bottom: 20px; font-size: 1.4rem;">Frequently Asked Questions</h3>
+
+                <div style="border-left: 4px solid #2563eb; padding: 15px 20px; margin-bottom: 15px; background: #f9fafb; border-radius: 0 8px 8px 0;">
+                    <h4 style="color: #1e40af; margin-bottom: 8px;">What is the difference between Ohm's Law and the power equation?</h4>
+                    <p style="color: #374151; line-height: 1.8;">
+                        Ohm's Law (V = I × R) describes the relationship between voltage, current, and resistance in a circuit. The power equation (P = V × I) describes how much energy is being consumed or transferred per second. They are two separate but related relationships. By combining them, you can derive formulas like P = I²R and P = V²/R, which let you calculate power even when you only know two of the four quantities.
+                    </p>
+                </div>
+
+                <div style="border-left: 4px solid #2563eb; padding: 15px 20px; margin-bottom: 15px; background: #f9fafb; border-radius: 0 8px 8px 0;">
+                    <h4 style="color: #1e40af; margin-bottom: 8px;">Does Ohm's Law apply to AC circuits?</h4>
+                    <p style="color: #374151; line-height: 1.8;">
+                        Ohm's Law applies to AC circuits in a modified form. For purely resistive loads (like heaters and incandescent bulbs), V = IR works with RMS (root mean square) values of voltage and current. However, when capacitors or inductors are present, you must use impedance (Z) instead of simple resistance: V = I × Z. Impedance is a complex number that accounts for both resistance and reactance (the opposition to current changes caused by capacitors and inductors).
+                    </p>
+                </div>
+
+                <div style="border-left: 4px solid #2563eb; padding: 15px 20px; margin-bottom: 15px; background: #f9fafb; border-radius: 0 8px 8px 0;">
+                    <h4 style="color: #1e40af; margin-bottom: 8px;">Why is current represented by the letter "I" instead of "C"?</h4>
+                    <p style="color: #374151; line-height: 1.8;">
+                        The symbol "I" for current comes from the French phrase <em>intensit&eacute; de courant</em>, meaning "intensity of current." This convention was established by Andr&eacute;-Marie Amp&egrave;re in the early 19th century. The letter "C" was already used for other quantities, including the coulomb (unit of charge) and capacitance, so "I" became the standard to avoid confusion.
+                    </p>
+                </div>
+
+                <div style="border-left: 4px solid #2563eb; padding: 15px 20px; margin-bottom: 15px; background: #f9fafb; border-radius: 0 8px 8px 0;">
+                    <h4 style="color: #1e40af; margin-bottom: 8px;">How do I calculate the resistance of wire?</h4>
+                    <p style="color: #374151; line-height: 1.8;">
+                        The resistance of a wire is calculated using the formula R = (&rho; × L) / A, where &rho; (rho) is the resistivity of the material (measured in ohm-meters), L is the length of the wire, and A is the cross-sectional area. For copper wire, &rho; is approximately 1.68 × 10<sup>-8</sup> &Omega;·m at 20°C. For example, 100 meters of 14-gauge copper wire (cross-section 2.08 mm²) has a resistance of about 0.81 &Omega;.
+                    </p>
+                </div>
+
+                <div style="border-left: 4px solid #2563eb; padding: 15px 20px; margin-bottom: 15px; background: #f9fafb; border-radius: 0 8px 8px 0;">
+                    <h4 style="color: #1e40af; margin-bottom: 8px;">What happens if resistance is zero in Ohm's Law?</h4>
+                    <p style="color: #374151; line-height: 1.8;">
+                        If resistance is truly zero (a theoretical short circuit), Ohm's Law (I = V / R) implies the current would be infinite — which is physically impossible. In practice, every real circuit has some resistance (even wires have small resistance). A short circuit creates extremely high current limited only by the internal resistance of the power source and the wiring, which can generate dangerous amounts of heat and is why circuit breakers and fuses exist. Superconductors are the exception: they have zero resistance but also require zero voltage to maintain current flow, so no infinite current paradox arises.
+                    </p>
+                </div>
+            </div>
+
         </div>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
@@ -110,7 +423,13 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+            <p>&copy; 2025 Calculator Tools. All rights reserved.</p>
+            <p>
+                <a href="../about.html" style="color: white; margin: 0 10px;">About Us</a> |
+                <a href="../contact.html" style="color: white; margin: 0 10px;">Contact</a> |
+                <a href="../privacy-policy.html" style="color: white; margin: 0 10px;">Privacy Policy</a> |
+                <a href="../terms-of-service.html" style="color: white; margin: 0 10px;">Terms of Service</a>
+            </p>
         </div>
     </footer>
 

@@ -32,6 +32,9 @@
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../calculators.html">Calculators</a></li>
                 <li><a href="../converters.html">Converters</a></li>
+                <li><a href="../tools.html">Tools</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -76,6 +79,199 @@
                     <p><strong>Population Standard Deviation:</strong> σ = √(Σ(x - μ)² / n)</p>
                 </div>
             </div>
+
+            <div style="margin-top: 50px; background: #f9fafb; padding: 30px; border-radius: 8px;">
+                <h2 style="color: #2563eb; margin-bottom: 20px;">Understanding Standard Deviation</h2>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">What is Standard Deviation?</h3>
+                <p style="line-height: 1.8; color: #374151;">Standard deviation is one of the most fundamental concepts in statistics. It quantifies the amount of variation or spread in a dataset relative to its mean (average). When data points are tightly clustered around the mean, the standard deviation is small. When data points are widely scattered, the standard deviation is large. It is expressed in the same units as the original data, making it more intuitive to interpret than variance (which is expressed in squared units).</p>
+                <p style="line-height: 1.8; color: #374151; margin-top: 10px;">Mathematically, standard deviation is the square root of variance. It was introduced by Karl Pearson in 1894 and has since become an indispensable tool in science, engineering, finance, and virtually every field that deals with data analysis.</p>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Step-by-Step Calculation Example</h3>
+                <p style="line-height: 1.8; color: #374151; margin-bottom: 15px;">Let us walk through calculating the population standard deviation of the dataset: <strong>{2, 4, 4, 4, 5, 5, 7, 9}</strong>.</p>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Step 1: Find the Mean</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">Add all the values and divide by the count (n = 8).</p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-top: 5px;"><strong>Mean = (2 + 4 + 4 + 4 + 5 + 5 + 7 + 9) / 8 = 40 / 8 = 5</strong></p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #10b981; border-radius: 4px;">
+                    <h4 style="color: #10b981; margin-bottom: 10px;">Step 2: Calculate Each Deviation from the Mean</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">Subtract the mean from each data point:</p>
+                    <ul style="color: #4b5563; line-height: 1.8; margin-top: 5px; padding-left: 20px;">
+                        <li>2 - 5 = -3</li>
+                        <li>4 - 5 = -1</li>
+                        <li>4 - 5 = -1</li>
+                        <li>4 - 5 = -1</li>
+                        <li>5 - 5 = 0</li>
+                        <li>5 - 5 = 0</li>
+                        <li>7 - 5 = 2</li>
+                        <li>9 - 5 = 4</li>
+                    </ul>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #f59e0b; border-radius: 4px;">
+                    <h4 style="color: #f59e0b; margin-bottom: 10px;">Step 3: Square Each Deviation</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">Squaring removes negative signs and emphasizes larger deviations:</p>
+                    <ul style="color: #4b5563; line-height: 1.8; margin-top: 5px; padding-left: 20px;">
+                        <li>(-3)² = 9</li>
+                        <li>(-1)² = 1</li>
+                        <li>(-1)² = 1</li>
+                        <li>(-1)² = 1</li>
+                        <li>(0)² = 0</li>
+                        <li>(0)² = 0</li>
+                        <li>(2)² = 4</li>
+                        <li>(4)² = 16</li>
+                    </ul>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #8b5cf6; border-radius: 4px;">
+                    <h4 style="color: #8b5cf6; margin-bottom: 10px;">Step 4: Calculate the Variance</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">Sum the squared deviations and divide by n (population) or n-1 (sample):</p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-top: 5px;"><strong>Sum of squared deviations = 9 + 1 + 1 + 1 + 0 + 0 + 4 + 16 = 32</strong></p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-top: 5px;"><strong>Population Variance = 32 / 8 = 4</strong></p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-top: 5px;"><strong>Sample Variance = 32 / 7 = 4.571</strong></p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #ef4444; border-radius: 4px;">
+                    <h4 style="color: #ef4444; margin-bottom: 10px;">Step 5: Take the Square Root</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">The standard deviation is the square root of the variance:</p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-top: 5px;"><strong>Population Standard Deviation = √4 = 2</strong></p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-top: 5px;"><strong>Sample Standard Deviation = √4.571 = 2.138</strong></p>
+                </div>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Sample vs Population Standard Deviation</h3>
+                <p style="line-height: 1.8; color: #374151;">One of the most common questions in statistics is when to use sample versus population standard deviation. The key difference lies in the denominator of the variance formula: population variance divides by n, while sample variance divides by n-1 (known as Bessel's correction).</p>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <thead style="background: #2563eb; color: white;">
+                        <tr>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Feature</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Population SD</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Sample SD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Symbol</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">σ (sigma)</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">s</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Divisor</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">n</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">n - 1</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>When to Use</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Data includes every member of the group</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Data is a subset from a larger group</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Example</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Test scores of every student in a class</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Survey of 100 customers out of 10,000</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Result</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Slightly smaller</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Slightly larger (corrects for bias)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="line-height: 1.8; color: #374151; margin-top: 10px;"><strong>Why divide by n-1?</strong> When you calculate the mean from sample data, you have already used one piece of information. This reduces your "degrees of freedom" from n to n-1. Dividing by n-1 corrects for the tendency of a sample to underestimate the true population variance. This correction becomes negligible for very large samples but is significant for small ones.</p>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">The Empirical Rule (68-95-99.7 Rule)</h3>
+                <p style="line-height: 1.8; color: #374151;">For data that follows a normal (bell-shaped) distribution, the empirical rule provides a quick way to understand how data is distributed around the mean using standard deviation:</p>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #10b981; border-radius: 4px;">
+                    <h4 style="color: #10b981; margin-bottom: 10px;">68% Rule</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">Approximately <strong>68%</strong> of data falls within <strong>1 standard deviation</strong> of the mean (between μ - σ and μ + σ).</p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-top: 5px;"><strong>Example:</strong> If the average test score is 75 with SD = 10, about 68% of students scored between 65 and 85.</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">95% Rule</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">Approximately <strong>95%</strong> of data falls within <strong>2 standard deviations</strong> of the mean (between μ - 2σ and μ + 2σ).</p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-top: 5px;"><strong>Example:</strong> With the same test (mean = 75, SD = 10), about 95% scored between 55 and 95.</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #8b5cf6; border-radius: 4px;">
+                    <h4 style="color: #8b5cf6; margin-bottom: 10px;">99.7% Rule</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">Approximately <strong>99.7%</strong> of data falls within <strong>3 standard deviations</strong> of the mean (between μ - 3σ and μ + 3σ).</p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-top: 5px;"><strong>Example:</strong> Nearly all students (99.7%) scored between 45 and 105. Values beyond 3 standard deviations are considered rare outliers.</p>
+                </div>
+
+                <p style="line-height: 1.8; color: #374151; margin-top: 10px;">The empirical rule is extremely useful for quickly assessing whether a particular data point is typical or unusual. A value more than 2 standard deviations from the mean is often considered statistically significant, while a value beyond 3 standard deviations is exceptionally rare.</p>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Standard Deviation in Real Life</h3>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Finance: Stock Market Volatility</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">In finance, standard deviation is the primary measure of investment risk and volatility. A stock with a high standard deviation in its returns experiences large price swings, making it riskier. For example, if Stock A has an average annual return of 10% with SD = 5%, and Stock B has the same average return but SD = 20%, Stock B is far more volatile. Portfolio managers use standard deviation to balance risk and return, and it is central to Modern Portfolio Theory and the Sharpe Ratio.</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #10b981; border-radius: 4px;">
+                    <h4 style="color: #10b981; margin-bottom: 10px;">Manufacturing: Quality Control</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">Manufacturers use standard deviation to maintain product consistency. In Six Sigma methodology, the goal is to keep defects within six standard deviations of the process mean, resulting in only 3.4 defects per million items. For example, if a bolt should be 10 mm in diameter with SD = 0.01 mm, nearly all bolts will fall between 9.97 mm and 10.03 mm (three sigma). A higher SD would indicate the manufacturing process needs improvement.</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #f59e0b; border-radius: 4px;">
+                    <h4 style="color: #f59e0b; margin-bottom: 10px;">Education: Grading Curves and Standardized Tests</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">Standard deviation helps educators understand the spread of test scores. Standardized tests like the SAT and IQ tests are designed with specific mean and standard deviation targets. IQ scores, for example, have a mean of 100 and SD of 15, meaning about 68% of people score between 85 and 115. Teachers may use "grading on a curve" by setting grade boundaries at certain standard deviations from the class mean.</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #ef4444; border-radius: 4px;">
+                    <h4 style="color: #ef4444; margin-bottom: 10px;">Weather: Climate Variability</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">Meteorologists use standard deviation to express climate variability. A city with an average July temperature of 30°C and SD of 2°C has very consistent summer weather, while a city with the same average but SD of 8°C experiences much more unpredictable conditions. Standard deviation also helps identify unusual weather events: a temperature more than 2 standard deviations from the historical average for a given date might be classified as a heat wave or cold snap.</p>
+                </div>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Related Statistical Measures</h3>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Variance</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">Variance is the square of the standard deviation (SD² = Variance). While variance is mathematically convenient because it is additive for independent variables, it is expressed in squared units (e.g., cm² instead of cm), making it less intuitive for direct interpretation. Standard deviation is preferred when communicating results because it shares the same units as the original data.</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #10b981; border-radius: 4px;">
+                    <h4 style="color: #10b981; margin-bottom: 10px;">Coefficient of Variation (CV)</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">The coefficient of variation is the ratio of the standard deviation to the mean, expressed as a percentage: <strong>CV = (SD / Mean) x 100%</strong>. It allows you to compare variability between datasets with different units or scales. For example, comparing the variability of heights (measured in centimeters) to weights (measured in kilograms) requires CV rather than raw standard deviation. A CV below 15% generally indicates low variability, while above 30% suggests high variability.</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #8b5cf6; border-radius: 4px;">
+                    <h4 style="color: #8b5cf6; margin-bottom: 10px;">Standard Error of the Mean (SEM)</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">The standard error measures how precisely the sample mean estimates the population mean. It is calculated as: <strong>SEM = SD / √n</strong>, where n is the sample size. Unlike standard deviation, which describes variability within a single sample, standard error describes the expected variability of the sample mean across multiple samples. As sample size increases, the standard error decreases, reflecting greater confidence in the sample mean.</p>
+                </div>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Frequently Asked Questions</h3>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: Can standard deviation be negative?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: No, standard deviation can never be negative. Because it is calculated by squaring deviations and then taking a square root, the result is always zero or positive. A standard deviation of zero means all values in the dataset are identical. Any positive value indicates some degree of spread in the data.</p>
+                </div>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: What is considered a "good" or "low" standard deviation?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: There is no universal threshold for a "good" standard deviation because it depends entirely on the context and the scale of measurement. A standard deviation of 5 is large if the mean is 10 (CV = 50%), but small if the mean is 1,000 (CV = 0.5%). Use the coefficient of variation to assess relative variability, and compare the SD to domain-specific benchmarks when available.</p>
+                </div>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: How do outliers affect standard deviation?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: Outliers have a significant impact on standard deviation because deviations are squared before averaging, which amplifies the effect of extreme values. A single outlier can dramatically increase the SD. For datasets with outliers, consider using the interquartile range (IQR) or median absolute deviation (MAD) as more robust alternatives to standard deviation.</p>
+                </div>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: What is the difference between standard deviation and standard error?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: Standard deviation (SD) measures the spread of individual data points around the mean of a dataset. Standard error (SE) measures the precision of the sample mean as an estimate of the population mean. SE is always smaller than SD (SE = SD / √n) and decreases as sample size grows. Use SD when describing the variability of your data; use SE when reporting the uncertainty of your mean estimate, such as in confidence intervals.</p>
+                </div>
+
+                <div style="background: #eff6ff; padding: 20px; border-radius: 4px; border-left: 4px solid #2563eb; margin-top: 25px;">
+                    <h4 style="color: #1e40af; margin-bottom: 10px;">Note on Accuracy</h4>
+                    <p style="color: #1e3a8a; line-height: 1.6;">This calculator provides results rounded to six decimal places. For academic, scientific, or professional work requiring higher precision, consider using specialized statistical software. Always verify that you have selected the correct data type (sample vs. population) for your specific use case.</p>
+                </div>
+            </div>
         </div>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
@@ -95,7 +291,13 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+            <p>&copy; 2025 Calculator Tools. All rights reserved.</p>
+            <p>
+                <a href="../about.html" style="color: white; margin: 0 10px;">About Us</a> |
+                <a href="../contact.html" style="color: white; margin: 0 10px;">Contact</a> |
+                <a href="../privacy-policy.html" style="color: white; margin: 0 10px;">Privacy Policy</a> |
+                <a href="../terms-of-service.html" style="color: white; margin: 0 10px;">Terms of Service</a>
+            </p>
         </div>
     </footer>
 

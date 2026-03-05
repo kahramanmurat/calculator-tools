@@ -32,6 +32,9 @@
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../calculators.html">Calculators</a></li>
                 <li><a href="../converters.html">Converters</a></li>
+                <li><a href="../tools.html">Tools</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -108,7 +111,152 @@
                 <div id="result" class="result-box" style="display: none;"></div>
             </div>
         </div>
-    
+
+        <div class="calculator-container" style="margin-top: 30px;">
+            <h2 style="color: #2563eb; margin-bottom: 20px;">Understanding Calories and Energy Expenditure</h2>
+            <div style="line-height: 1.8; color: #374151;">
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">What Are Calories?</h3>
+                <p style="line-height: 1.8; color: #374151;">A calorie is a unit of energy. In scientific terms, one calorie (lowercase "c") is the amount of energy required to raise the temperature of one gram of water by one degree Celsius. However, when we talk about food and nutrition, we actually use <strong>kilocalories (kcal)</strong>, sometimes written as Calories (uppercase "C"). One kilocalorie equals 1,000 scientific calories.</p>
+                <p style="line-height: 1.8; color: #374151; margin-top: 10px;">Your body uses calories from food to fuel every function -- from breathing and circulating blood to exercising and thinking. The total number of calories your body needs each day depends on several factors including your age, sex, weight, height, and physical activity level.</p>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Basal Metabolic Rate (BMR)</h3>
+                <p style="line-height: 1.8; color: #374151;">Your Basal Metabolic Rate (BMR) is the number of calories your body needs to maintain basic life-sustaining functions at complete rest -- such as breathing, blood circulation, cell production, and nutrient processing. BMR typically accounts for <strong>60-75% of your total daily calorie expenditure</strong>.</p>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Mifflin-St Jeor Equation (Most Accurate)</h4>
+                    <p style="color: #4b5563; line-height: 1.6; margin-bottom: 10px;"><strong>Men:</strong> BMR = (10 x weight in kg) + (6.25 x height in cm) - (5 x age in years) + 5</p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-bottom: 10px;"><strong>Women:</strong> BMR = (10 x weight in kg) + (6.25 x height in cm) - (5 x age in years) - 161</p>
+                    <p style="color: #4b5563; line-height: 1.6;"><strong>Example:</strong> A 30-year-old male, 80 kg, 180 cm tall<br>
+                    BMR = (10 x 80) + (6.25 x 180) - (5 x 30) + 5 = 800 + 1125 - 150 + 5 = <strong>1,780 calories/day</strong></p>
+                </div>
+
+                <p style="line-height: 1.8; color: #374151; margin-top: 10px;">The Mifflin-St Jeor equation, published in 1990, is considered the most accurate BMR formula for most people and is the method used by this calculator. It replaced the older Harris-Benedict equation (1919), which tends to overestimate caloric needs by about 5%.</p>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Total Daily Energy Expenditure (TDEE)</h3>
+                <p style="line-height: 1.8; color: #374151;">Your Total Daily Energy Expenditure (TDEE) is the total number of calories you burn in a day. It is calculated by multiplying your BMR by an <strong>activity multiplier</strong> that reflects your overall physical activity level:</p>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #10b981; border-radius: 4px;">
+                    <h4 style="color: #10b981; margin-bottom: 10px;">TDEE Formula</h4>
+                    <p style="color: #4b5563; line-height: 1.6; margin-bottom: 10px;"><strong>TDEE = BMR x Activity Multiplier</strong></p>
+                    <p style="color: #4b5563; line-height: 1.6;"><strong>Example:</strong> BMR of 1,780 x 1.55 (moderately active) = <strong>2,759 calories/day</strong></p>
+                </div>
+
+                <p style="line-height: 1.8; color: #374151; margin-top: 10px;">TDEE includes your BMR plus the thermic effect of food (energy used to digest meals, about 10% of intake), non-exercise activity thermogenesis (NEAT, such as fidgeting and walking), and exercise activity thermogenesis (EAT, deliberate physical exercise).</p>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Activity Level Guide</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <thead style="background: #2563eb; color: white;">
+                        <tr>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Activity Level</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Multiplier</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Description &amp; Examples</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #dbeafe;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Sedentary</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1.2</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Little or no exercise; desk job with no additional physical activity</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Lightly Active</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1.375</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Light exercise 1-3 days/week (e.g., walking, light yoga, casual cycling)</td>
+                        </tr>
+                        <tr style="background: #d1fae5;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Moderately Active</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1.55</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Moderate exercise 3-5 days/week (e.g., jogging, swimming, gym workouts)</td>
+                        </tr>
+                        <tr style="background: #fef3c7;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Very Active</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1.725</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Hard exercise 6-7 days/week (e.g., intense training, competitive sports, physical labor job)</td>
+                        </tr>
+                        <tr style="background: #fecaca;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Extra Active</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1.9</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Very intense exercise daily or physical job with additional training (e.g., professional athletes, military training)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Macronutrients and Calories</h3>
+                <p style="line-height: 1.8; color: #374151;">Not all calories are created equal. The three main macronutrients provide different amounts of energy per gram:</p>
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <thead style="background: #2563eb; color: white;">
+                        <tr>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Macronutrient</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Calories per Gram</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Key Functions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #dbeafe;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Protein</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">4 cal/g</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Builds and repairs muscle, supports immune function, highest thermic effect (~20-30%)</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Carbohydrates</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">4 cal/g</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Primary energy source for brain and muscles, stored as glycogen</td>
+                        </tr>
+                        <tr style="background: #fef3c7;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Fat</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">9 cal/g</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Hormone production, vitamin absorption, long-term energy storage</td>
+                        </tr>
+                        <tr style="background: #fecaca;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>Alcohol</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">7 cal/g</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Not a macronutrient but provides calories; no nutritional benefit</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="line-height: 1.8; color: #374151; margin-top: 10px;">Protein has the highest <strong>thermic effect of food (TEF)</strong>, meaning your body burns more calories digesting protein than it does digesting carbohydrates or fat. This is one reason high-protein diets are often recommended for weight loss.</p>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Safe Weight Loss Guidelines</h3>
+                <p style="line-height: 1.8; color: #374151;">Weight management comes down to the balance between calories consumed and calories burned. Here are evidence-based guidelines for safe, sustainable weight loss:</p>
+                <ul style="list-style: disc; padding-left: 20px; margin: 15px 0; color: #374151;">
+                    <li style="margin-bottom: 8px;"><strong>Calorie deficit of 500 calories/day</strong> results in approximately 0.5 kg (1 lb) of weight loss per week, as 1 pound of body fat contains roughly 3,500 calories.</li>
+                    <li style="margin-bottom: 8px;"><strong>Minimum calorie intake:</strong> Women should generally not consume fewer than 1,200 calories/day, and men should not go below 1,500 calories/day without medical supervision.</li>
+                    <li style="margin-bottom: 8px;"><strong>Safe rate:</strong> A weight loss rate of 0.5-1 kg (1-2 lbs) per week is generally considered safe and sustainable.</li>
+                    <li style="margin-bottom: 8px;"><strong>Avoid extreme deficits:</strong> Losing weight too quickly can lead to muscle loss, nutritional deficiencies, gallstones, and metabolic slowdown.</li>
+                    <li style="margin-bottom: 8px;"><strong>Combine diet and exercise:</strong> A 500-calorie deficit can be achieved by eating 250 fewer calories and burning 250 more through exercise.</li>
+                    <li style="margin-bottom: 8px;"><strong>Protein intake:</strong> Maintain adequate protein (1.6-2.2 g per kg of body weight) during weight loss to preserve lean muscle mass.</li>
+                </ul>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">Frequently Asked Questions</h3>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: How accurate are calorie calculators?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: Calorie calculators using the Mifflin-St Jeor equation are accurate to within about 10% for most people. However, individual factors such as genetics, muscle mass, metabolic conditions, and medications can cause actual needs to differ. Use the calculated value as a starting point and adjust based on your real-world results over 2-4 weeks.</p>
+                </div>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: Should I eat back the calories I burn during exercise?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: It depends on your goals. If your TDEE calculation already accounts for your exercise level, you do not need to eat back exercise calories separately -- that would be double-counting. However, if you perform an unusually intense workout beyond your normal activity level, eating back a portion (about 50%) of those extra calories can help maintain energy and recovery.</p>
+                </div>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: Why do calorie needs decrease with age?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: As you age, you naturally lose muscle mass (a process called sarcopenia), and muscle tissue burns more calories at rest than fat tissue. Additionally, hormonal changes and generally decreased physical activity contribute to lower energy requirements. This is why strength training becomes increasingly important as you get older.</p>
+                </div>
+
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h4 style="color: #2563eb; margin-bottom: 8px;">Q: Is it better to cut calories or increase exercise for weight loss?</h4>
+                    <p style="color: #4b5563; line-height: 1.6;">A: Research shows that a combination of both dietary changes and increased physical activity is the most effective approach for sustainable weight loss. Dietary changes tend to produce faster initial weight loss, while exercise helps preserve muscle mass, improves metabolic health, and is crucial for maintaining weight loss long-term. A balanced approach -- such as reducing intake by 250 calories and burning 250 extra calories through exercise -- is generally most sustainable.</p>
+                </div>
+
+                <div style="background: #eff6ff; padding: 20px; border-radius: 4px; border-left: 4px solid #2563eb; margin-top: 25px;">
+                    <h4 style="color: #1e40af; margin-bottom: 10px;">Medical Disclaimer</h4>
+                    <p style="color: #1e3a8a; line-height: 1.6;">This calorie calculator is for informational and educational purposes only and should not replace professional medical or nutritional advice. Calorie needs vary significantly between individuals based on health conditions, medications, and metabolic factors. Always consult with a qualified healthcare provider or registered dietitian before making significant changes to your diet, especially if you have any medical conditions, are pregnant or nursing, or are under 18 years of age.</p>
+                </div>
+            </div>
+        </div>
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
      crossorigin="anonymous"></script>
 <!-- ad1 -->
@@ -126,7 +274,13 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+            <p>&copy; 2025 Calculator Tools. All rights reserved.</p>
+            <p>
+                <a href="../about.html" style="color: white; margin: 0 10px;">About Us</a> |
+                <a href="../contact.html" style="color: white; margin: 0 10px;">Contact</a> |
+                <a href="../privacy-policy.html" style="color: white; margin: 0 10px;">Privacy Policy</a> |
+                <a href="../terms-of-service.html" style="color: white; margin: 0 10px;">Terms of Service</a>
+            </p>
         </div>
     </footer>
 

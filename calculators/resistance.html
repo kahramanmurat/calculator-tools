@@ -32,6 +32,9 @@
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../calculators.html">Calculators</a></li>
                 <li><a href="../converters.html">Converters</a></li>
+                <li><a href="../tools.html">Tools</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -86,6 +89,305 @@
                     <p style="color: #6b7280; font-size: 0.9rem; margin-top: 5px;">This simplified formula works for exactly two resistors.</p>
                 </div>
             </div>
+
+            <div style="margin-top: 50px; background: #f9fafb; padding: 30px; border-radius: 8px;">
+                <h2 style="color: #2563eb; margin-bottom: 20px;">Understanding Electrical Resistance</h2>
+
+                <h3 style="color: #1e40af; margin-top: 25px; margin-bottom: 15px;">What is Electrical Resistance?</h3>
+                <p style="line-height: 1.8; color: #374151;">Electrical resistance is the opposition that a material or component offers to the flow of electric current. Measured in ohms (symbol: &#8486;), resistance is one of the most fundamental concepts in electrical engineering and electronics. It was named after Georg Simon Ohm, the German physicist who first described the relationship between voltage, current, and resistance in 1827.</p>
+                <p style="line-height: 1.8; color: #374151; margin-top: 15px;">Every material has some amount of resistance. Conductors like copper and silver have very low resistance, allowing current to flow easily. Insulators like rubber and glass have extremely high resistance, effectively blocking current flow. Resistors are components specifically designed to provide a precise, controlled amount of resistance in a circuit.</p>
+
+                <div style="background: white; padding: 20px; margin: 20px 0; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Ohm's Law</h4>
+                    <p style="color: #4b5563; line-height: 1.6; margin-bottom: 10px;"><strong>V = I × R</strong></p>
+                    <p style="color: #4b5563; line-height: 1.6;">Where V is voltage (volts), I is current (amps), and R is resistance (ohms). This fundamental law means that resistance equals voltage divided by current: <strong>R = V / I</strong>.</p>
+                    <p style="color: #4b5563; line-height: 1.6; margin-top: 10px;"><strong>Example:</strong> If a 9V battery drives 0.045A through a resistor, the resistance is R = 9 / 0.045 = 200 &#8486;.</p>
+                </div>
+
+                <h3 style="color: #1e40af; margin-top: 35px; margin-bottom: 15px;">How Series and Parallel Circuits Work</h3>
+                <p style="line-height: 1.8; color: #374151;">Resistors can be connected in two fundamental ways: series and parallel. Understanding the difference is essential for designing and analyzing electronic circuits. Most real-world circuits use a combination of both configurations, known as series-parallel circuits.</p>
+
+                <div style="background: white; padding: 20px; margin: 20px 0; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Series Circuits</h4>
+                    <p style="color: #4b5563; line-height: 1.8;">In a series circuit, resistors are connected end-to-end so that the same current flows through each one. The total resistance is simply the sum of all individual resistances. Key characteristics include:</p>
+                    <ul style="color: #4b5563; line-height: 1.8; margin-top: 10px; padding-left: 20px;">
+                        <li><strong>Same current</strong> flows through every resistor</li>
+                        <li><strong>Voltage divides</strong> proportionally across each resistor</li>
+                        <li><strong>Total resistance increases</strong> with each added resistor</li>
+                        <li>If one resistor fails (open), the entire circuit stops working</li>
+                    </ul>
+                    <p style="color: #4b5563; line-height: 1.6; margin-top: 10px;"><strong>Example:</strong> Three resistors of 100 &#8486;, 220 &#8486;, and 330 &#8486; in series: R<sub>total</sub> = 100 + 220 + 330 = 650 &#8486;</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 20px 0; border-left: 4px solid #10b981; border-radius: 4px;">
+                    <h4 style="color: #10b981; margin-bottom: 10px;">Parallel Circuits</h4>
+                    <p style="color: #4b5563; line-height: 1.8;">In a parallel circuit, resistors are connected across the same two points, so each one has the same voltage across it. The total resistance is always less than the smallest individual resistor. Key characteristics include:</p>
+                    <ul style="color: #4b5563; line-height: 1.8; margin-top: 10px; padding-left: 20px;">
+                        <li><strong>Same voltage</strong> appears across every resistor</li>
+                        <li><strong>Current divides</strong> among the parallel paths</li>
+                        <li><strong>Total resistance decreases</strong> with each added resistor</li>
+                        <li>If one resistor fails (open), the others continue to function</li>
+                    </ul>
+                    <p style="color: #4b5563; line-height: 1.6; margin-top: 10px;"><strong>Example:</strong> Two resistors of 1000 &#8486; and 2200 &#8486; in parallel: R<sub>total</sub> = (1000 × 2200) / (1000 + 2200) = 687.5 &#8486;</p>
+                </div>
+
+                <h3 style="color: #1e40af; margin-top: 35px; margin-bottom: 15px;">Resistor Color Code Chart</h3>
+                <p style="line-height: 1.8; color: #374151;">Through-hole resistors use colored bands to indicate their resistance value. A standard 4-band resistor has two digit bands, a multiplier band, and a tolerance band. Use the table below to decode any 4-band resistor.</p>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <thead style="background: #2563eb; color: white;">
+                        <tr>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Color</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Digit</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Multiplier</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">Tolerance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #1a1a1a; color: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Black</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">0</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">× 1</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">-</td>
+                        </tr>
+                        <tr style="background: #7c3a12; color: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Brown</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">× 10</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">&plusmn; 1%</td>
+                        </tr>
+                        <tr style="background: #dc2626; color: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Red</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">2</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">× 100</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">&plusmn; 2%</td>
+                        </tr>
+                        <tr style="background: #ea580c; color: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Orange</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">3</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">× 1K</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">-</td>
+                        </tr>
+                        <tr style="background: #eab308; color: #1a1a1a;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Yellow</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">4</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">× 10K</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">-</td>
+                        </tr>
+                        <tr style="background: #22c55e; color: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Green</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">5</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">× 100K</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">&plusmn; 0.5%</td>
+                        </tr>
+                        <tr style="background: #2563eb; color: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Blue</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">6</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">× 1M</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">&plusmn; 0.25%</td>
+                        </tr>
+                        <tr style="background: #7c3aed; color: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Violet</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">7</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">× 10M</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">&plusmn; 0.1%</td>
+                        </tr>
+                        <tr style="background: #6b7280; color: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Gray</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">8</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">× 100M</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">&plusmn; 0.05%</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">White</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">9</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">× 1G</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">-</td>
+                        </tr>
+                        <tr style="background: #ffd700;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Gold</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">-</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">× 0.1</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">&plusmn; 5%</td>
+                        </tr>
+                        <tr style="background: #c0c0c0;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">Silver</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">-</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">× 0.01</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">&plusmn; 10%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #f59e0b; border-radius: 4px;">
+                    <h4 style="color: #f59e0b; margin-bottom: 10px;">How to Read a 4-Band Resistor</h4>
+                    <p style="color: #4b5563; line-height: 1.8;"><strong>Example:</strong> A resistor with bands Brown, Black, Red, Gold</p>
+                    <ul style="color: #4b5563; line-height: 1.8; padding-left: 20px;">
+                        <li>Band 1 (Brown) = 1</li>
+                        <li>Band 2 (Black) = 0</li>
+                        <li>Band 3 (Red) = × 100</li>
+                        <li>Band 4 (Gold) = &plusmn; 5% tolerance</li>
+                    </ul>
+                    <p style="color: #4b5563; line-height: 1.6; margin-top: 10px;"><strong>Result:</strong> 10 × 100 = 1,000 &#8486; (1K&#8486;) &plusmn; 5%</p>
+                </div>
+
+                <h3 style="color: #1e40af; margin-top: 35px; margin-bottom: 15px;">Common Resistor Values (E12 Series)</h3>
+                <p style="line-height: 1.8; color: #374151;">The E12 series is the most commonly used set of standard resistor values. These 12 values are available in every decade (multiplied by 1, 10, 100, 1K, 10K, 100K, and 1M). The E12 series provides roughly 10% spacing between values.</p>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <thead style="background: #2563eb; color: white;">
+                        <tr>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">E12 Base Value</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">× 1</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">× 100</th>
+                            <th style="padding: 12px; text-align: left; border: 1px solid #1e40af;">× 1K</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>1.0</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1.0 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">100 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1.0K &#8486;</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>1.2</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1.2 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">120 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1.2K &#8486;</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>1.5</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1.5 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">150 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1.5K &#8486;</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>1.8</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1.8 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">180 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">1.8K &#8486;</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>2.2</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">2.2 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">220 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">2.2K &#8486;</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>2.7</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">2.7 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">270 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">2.7K &#8486;</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>3.3</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">3.3 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">330 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">3.3K &#8486;</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>3.9</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">3.9 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">390 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">3.9K &#8486;</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>4.7</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">4.7 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">470 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">4.7K &#8486;</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>5.6</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">5.6 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">560 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">5.6K &#8486;</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>6.8</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">6.8 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">680 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">6.8K &#8486;</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;"><strong>8.2</strong></td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">8.2 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">820 &#8486;</td>
+                            <td style="padding: 10px; border: 1px solid #e5e7eb;">8.2K &#8486;</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="color: #1e40af; margin-top: 35px; margin-bottom: 15px;">Real-World Applications of Resistance</h3>
+                <p style="line-height: 1.8; color: #374151;">Resistors are found in virtually every electronic device. Understanding how to combine them in series and parallel is crucial for practical circuit design. Here are some common applications:</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">LED Current Limiting</h4>
+                        <p style="color: #4b5563; line-height: 1.6;">A resistor in series with an LED limits the current to prevent burnout. For a typical red LED (2V forward voltage, 20mA) on a 5V supply: R = (5 - 2) / 0.020 = 150 &#8486;.</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">Voltage Dividers</h4>
+                        <p style="color: #4b5563; line-height: 1.6;">Two resistors in series create a voltage divider that reduces voltage proportionally. Used extensively in sensor circuits, audio equipment, and microcontroller analog inputs.</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">Pull-up and Pull-down</h4>
+                        <p style="color: #4b5563; line-height: 1.6;">Resistors connected to power (pull-up) or ground (pull-down) ensure digital input pins have a defined state. Common values are 4.7K &#8486; and 10K &#8486;.</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">RC Timing Circuits</h4>
+                        <p style="color: #4b5563; line-height: 1.6;">A resistor paired with a capacitor creates a time delay. The time constant &#964; = R × C determines charging and discharging rates, used in oscillators, debounce circuits, and filters.</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">Current Sensing</h4>
+                        <p style="color: #4b5563; line-height: 1.6;">A low-value resistor (shunt resistor) placed in series with a load allows measuring current by reading the voltage drop across it using Ohm's law.</p>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                        <h4 style="color: #2563eb; margin-bottom: 10px;">Heating Elements</h4>
+                        <p style="color: #4b5563; line-height: 1.6;">Toasters, hair dryers, and electric heaters use high-power resistive elements. The power dissipated as heat is calculated by P = I&sup2; × R or P = V&sup2; / R.</p>
+                    </div>
+                </div>
+
+                <h3 style="color: #1e40af; margin-top: 35px; margin-bottom: 15px;">Tips for Working with Resistors</h3>
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #10b981; border-radius: 4px;">
+                    <ul style="color: #4b5563; line-height: 2.0; padding-left: 20px;">
+                        <li><strong>Check power ratings:</strong> Standard resistors are rated for 1/4 watt. Calculate power dissipation (P = I&sup2; × R) to ensure you stay within limits. Use higher-wattage resistors when needed.</li>
+                        <li><strong>Use standard values:</strong> If you need a non-standard resistance (e.g., 500 &#8486;), combine standard values in series or parallel. Two 1K &#8486; resistors in parallel give exactly 500 &#8486;.</li>
+                        <li><strong>Consider tolerance:</strong> For precision circuits (audio, measurement), use 1% tolerance (brown band) resistors. For general use, 5% tolerance (gold band) is sufficient.</li>
+                        <li><strong>Mind the temperature coefficient:</strong> Resistance changes with temperature. Metal film resistors have lower temperature coefficients than carbon film, making them better for precision work.</li>
+                        <li><strong>Measure before installing:</strong> Always verify resistance with a multimeter before soldering, especially for tight-tolerance applications.</li>
+                        <li><strong>Parallel for higher power:</strong> If you need a resistor that can handle more power, use multiple resistors in parallel to share the load. Two identical parallel resistors each dissipate half the total power.</li>
+                    </ul>
+                </div>
+
+                <h3 style="color: #1e40af; margin-top: 35px; margin-bottom: 15px;">Frequently Asked Questions</h3>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">What happens when you add resistors in series vs. parallel?</h4>
+                    <p style="color: #4b5563; line-height: 1.8;">When you add resistors in series, the total resistance increases because the current must pass through each resistor sequentially, encountering more opposition. When you add resistors in parallel, the total resistance decreases because you are providing additional paths for current to flow, effectively making it easier for electricity to pass through the circuit. This is why a parallel combination always has less resistance than the smallest individual resistor.</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">How do I calculate resistance if I only have Ohm's law values?</h4>
+                    <p style="color: #4b5563; line-height: 1.8;">Use Ohm's Law: R = V / I. Measure the voltage (V) across the component in volts and the current (I) through it in amps. Divide voltage by current to get resistance in ohms. For example, if you measure 12V across a component with 0.5A flowing through it, the resistance is 12 / 0.5 = 24 &#8486;. You can also calculate resistance from power: R = V&sup2; / P or R = P / I&sup2;.</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Why do resistors have standard values instead of round numbers?</h4>
+                    <p style="color: #4b5563; line-height: 1.8;">Resistors use standard value series (E12, E24, E48, E96) based on geometric progressions. The E12 series, for example, spaces 12 values logarithmically per decade so that the tolerance bands of adjacent values just overlap. This means that with 10% tolerance resistors, any actual resistance value falls within the range of at least one standard value. The seemingly odd numbers (like 4.7K or 2.2K) come from this mathematical spacing.</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Can I use any resistor, or does the physical size matter?</h4>
+                    <p style="color: #4b5563; line-height: 1.8;">Physical size matters because it determines the power rating. Larger resistors can dissipate more heat. A tiny 0402 surface-mount resistor might handle 1/16 watt, while a large wirewound resistor can handle 50 watts or more. Always calculate the power your resistor will dissipate (P = V&sup2; / R) and choose a component rated for at least twice that value to ensure reliability and prevent overheating.</p>
+                </div>
+
+                <div style="background: white; padding: 20px; margin: 15px 0; border-left: 4px solid #2563eb; border-radius: 4px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">What is the difference between a resistor and a potentiometer?</h4>
+                    <p style="color: #4b5563; line-height: 1.8;">A resistor has a fixed resistance value that cannot be changed. A potentiometer (or "pot") is a variable resistor with three terminals and a mechanical adjustment (knob or slider) that lets you change the resistance continuously from zero to its maximum rated value. Potentiometers are commonly used for volume controls, brightness dimmers, and tuning circuits. Rheostats are similar but have only two terminals and are used for higher-power applications.</p>
+                </div>
+            </div>
         </div>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5251189995307912"
@@ -105,7 +407,13 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Calculator Tools. All rights reserved.</p>
+            <p>&copy; 2025 Calculator Tools. All rights reserved.</p>
+            <p>
+                <a href="../about.html" style="color: white; margin: 0 10px;">About Us</a> |
+                <a href="../contact.html" style="color: white; margin: 0 10px;">Contact</a> |
+                <a href="../privacy-policy.html" style="color: white; margin: 0 10px;">Privacy Policy</a> |
+                <a href="../terms-of-service.html" style="color: white; margin: 0 10px;">Terms of Service</a>
+            </p>
         </div>
     </footer>
 
